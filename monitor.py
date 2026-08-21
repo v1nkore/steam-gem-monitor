@@ -193,6 +193,26 @@ def parse_listings(html_text):
     return total, listings
 
 
+def fetch_page(t, start, retries=3):
+    """Fetch+parse one listings page, retrying when Steam returns an unreadable
+    anti-bot/interstitial page (HTTP 200 but no listing data). This absorbs brief
+    rate-limiting inside a run so it doesn't look like a hard failure.
+
+    Returns (total_count, listings). A genuinely empty item returns (0, []). Only a
+    persistently unreadable page returns (None, []).
+    """
+    delay = 6
+    for attempt in range(retries):
+        html_text = http_get(t.page_url(start))
+        page_total, listings = parse_listings(html_text)
+        if listings or page_total is not None:
+            return page_total, listings
+        if attempt < retries - 1:
+            time.sleep(delay)
+            delay *= 2
+    return None, []
+
+
 def scan_target(t):
     """Scan all listing pages for the target gem.
 
@@ -206,8 +226,7 @@ def scan_target(t):
     start = 0
     pages = 0
     while pages < MAX_PAGES:
-        html_text = http_get(t.page_url(start))
-        page_total, listings = parse_listings(html_text)
+        page_total, listings = fetch_page(t, start)
         if page_total is not None:
             total = page_total
         if not listings:
