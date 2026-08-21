@@ -58,6 +58,13 @@ ERROR_REMINDER_HOURS = float(os.environ.get("ERROR_REMINDER_HOURS", "12"))
 # when there is nothing new — useful to also catch "the cron stopped running".
 HEARTBEAT_HOURS = float(os.environ.get("HEARTBEAT_HOURS", "0"))
 
+# Sellers fake the gem by TYPING its name into the item's description so it shows
+# up under Steam's gem filter, while the real socketed gem is something else.
+# Steam flags every such listing with the fraud warning "This item has a user
+# written description." With this on (default), we ignore matches on those
+# listings and only trust items whose description was NOT user-edited.
+EXCLUDE_USER_DESC = os.environ.get("EXCLUDE_USER_DESC", "1") == "1"
+
 
 class MonitorError(Exception):
     """A problem we want surfaced to Telegram (e.g. Steam returned garbage)."""
@@ -160,6 +167,8 @@ def http_get(url, retries=3):
 LISTING_SPLIT = re.compile(r'listingid\\+":\\+"')
 LISTING_ID = re.compile(r"^(\d+)")
 TOTAL_COUNT = re.compile(r'total_count\\+":(\d+)')
+# Steam's "description was edited by the owner" fraud warning (chunks are lowercased).
+USER_DESC = re.compile(r'fraudwarnings\\+":\s*\[[^\]]*user written')
 
 
 def parse_listings(html_text):
@@ -185,8 +194,14 @@ def parse_listings(html_text):
 
 
 def scan_target(t):
-    """Return the set of listing ids that currently carry the target gem."""
+    """Scan all listing pages for the target gem.
+
+    Returns (genuine_ids, total_count, suspect_ids) where suspect_ids are listings
+    that match the gem text but have a user-edited description (likely faked to
+    game Steam's gem filter) and are therefore NOT reported as real hits.
+    """
     matches = set()
+    suspect = set()
     total = None
     start = 0
     pages = 0
@@ -199,14 +214,17 @@ def scan_target(t):
             break
         for lid, chunk in listings:
             if t.matches(chunk):
-                matches.add(lid)
+                if EXCLUDE_USER_DESC and USER_DESC.search(chunk):
+                    suspect.add(lid)
+                else:
+                    matches.add(lid)
         step = len(listings)
         start += step
         pages += 1
         if total is not None and start >= total:
             break
         time.sleep(REQUEST_DELAY)
-    return matches, total
+    return matches, total, suspect
 
 
 # ---------------------------------------------------------------------------
@@ -342,7 +360,7 @@ def _run():
     for t in targets:
         # ---- scan, treating an unreadable page as an error worth reporting ----
         try:
-            matches, total = scan_target(t)
+            matches, total, suspect = scan_target(t)
             if total is None and not matches:
                 raise MonitorError(
                     "Steam вернул неожиданный ответ — не удалось прочитать листинги "
@@ -374,16 +392,17 @@ def _run():
                 notify(t, matches)
             tstate[t.key] = {"seen": sorted(matches), "seeded": True}
             changed = True
-            print(f"[seed] {t.label}: {len(matches)} matching / {total} total listings")
+            print(f"[seed] {t.label}: {len(matches)} genuine / {len(suspect)} fake-desc / {total} total")
             continue
 
         seen = set(entry.get("seen", []))
         new_ids = matches - seen
         if new_ids:
-            print(f"[NEW] {t.label}: {len(new_ids)} new matching listing(s)")
+            print(f"[NEW] {t.label}: {len(new_ids)} new GENUINE listing(s) "
+                  f"({len(suspect)} fake-desc ignored)")
             notify(t, new_ids)
         else:
-            print(f"[ok] {t.label}: {len(matches)} matching / {total} total (no new)")
+            print(f"[ok] {t.label}: {len(matches)} genuine / {len(suspect)} fake-desc / {total} total (no new)")
 
         merged = list(seen | matches)
         if len(merged) > MAX_SEEN_PER_TARGET:
