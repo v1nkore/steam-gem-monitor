@@ -92,6 +92,7 @@
         "527635566870815964",
         "529887366682560719",
         "532140435381534406",
+        "532140435383436646",
         "533265066366775859",
         "534392137373457785",
         "536644035000389400",
@@ -362,15 +363,5 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Northern Blight Style::MonitorError": {
-      "fails": 1,
-      "since": 1787349692.234822,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    }
-  }
+  "errors": {}
 }
