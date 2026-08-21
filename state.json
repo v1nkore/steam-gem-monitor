@@ -6,7 +6,9 @@
         "498360266251405680",
         "498360266251407480",
         "506242294440138228",
+        "506242294440139884",
         "506242294440140640",
+        "506242294440141504",
         "508493365411964580",
         "508493365411965300",
         "523133236135336405",
@@ -31,6 +33,58 @@
         "652599041009202072"
       ],
       "seeded": true
+    },
+    "Unusual Light of the Forgotten Renegade|frostbloom": {
+      "seen": [
+        "520875728266275924",
+        "804592436309928089"
+      ],
+      "seeded": true
+    },
+    "Unusual Claws of the Grey Ghost|frostbloom": {
+      "seen": [
+        "520875728266266204",
+        "520875728266267212"
+      ],
+      "seeded": true
+    },
+    "Unusual Claws of the Crystal Drift|frostbloom": {
+      "seen": [
+        "508493365468545384",
+        "508493365468549308"
+      ],
+      "seeded": true
+    },
+    "Unusual Frostreach Brigands Axes|frostbloom": {
+      "seen": [
+        "537768666011248152"
+      ],
+      "seeded": true
+    },
+    "Unusual Powdersled Rookery Cannon|frostbloom": {
+      "seen": [
+        "490479695829968214"
+      ],
+      "seeded": true
+    },
+    "Unusual Crown of Curious Coldspell|frostbloom": {
+      "seen": [
+        "527636200674118517"
+      ],
+      "seeded": true
+    },
+    "Unusual Lumpo and Rupertus - Weapon|frostbloom": {
+      "seen": [
+        "698762301643468284"
+      ],
+      "seeded": true
+    },
+    "Unusual Cluckles the Brave|ethereal_flame": {
+      "seen": [
+        "536642766106615326"
+      ],
+      "seeded": true
     }
-  }
+  },
+  "errors": {}
 }
