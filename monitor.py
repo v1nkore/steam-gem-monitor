@@ -49,6 +49,19 @@ REQUEST_DELAY = float(os.environ.get("REQUEST_DELAY", "3"))
 # Per-target cap on how many seen ids we remember (keeps state.json small).
 MAX_SEEN_PER_TARGET = 800
 
+# Error alerting: how many consecutive failed runs before we ping Telegram
+# (2 avoids crying wolf over a single transient network blip), and how often to
+# remind while an error persists.
+ERROR_THRESHOLD = int(os.environ.get("ERROR_THRESHOLD", "2"))
+ERROR_REMINDER_HOURS = float(os.environ.get("ERROR_REMINDER_HOURS", "12"))
+# Optional "still alive" heartbeat. 0 = off. E.g. 24 = one message per day even
+# when there is nothing new — useful to also catch "the cron stopped running".
+HEARTBEAT_HOURS = float(os.environ.get("HEARTBEAT_HOURS", "0"))
+
+
+class MonitorError(Exception):
+    """A problem we want surfaced to Telegram (e.g. Steam returned garbage)."""
+
 UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
@@ -233,6 +246,51 @@ def send_telegram(text):
         r.read()
 
 
+def safe_send(text):
+    """Send without ever crashing the run — used for error/status messages."""
+    try:
+        send_telegram(text)
+        return True
+    except Exception as e:
+        print(f"[telegram-error] {e}")
+        return False
+
+
+def run_link():
+    """Link to the current GitHub Actions run, if we're inside one."""
+    srv = os.environ.get("GITHUB_SERVER_URL")
+    repo = os.environ.get("GITHUB_REPOSITORY")
+    rid = os.environ.get("GITHUB_RUN_ID")
+    if srv and repo and rid:
+        return f"{srv}/{repo}/actions/runs/{rid}"
+    return None
+
+
+def send_error_alert(alerts):
+    link = run_link()
+    lines = ["⚠️ <b>Проблема в мониторинге</b>", ""]
+    for a in alerts:
+        tag = " (всё ещё не чинится)" if a.get("reminder") else ""
+        lines.append(f"• <b>{a['label']}</b>{tag}: {a['reason']}")
+    lines += ["", "Пока это не починится, новые лоты могут не отслеживаться."]
+    if link:
+        lines.append(f'<a href="{link}">Открыть логи запуска</a>')
+    safe_send("\n".join(lines))
+
+
+def send_recovery(labels):
+    uniq = ", ".join(sorted(set(labels)))
+    safe_send(f"✅ <b>Мониторинг восстановился</b>\nСнова читаю листинги нормально: {uniq}")
+
+
+def send_heartbeat(n_targets, n_errors):
+    status = "ошибок нет ✅" if n_errors == 0 else f"активных ошибок: {n_errors} ⚠️"
+    safe_send(
+        f"💓 <b>Мониторинг работает</b>\n"
+        f"Отслеживаю предметов: {n_targets}\n{status}"
+    )
+
+
 def notify(t, new_ids):
     n = len(new_ids)
     text = (
@@ -242,13 +300,30 @@ def notify(t, new_ids):
         f"Новых листингов: <b>{n}</b>\n"
         f'<a href="{t.url}">Открыть на торговой площадке</a>'
     )
-    send_telegram(text)
+    safe_send(text)
 
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
+    """Top-level wrapper: any unexpected crash is reported to Telegram, then the
+    run is failed so it's also visible in GitHub Actions."""
+    try:
+        return _run()
+    except Exception as e:
+        link = run_link()
+        msg = (
+            "🛑 <b>Мониторинг упал с фатальной ошибкой</b>\n"
+            f"<code>{type(e).__name__}: {str(e)[:400]}</code>"
+        )
+        if link:
+            msg += f'\n<a href="{link}">Логи запуска</a>'
+        safe_send(msg)
+        raise
+
+
+def _run():
     targets = load_targets()
     if not targets:
         print("No targets in config.json")
@@ -256,18 +331,45 @@ def main():
 
     state = load_state()
     tstate = state.setdefault("targets", {})
+    estate = state.setdefault("errors", {})  # fingerprint -> failure record
     changed = False
+    now = time.time()
+
+    alerts = []        # new/renewed errors to announce this run
+    recovered = []     # labels that were failing and now work
+    ok_target_keys = set()
 
     for t in targets:
+        # ---- scan, treating an unreadable page as an error worth reporting ----
         try:
             matches, total = scan_target(t)
+            if total is None and not matches:
+                raise MonitorError(
+                    "Steam вернул неожиданный ответ — не удалось прочитать листинги "
+                    "(возможна блокировка IP или смена формата страницы)."
+                )
         except Exception as e:
-            print(f"[error] {t.label}: {e}")
+            fp = f"{t.key}::{type(e).__name__}"
+            ent = estate.get(fp) or {"fails": 0, "since": now, "notified": False, "last_notified": 0}
+            ent["fails"] += 1
+            ent["target"] = t.key
+            ent["label"] = t.label
+            ent["reason"] = str(e)[:300]
+            estate[fp] = ent
+            changed = True
+            reminder_due = now - ent.get("last_notified", 0) >= ERROR_REMINDER_HOURS * 3600
+            if ent["fails"] >= ERROR_THRESHOLD and (not ent["notified"] or reminder_due):
+                alerts.append({"label": t.label, "reason": ent["reason"], "reminder": ent["notified"]})
+                ent["notified"] = True
+                ent["last_notified"] = now
+            print(f"[error] {t.label}: {e} (fails={ent['fails']})")
             continue
 
+        ok_target_keys.add(t.key)
+
+        # ---- normal new-listing logic ----
         entry = tstate.get(t.key)
         if entry is None:
-            # First time we see this target: seed silently (unless overridden).
             if NOTIFY_ON_FIRST and matches:
                 notify(t, matches)
             tstate[t.key] = {"seen": sorted(matches), "seeded": True}
@@ -283,12 +385,33 @@ def main():
         else:
             print(f"[ok] {t.label}: {len(matches)} matching / {total} total (no new)")
 
-        # Remember everything we've ever matched (bounded), so we don't re-notify.
         merged = list(seen | matches)
         if len(merged) > MAX_SEEN_PER_TARGET:
             merged = merged[-MAX_SEEN_PER_TARGET:]
         entry["seen"] = sorted(merged)
         if new_ids:
+            changed = True
+
+    # ---- clear errors for targets that scanned fine again ----
+    for fp in list(estate.keys()):
+        ent = estate[fp]
+        if ent.get("target") in ok_target_keys:
+            if ent.get("notified"):
+                recovered.append(ent.get("label", ent["target"]))
+            del estate[fp]
+            changed = True
+
+    if alerts:
+        send_error_alert(alerts)
+    if recovered:
+        send_recovery(recovered)
+
+    # ---- optional heartbeat ----
+    if HEARTBEAT_HOURS > 0:
+        last_hb = state.get("heartbeat", 0)
+        if now - last_hb >= HEARTBEAT_HOURS * 3600:
+            send_heartbeat(len(targets), len(estate))
+            state["heartbeat"] = now
             changed = True
 
     if changed:
