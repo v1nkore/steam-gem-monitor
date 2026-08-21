@@ -1,0 +1,6 @@
+{
+  "_help": "Each target is a Steam Market listing URL with a ?filter=<gem> token. Copy it straight from your browser after picking a gem in the item page's 'Gem/effect' filter. For a gem whose filter token differs from its display name, use { \"url\": \"...\", \"match\": \"exact words shown in the listing description\", \"label\": \"nice name\" }. See README.",
+  "targets": [
+    "https://steamcommunity.com/market/listings/570/Unusual%20Northern%20Blight%20Style?filter=frostbloom"
+  ]
+}
