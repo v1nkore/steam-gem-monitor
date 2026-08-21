@@ -86,5 +86,87 @@
       "seeded": true
     }
   },
-  "errors": {}
+  "errors": {
+    "Unusual Northern Blight Style|frostbloom::MonitorError": {
+      "fails": 1,
+      "since": 1787341744.9150186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style|frostbloom",
+      "label": "Unusual Northern Blight Style",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Light of the Forgotten Renegade|frostbloom::MonitorError": {
+      "fails": 1,
+      "since": 1787341744.9150186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade|frostbloom",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Grey Ghost|frostbloom::MonitorError": {
+      "fails": 1,
+      "since": 1787341744.9150186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost|frostbloom",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Crystal Drift|frostbloom::MonitorError": {
+      "fails": 1,
+      "since": 1787341744.9150186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift|frostbloom",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Frostreach Brigands Axes|frostbloom::MonitorError": {
+      "fails": 1,
+      "since": 1787341744.9150186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Frostreach Brigands Axes|frostbloom",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Powdersled Rookery Cannon|frostbloom::MonitorError": {
+      "fails": 1,
+      "since": 1787341744.9150186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Powdersled Rookery Cannon|frostbloom",
+      "label": "Unusual Powdersled Rookery Cannon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Crown of Curious Coldspell|frostbloom::MonitorError": {
+      "fails": 1,
+      "since": 1787341744.9150186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell|frostbloom",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Lumpo and Rupertus - Weapon|frostbloom::MonitorError": {
+      "fails": 1,
+      "since": 1787341744.9150186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon|frostbloom",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Cluckles the Brave|ethereal_flame::MonitorError": {
+      "fails": 1,
+      "since": 1787341744.9150186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Cluckles the Brave|ethereal_flame",
+      "label": "Unusual Cluckles the Brave (Ethereal Flame)",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  }
 }
