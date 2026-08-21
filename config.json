@@ -1,18 +1,14 @@
 {
-  "_help": "Каждый target — ссылка Steam Market с ?filter=<gem>. Можно строкой (URL) или объектом {url, match, label}. Подробности в README.",
+  "_help": "Каждый target — ссылка Steam Market на ПРЕДМЕТ (без фильтра). Скрипт шлёт все новые лоты предмета и показывает заявленный в описании гем (если есть). Добавить предмет — вставь его market-ссылку строкой. ONLY_WITH_GEM=1 — слать только лоты с заявленным гемом.",
   "targets": [
-    "https://steamcommunity.com/market/listings/570/Unusual%20Northern%20Blight%20Style?filter=frostbloom",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Light%20of%20the%20Forgotten%20Renegade?filter=frostbloom",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Claws%20of%20the%20Grey%20Ghost?filter=frostbloom",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Claws%20of%20the%20Crystal%20Drift?filter=frostbloom",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Frostreach%20Brigands%20Axes?filter=frostbloom",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Powdersled%20Rookery%20Cannon?filter=frostbloom",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Crown%20of%20Curious%20Coldspell?filter=frostbloom",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Lumpo%20and%20Rupertus%20-%20Weapon?filter=frostbloom",
-    {
-      "url": "https://steamcommunity.com/market/listings/570/Unusual%20Cluckles%20the%20Brave?filter=ethereal_flame",
-      "match": "ethereal flame",
-      "label": "Unusual Cluckles the Brave (Ethereal Flame)"
-    }
+    "https://steamcommunity.com/market/listings/570/Unusual%20Northern%20Blight%20Style",
+    "https://steamcommunity.com/market/listings/570/Unusual%20Light%20of%20the%20Forgotten%20Renegade",
+    "https://steamcommunity.com/market/listings/570/Unusual%20Claws%20of%20the%20Grey%20Ghost",
+    "https://steamcommunity.com/market/listings/570/Unusual%20Claws%20of%20the%20Crystal%20Drift",
+    "https://steamcommunity.com/market/listings/570/Unusual%20Frostreach%20Brigands%20Axes",
+    "https://steamcommunity.com/market/listings/570/Unusual%20Powdersled%20Rookery%20Cannon",
+    "https://steamcommunity.com/market/listings/570/Unusual%20Crown%20of%20Curious%20Coldspell",
+    "https://steamcommunity.com/market/listings/570/Unusual%20Lumpo%20and%20Rupertus%20-%20Weapon",
+    "https://steamcommunity.com/market/listings/570/Unusual%20Cluckles%20the%20Brave"
   ]
 }

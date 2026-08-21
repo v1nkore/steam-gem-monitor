@@ -58,12 +58,12 @@ ERROR_REMINDER_HOURS = float(os.environ.get("ERROR_REMINDER_HOURS", "12"))
 # when there is nothing new — useful to also catch "the cron stopped running".
 HEARTBEAT_HOURS = float(os.environ.get("HEARTBEAT_HOURS", "0"))
 
-# Sellers fake the gem by TYPING its name into the item's description so it shows
-# up under Steam's gem filter, while the real socketed gem is something else.
-# Steam flags every such listing with the fraud warning "This item has a user
-# written description." With this on (default), we ignore matches on those
-# listings and only trust items whose description was NOT user-edited.
-EXCLUDE_USER_DESC = os.environ.get("EXCLUDE_USER_DESC", "1") == "1"
+# Steam does NOT expose the real socketed ethereal gem in market data — the only
+# gem text present is whatever the seller typed into the (editable) description.
+# So we report EVERY new listing for a tracked item and, when the description
+# claims a gem, show it as an UNVERIFIED claim. Set ONLY_WITH_GEM=1 to notify
+# only about listings that claim some gem (less noise on busy items).
+ONLY_WITH_GEM = os.environ.get("ONLY_WITH_GEM", "0") == "1"
 
 
 class MonitorError(Exception):
@@ -81,38 +81,25 @@ APPID = "570"  # Dota 2
 # Target parsing
 # ---------------------------------------------------------------------------
 class Target:
-    def __init__(self, url, match=None, label=None):
+    def __init__(self, url, label=None, **_ignored):
         self.url = url
-        name, gem = self._parse(url)
-        self.name = name                    # market_hash_name (decoded)
-        self.gem_token = gem                # the ?filter= token, e.g. "frostbloom"
-        # What text we look for inside a listing's description (lowercased).
-        self.match = (match or gem or "").replace("_", " ").replace("+", " ").lower().strip()
-        self.label = label or name
-        if not self.match:
-            raise ValueError(f"Target has no gem filter/match: {url}")
-        # The real gem always shows up inside a Valve attribute string wrapped in
-        # ''...'' (double apostrophes), e.g. ''Frostbloom Unusual Effect Gem''.
-        # Requiring that wrapper avoids false positives from stray text (menus,
-        # related-item links) for gems whose name is a common word.
-        self._matcher = re.compile(r"''[^']*" + re.escape(self.match) + r"[^']*''")
-
-    def matches(self, chunk_lower):
-        return bool(self._matcher.search(chunk_lower))
+        self.name = self._parse(url)              # market_hash_name (decoded)
+        self.label = label or self.name
+        # Plain item page (no gem filter) — we surface every listing.
+        self.link = f"https://steamcommunity.com/market/listings/{APPID}/{urllib.parse.quote(self.name)}"
+        if not self.name:
+            raise ValueError(f"Could not parse item name from URL: {url}")
 
     @staticmethod
     def _parse(url):
         p = urllib.parse.urlparse(url)
         # path: /market/listings/570/<market_hash_name>
         m = re.search(r"/market/listings/\d+/([^/?#]+)", p.path)
-        name = urllib.parse.unquote(m.group(1)) if m else ""
-        qs = urllib.parse.parse_qs(p.query)
-        gem = (qs.get("filter", [""])[0] or "").strip()
-        return name, gem
+        return urllib.parse.unquote(m.group(1)) if m else ""
 
     @property
     def key(self):
-        return f"{self.name}|{self.gem_token or self.match}"
+        return self.name
 
     def page_url(self, start, count=100):
         base = f"https://steamcommunity.com/market/listings/{APPID}/{urllib.parse.quote(self.name)}/render/"
@@ -133,7 +120,7 @@ def load_targets():
         if isinstance(item, str):
             targets.append(Target(item))
         elif isinstance(item, dict):
-            targets.append(Target(item["url"], item.get("match"), item.get("label")))
+            targets.append(Target(item["url"], label=item.get("label")))
     return targets
 
 
@@ -167,8 +154,20 @@ def http_get(url, retries=3):
 LISTING_SPLIT = re.compile(r'listingid\\+":\\+"')
 LISTING_ID = re.compile(r"^(\d+)")
 TOTAL_COUNT = re.compile(r'total_count\\+":(\d+)')
-# Steam's "description was edited by the owner" fraud warning (chunks are lowercased).
-USER_DESC = re.compile(r'fraudwarnings\\+":\s*\[[^\]]*user written')
+# A gem, when present, is written by the seller inside a Valve attribute string
+# wrapped in ''...'' and mentioning "effect gem", e.g. ''Frostbloom Unusual Effect
+# Gem'' or ''Unusual Effect Gem Frostbloom''. This is the ONLY gem text Steam
+# exposes, and it is user-editable (hence "unverified").
+GEM_CLAIM = re.compile(r"''\s*([^']*?effect gem[^']*?)\s*''")
+
+
+def extract_gem(chunk_lower):
+    """Return the seller-claimed gem name for a listing, or None."""
+    for m in GEM_CLAIM.finditer(chunk_lower):
+        name = re.sub(r"unusual effect gem|effect gem", "", m.group(1)).strip(" '\"-")
+        if name:
+            return name
+    return None
 
 
 def parse_listings(html_text):
@@ -214,14 +213,13 @@ def fetch_page(t, start, retries=3):
 
 
 def scan_target(t):
-    """Scan all listing pages for the target gem.
+    """Scan all listing pages for an item.
 
-    Returns (genuine_ids, total_count, suspect_ids) where suspect_ids are listings
-    that match the gem text but have a user-edited description (likely faked to
-    game Steam's gem filter) and are therefore NOT reported as real hits.
+    Returns (listing_map, total_count) where listing_map maps every current
+    listing id -> the seller-claimed gem name (or None). With ONLY_WITH_GEM set,
+    listings that don't claim a gem are dropped.
     """
-    matches = set()
-    suspect = set()
+    listing_map = {}
     total = None
     start = 0
     pages = 0
@@ -232,18 +230,16 @@ def scan_target(t):
         if not listings:
             break
         for lid, chunk in listings:
-            if t.matches(chunk):
-                if EXCLUDE_USER_DESC and USER_DESC.search(chunk):
-                    suspect.add(lid)
-                else:
-                    matches.add(lid)
-        step = len(listings)
-        start += step
+            gem = extract_gem(chunk)
+            if ONLY_WITH_GEM and not gem:
+                continue
+            listing_map[lid] = gem
+        start += len(listings)
         pages += 1
         if total is not None and start >= total:
             break
         time.sleep(REQUEST_DELAY)
-    return matches, total, suspect
+    return listing_map, total
 
 
 # ---------------------------------------------------------------------------
@@ -328,16 +324,21 @@ def send_heartbeat(n_targets, n_errors):
     )
 
 
-def notify(t, new_ids):
-    n = len(new_ids)
-    text = (
-        f"🔔 <b>Unusual с ценным самоцветом на ТП!</b>\n"
-        f"Предмет: <b>{t.label}</b>\n"
-        f"Самоцвет: <b>{t.gem_token or t.match}</b>\n"
-        f"Новых листингов: <b>{n}</b>\n"
-        f'<a href="{t.url}">Открыть на торговой площадке</a>'
-    )
-    safe_send(text)
+def notify(t, new_items):
+    """new_items: list of (listing_id, claimed_gem_or_None)."""
+    n = len(new_items)
+    gemmed = [(lid, g) for lid, g in new_items if g]
+    lines = [f"🆕 <b>{t.label}</b>: {n} новых лот(ов) на ТП"]
+    if gemmed:
+        lines.append(f"Из них с заявленным гемом ({len(gemmed)}):")
+        for _lid, g in gemmed[:15]:
+            lines.append(f"• <b>{g.title()}</b> — ⚠️ заявлено продавцом, не подтверждено (проверь инспектом в игре)")
+        if len(gemmed) > 15:
+            lines.append(f"…и ещё {len(gemmed) - 15}")
+    else:
+        lines.append("Гем в описании ни у одного не заявлен.")
+    lines.append(f'<a href="{t.link}">Открыть предмет на ТП</a>')
+    safe_send("\n".join(lines))
 
 
 # ---------------------------------------------------------------------------
@@ -379,8 +380,8 @@ def _run():
     for t in targets:
         # ---- scan, treating an unreadable page as an error worth reporting ----
         try:
-            matches, total, suspect = scan_target(t)
-            if total is None and not matches:
+            listing_map, total = scan_target(t)
+            if total is None and not listing_map:
                 raise MonitorError(
                     "Steam вернул неожиданный ответ — не удалось прочитать листинги "
                     "(возможна блокировка IP или смена формата страницы)."
@@ -404,26 +405,27 @@ def _run():
 
         ok_target_keys.add(t.key)
 
-        # ---- normal new-listing logic ----
+        # ---- new-listing logic (every listing counts; gem shown if claimed) ----
+        current = set(listing_map)
         entry = tstate.get(t.key)
         if entry is None:
-            if NOTIFY_ON_FIRST and matches:
-                notify(t, matches)
-            tstate[t.key] = {"seen": sorted(matches), "seeded": True}
+            if NOTIFY_ON_FIRST and current:
+                notify(t, [(lid, listing_map[lid]) for lid in current])
+            tstate[t.key] = {"seen": sorted(current), "seeded": True}
             changed = True
-            print(f"[seed] {t.label}: {len(matches)} genuine / {len(suspect)} fake-desc / {total} total")
+            gem_ct = sum(1 for g in listing_map.values() if g)
+            print(f"[seed] {t.label}: {len(current)} listings ({gem_ct} claim a gem)")
             continue
 
         seen = set(entry.get("seen", []))
-        new_ids = matches - seen
+        new_ids = current - seen
         if new_ids:
-            print(f"[NEW] {t.label}: {len(new_ids)} new GENUINE listing(s) "
-                  f"({len(suspect)} fake-desc ignored)")
-            notify(t, new_ids)
+            print(f"[NEW] {t.label}: {len(new_ids)} new listing(s)")
+            notify(t, [(lid, listing_map.get(lid)) for lid in new_ids])
         else:
-            print(f"[ok] {t.label}: {len(matches)} genuine / {len(suspect)} fake-desc / {total} total (no new)")
+            print(f"[ok] {t.label}: {len(current)} listings (no new)")
 
-        merged = list(seen | matches)
+        merged = list(seen | current)
         if len(merged) > MAX_SEEN_PER_TARGET:
             merged = merged[-MAX_SEEN_PER_TARGET:]
         entry["seen"] = sorted(merged)

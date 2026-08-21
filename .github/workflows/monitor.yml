@@ -2,8 +2,8 @@ name: steam-gem-monitor
 
 on:
   schedule:
-    # Каждые 5 минут (минимальный интервал для GitHub cron; иногда бывают задержки).
-    - cron: "*/5 * * * *"
+    # Каждые 10 минут (бережём лимиты Steam; GitHub cron иногда задерживается).
+    - cron: "*/10 * * * *"
   workflow_dispatch: {}   # ручной запуск из вкладки Actions
 
 permissions:
