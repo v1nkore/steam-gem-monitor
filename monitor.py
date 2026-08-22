@@ -572,6 +572,14 @@ def _run():
     run_cur = None     # Steam currency id seen this run
     sample_name = None # a successfully scanned item name (for the FX lookup)
 
+    # Prime the RUB rate BEFORE the scan — priceoverview gets rate-limited once the
+    # 30-request render scan runs, so refresh the (daily-cached) rate up front.
+    # GitHub runners return USD (currency id 1).
+    if DISPLAY_RUB and targets:
+        _, cached_new = get_rub_factor(state, targets[0].name, 1, now)
+        if cached_new:
+            changed = True
+
     for i, t in enumerate(targets):
         if i:
             time.sleep(REQUEST_DELAY)  # pace between items too, not just pages
