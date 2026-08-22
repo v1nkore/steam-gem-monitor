@@ -169,11 +169,13 @@ TOTAL_COUNT = re.compile(r'total_count\\+":(\d+)')
 # exposes, and it is user-editable (hence "unverified").
 GEM_CLAIM = re.compile(r"''\s*([^']*?effect gem[^']*?)\s*''")
 
-# A lot claims TRACK_GEM iff the gem name appears inside a Valve ''...'' attribute
-# string (the gem line). This is bound to the gem attribute — the gem word never
-# appears elsewhere (item name, set pieces, URLs) — and catches all seller phrasings:
-# ''Frostbloom'', ''Frostbloom Unusual Effect Gem'', ''Unusual Effect Gem Frostbloom''.
-GEM_MATCH = re.compile(r"''[^']*" + re.escape(TRACK_GEM) + r"[^']*''")
+# A lot claims TRACK_GEM iff the gem name appears (as a whole word) anywhere in the
+# listing's own data. Sellers write it in different formats depending on the item —
+# a Valve attribute ''Frostbloom Unusual Effect Gem'' (e.g. Northern Blight) OR an
+# HTML span >Frostbloom< (e.g. Bow of Zebulon) — so we match the bare gem word.
+# Safe: the gem word appears only in the gem text within a listing (never in the
+# item name/set/URLs), and the filter menu lives in the discarded page header.
+GEM_MATCH = re.compile(r"\b" + re.escape(TRACK_GEM) + r"\b")
 
 
 def extract_gem(chunk_lower):
