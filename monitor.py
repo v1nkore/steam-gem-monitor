@@ -440,39 +440,30 @@ def send_digest(rows, sym="$"):
     def esc(s):
         return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
-    def cell(s, w):
-        s = s if s else "—"
-        return (s[: w - 1] + "…") if len(s) > w else s.ljust(w)
-
     gem_title = TRACK_GEM.title()
-    # Δ% is currency-invariant (Steam returns geo currency, not always USD).
-    table = [cell("Герой", 13) + cell("Шмотка", 17) + cell("Гем", 10) + cell("Пол", 10) + "Δ%"]
-    link_lines = []
-    flip = False
+    lines = [f"💎 <b>{gem_title} — текущая ситуация</b>", ""]
+    any_flip = False
     for hero, item, link, gem_price, floor, count in rows:
-        short = (item or "").replace("Unusual ", "")
-        gp = fmt_price(gem_price, sym) if gem_price is not None else "—"
-        fl = fmt_price(floor, sym) if floor is not None else "—"
+        short = esc((item or "").replace("Unusual ", ""))
+        hero_txt = f" · {esc(hero)}" if hero else ""
         is_flip = gem_price is not None and floor is not None and gem_price <= floor
-        if gem_price is not None and floor:
-            pct = (gem_price - floor) / floor * 100
-            dtxt = ("*" if is_flip else " ") + f"{pct:+.0f}%"
-        else:
-            dtxt = "—"
         if is_flip:
-            flip = True
-        table.append(cell(hero, 13) + cell(short, 17) + cell(gp, 10) + cell(fl, 10) + dtxt)
-        pct_txt = ""
-        if gem_price is not None and floor:
-            pct_txt = f" ({(gem_price - floor) / floor * 100:+.0f}% к полу)"
-        link_lines.append(f'• <a href="{link}">{esc(short)}</a> — {gp}{pct_txt}{" 🔥" if is_flip else ""}')
-
-    msg = f"💎 <b>{gem_title} — текущая ситуация</b>\n<pre>" + "\n".join(table) + "</pre>"
-    if flip:
-        msg += "\n<b>*</b> — гем у пола или дешевле: возможный флип"
-    msg += "\n\n🔗 <b>Ссылки:</b>\n" + "\n".join(link_lines)
-    msg += "\n\n✅ настоящий гем по отрисовке Steam (фейки отфильтрованы); цена в ₽ ≈."
-    safe_send(msg)
+            any_flip = True
+        prefix = "🔥" if is_flip else "•"
+        lines.append(f'{prefix} <a href="{link}"><b>{short}</b></a>{hero_txt}')
+        if gem_price is not None:
+            if floor:
+                pct = (gem_price - floor) / floor * 100
+                lines.append(f'   гем <b>{fmt_price(gem_price, sym)}</b> · пол {fmt_price(floor, sym)} · {pct:+.0f}%')
+            else:
+                lines.append(f'   гем <b>{fmt_price(gem_price, sym)}</b>')
+        else:
+            lines.append(f'   {gem_title}: нет · пол {fmt_price(floor, sym)}')
+    lines.append("")
+    if any_flip:
+        lines.append("🔥 — гем у пола или дешевле (возможный флип)")
+    lines.append("✅ настоящий гем по отрисовке Steam; цена в ₽ ≈.")
+    safe_send("\n".join(lines))
 
 
 def send_heartbeat(n_targets, n_errors):
