@@ -66,6 +66,12 @@ HEARTBEAT_HOURS = float(os.environ.get("HEARTBEAT_HOURS", "0"))
 # 0 = off. The instant new-lot alerts fire regardless.
 DIGEST_HOURS = float(os.environ.get("DIGEST_HOURS", "1"))
 
+# Show prices in RUB. Steam's render endpoint returns geo currency, so we convert
+# using Steam's own rate (via priceoverview) and cache it, refreshing at most this
+# often. Set DISPLAY_RUB=0 to just show the runner's geo currency instead.
+DISPLAY_RUB = os.environ.get("DISPLAY_RUB", "1") == "1"
+FX_TTL_HOURS = float(os.environ.get("FX_TTL_HOURS", "24"))
+
 # Arbitrage mode: only lots claiming THIS gem trigger notifications, and each
 # alert shows the lot's price vs the item's cheapest lot (the "floor"/default
 # price). The play: a frostbloom lot listed near the floor can be bought and
@@ -217,6 +223,69 @@ def cur_symbol(cur_id):
 
 def fmt_price(cents, sym="$"):
     return f"{sym}{cents / 100:.2f}" if cents is not None else "?"
+
+
+# The render endpoint returns prices in the runner's geo currency (ignoring the
+# currency param). To always show RUB, we convert using Steam's own rate, obtained
+# from the priceoverview endpoint (which DOES honor the currency param).
+def _parse_price(s):
+    """Parse a Steam price string like '$16.82' or '1 397,25 руб.' -> float units."""
+    s = re.sub(r"[^\d.,]", "", s or "").strip(".,")
+    if not s:
+        return None
+    if "," in s and "." in s:
+        s = s.replace(".", "").replace(",", ".") if s.rfind(",") > s.rfind(".") else s.replace(",", "")
+    elif "," in s:
+        s = s.replace(",", ".") if re.search(r",\d{1,2}$", s) else s.replace(",", "")
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
+def priceoverview_price(name, currency):
+    # Fail-fast (single try, short timeout): FX is optional; on any error we fall
+    # back to the geo currency rather than stalling on priceoverview's rate limit.
+    try:
+        q = urllib.parse.urlencode({"appid": APPID, "currency": currency, "market_hash_name": name})
+        req = urllib.request.Request(
+            f"https://steamcommunity.com/market/priceoverview/?{q}",
+            headers={"User-Agent": UA},
+        )
+        with urllib.request.urlopen(req, timeout=15) as r:
+            data = json.loads(r.read().decode("utf-8", "ignore"))
+        if not data.get("success"):
+            return None
+        return _parse_price(data.get("lowest_price") or data.get("median_price"))
+    except Exception:
+        return None
+
+
+def compute_rub_fx(sample_name, geo_id):
+    """Factor to multiply geo-currency prices by to get RUB, or None on failure."""
+    if geo_id == 5:
+        return 1.0
+    if not sample_name or not geo_id:
+        return None
+    geo = priceoverview_price(sample_name, geo_id)
+    time.sleep(2)
+    rub = priceoverview_price(sample_name, 5)
+    return rub / geo if (geo and rub and geo > 0) else None
+
+
+def get_rub_factor(state, sample_name, geo_id, now):
+    """Cached geo->RUB factor. Returns (factor_or_None, cached_new). Refreshes at
+    most every FX_TTL_HOURS; on lookup failure reuses the last known (stale) rate."""
+    if geo_id == 5:
+        return 1.0, False
+    cache = state.get("fx", {}).get(str(geo_id))
+    if cache and now - cache.get("ts", 0) < FX_TTL_HOURS * 3600:
+        return cache["factor"], False
+    fx = compute_rub_fx(sample_name, geo_id)
+    if fx:
+        state.setdefault("fx", {})[str(geo_id)] = {"factor": fx, "ts": now}
+        return fx, True
+    return (cache["factor"], False) if cache else (None, False)
 
 
 HERO_RE = re.compile(r"used by:\s*([a-z0-9 '.\-]+?)\\")
@@ -423,7 +492,7 @@ def send_digest(rows, sym="$"):
     if flip:
         msg += "\n<b>*</b> — гем у пола или дешевле: возможный флип"
     msg += "\n\n🔗 <b>Ссылки:</b>\n" + "\n".join(link_lines)
-    msg += "\n\n⚠️ цены/гем со слов продавца, валюта — по гео Steam. Проверь инспектом."
+    msg += "\n\n⚠️ гем со слов продавца, цены ориентировочные — проверь инспектом."
     safe_send(msg)
 
 
@@ -499,7 +568,9 @@ def _run():
     recovered = []     # labels that were failing and now work
     ok_target_keys = set()
     digest_rows = []   # (hero, label, link, cheapest_gem_price, floor, gem_count)
-    run_cur = None     # Steam currency id seen this run (for correct price symbols)
+    new_events = []    # (target, [(lid, price)], floor) to notify after the scan
+    run_cur = None     # Steam currency id seen this run
+    sample_name = None # a successfully scanned item name (for the FX lookup)
 
     for i, t in enumerate(targets):
         if i:
@@ -532,6 +603,8 @@ def _run():
         ok_target_keys.add(t.key)
         if currency:
             run_cur = currency
+        if sample_name is None:
+            sample_name = t.name
         cheapest_gem = min((v for v in gem_lots.values() if v is not None), default=None)
         gem_link = f"{t.link}?filter={urllib.parse.quote(TRACK_GEM)}"
         digest_rows.append((hero, t.label, gem_link, cheapest_gem, floor, len(gem_lots)))
@@ -551,7 +624,7 @@ def _run():
         new_ids = current - seen
         if new_ids:
             print(f"[NEW] {t.label}: {len(new_ids)} new {TRACK_GEM} lot(s) / floor {fmt_price(floor)}")
-            notify(t, [(lid, gem_lots[lid]) for lid in new_ids], floor, cur_symbol(currency))
+            new_events.append((t, [(lid, gem_lots[lid]) for lid in new_ids], floor))
         else:
             print(f"[ok] {t.label}: {len(current)} {TRACK_GEM} lots / floor {fmt_price(floor)} (no new)")
 
@@ -576,13 +649,27 @@ def _run():
     if recovered:
         send_recovery(recovered)
 
-    # ---- periodic "current situation" digest ----
-    if DIGEST_HOURS > 0 and digest_rows:
-        last_dg = state.get("digest", 0)
-        if now - last_dg >= DIGEST_HOURS * 3600:
-            send_digest(digest_rows, cur_symbol(run_cur))
-            state["digest"] = now
+    digest_due = DIGEST_HOURS > 0 and digest_rows and (now - state.get("digest", 0) >= DIGEST_HOURS * 3600)
+
+    # Convert geo-currency prices to RUB (Steam's cached rate) for anything we send.
+    conv, sym = (lambda c: c), cur_symbol(run_cur)
+    if DISPLAY_RUB and (new_events or digest_due):
+        fx, cached_new = get_rub_factor(state, sample_name, run_cur, now)
+        if cached_new:
             changed = True
+        if fx is not None:
+            sym = "₽"
+            if fx != 1.0:
+                conv = lambda c: round(c * fx) if c is not None else None
+
+    for tt, lots, floor_geo in new_events:
+        notify(tt, [(lid, conv(p)) for lid, p in lots], conv(floor_geo), sym)
+
+    if digest_due:
+        rows = [(h, l, lk, conv(g), conv(f), c) for (h, l, lk, g, f, c) in digest_rows]
+        send_digest(rows, sym)
+        state["digest"] = now
+        changed = True
 
     # ---- optional heartbeat ----
     if HEARTBEAT_HOURS > 0:
