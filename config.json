@@ -1,5 +1,5 @@
 {
-  "_help": "Каждый target — ссылка Steam Market на ПРЕДМЕТ (без фильтра). Скрипт шлёт все новые лоты предмета и показывает заявленный в описании гем (если есть). Добавить предмет — вставь его market-ссылку строкой. ONLY_WITH_GEM=1 — слать только лоты с заявленным гемом.",
+  "_help": "Арбитраж по гему. Отслеживаются только лоты, заявляющие гем TRACK_GEM (по умолчанию frostbloom). В уведомлении: цена нового frostbloom-лота, самый дешёвый лот предмета (пол) и разница. Каждый target — market-ссылка на предмет. Сменить гем: env TRACK_GEM.",
   "targets": [
     "https://steamcommunity.com/market/listings/570/Unusual%20Northern%20Blight%20Style",
     "https://steamcommunity.com/market/listings/570/Unusual%20Light%20of%20the%20Forgotten%20Renegade",
@@ -8,7 +8,6 @@
     "https://steamcommunity.com/market/listings/570/Unusual%20Frostreach%20Brigands%20Axes",
     "https://steamcommunity.com/market/listings/570/Unusual%20Powdersled%20Rookery%20Cannon",
     "https://steamcommunity.com/market/listings/570/Unusual%20Crown%20of%20Curious%20Coldspell",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Lumpo%20and%20Rupertus%20-%20Weapon",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Cluckles%20the%20Brave"
+    "https://steamcommunity.com/market/listings/570/Unusual%20Lumpo%20and%20Rupertus%20-%20Weapon"
   ]
 }

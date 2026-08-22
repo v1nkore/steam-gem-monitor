@@ -58,12 +58,13 @@ ERROR_REMINDER_HOURS = float(os.environ.get("ERROR_REMINDER_HOURS", "12"))
 # when there is nothing new — useful to also catch "the cron stopped running".
 HEARTBEAT_HOURS = float(os.environ.get("HEARTBEAT_HOURS", "0"))
 
-# Steam does NOT expose the real socketed ethereal gem in market data — the only
-# gem text present is whatever the seller typed into the (editable) description.
-# So we report EVERY new listing for a tracked item and, when the description
-# claims a gem, show it as an UNVERIFIED claim. Set ONLY_WITH_GEM=1 to notify
-# only about listings that claim some gem (less noise on busy items).
-ONLY_WITH_GEM = os.environ.get("ONLY_WITH_GEM", "0") == "1"
+# Arbitrage mode: only lots claiming THIS gem trigger notifications, and each
+# alert shows the lot's price vs the item's cheapest lot (the "floor"/default
+# price). The play: a frostbloom lot listed near the floor can be bought and
+# resold at the frostbloom premium.
+# NOTE: Steam does NOT expose the real socketed gem — the gem name comes from the
+# seller's (editable) description, so it is shown as an UNVERIFIED claim.
+TRACK_GEM = os.environ.get("TRACK_GEM", "frostbloom").strip().lower()
 
 
 class MonitorError(Exception):
@@ -170,6 +171,25 @@ def extract_gem(chunk_lower):
     return None
 
 
+# Prices live in the listing JSON as unPrice (base) + unFee (fee); the buyer pays
+# their sum. Chunks are lowercased, so match 'unprice'/'unfee'.
+UN_PRICE = re.compile(r'unprice\\+":(\d+)')
+UN_FEE = re.compile(r'unfee\\+":(\d+)')
+
+
+def listing_price(chunk_lower):
+    """Buyer-facing price of a listing in cents, or None if not found."""
+    p = UN_PRICE.search(chunk_lower)
+    if not p:
+        return None
+    f = UN_FEE.search(chunk_lower)
+    return int(p.group(1)) + (int(f.group(1)) if f else 0)
+
+
+def fmt_price(cents):
+    return f"${cents / 100:.2f}" if cents is not None else "?"
+
+
 def parse_listings(html_text):
     """Return (total_count, [(listingid, chunk_lower), ...]) from a render page.
 
@@ -215,11 +235,13 @@ def fetch_page(t, start, retries=3):
 def scan_target(t):
     """Scan all listing pages for an item.
 
-    Returns (listing_map, total_count) where listing_map maps every current
-    listing id -> the seller-claimed gem name (or None). With ONLY_WITH_GEM set,
-    listings that don't claim a gem are dropped.
+    Returns (gem_lots, floor, total) where:
+      - gem_lots: {listing_id: buyer_price_cents} for lots claiming TRACK_GEM,
+      - floor: cheapest buyer price across ALL lots (the item's default price),
+      - total: total listing count reported by Steam.
     """
-    listing_map = {}
+    gem_lots = {}
+    floor = None
     total = None
     start = 0
     pages = 0
@@ -230,16 +252,17 @@ def scan_target(t):
         if not listings:
             break
         for lid, chunk in listings:
-            gem = extract_gem(chunk)
-            if ONLY_WITH_GEM and not gem:
-                continue
-            listing_map[lid] = gem
+            price = listing_price(chunk)
+            if price is not None and (floor is None or price < floor):
+                floor = price
+            if extract_gem(chunk) == TRACK_GEM:
+                gem_lots[lid] = price
         start += len(listings)
         pages += 1
         if total is not None and start >= total:
             break
         time.sleep(REQUEST_DELAY)
-    return listing_map, total
+    return gem_lots, floor, total
 
 
 # ---------------------------------------------------------------------------
@@ -324,20 +347,30 @@ def send_heartbeat(n_targets, n_errors):
     )
 
 
-def notify(t, new_items):
-    """new_items: list of (listing_id, claimed_gem_or_None)."""
-    n = len(new_items)
-    gemmed = [(lid, g) for lid, g in new_items if g]
-    lines = [f"🆕 <b>{t.label}</b>: {n} новых лот(ов) на ТП"]
-    if gemmed:
-        lines.append(f"Из них с заявленным гемом ({len(gemmed)}):")
-        for _lid, g in gemmed[:15]:
-            lines.append(f"• <b>{g.title()}</b> — ⚠️ заявлено продавцом, не подтверждено (проверь инспектом в игре)")
-        if len(gemmed) > 15:
-            lines.append(f"…и ещё {len(gemmed) - 15}")
-    else:
-        lines.append("Гем в описании ни у одного не заявлен.")
-    lines.append(f'<a href="{t.link}">Открыть предмет на ТП</a>')
+def notify(t, new_lots, floor):
+    """new_lots: list of (listing_id, price_cents) for lots claiming TRACK_GEM."""
+    n = len(new_lots)
+    gem_title = TRACK_GEM.title()
+    link = f"{t.link}?filter={urllib.parse.quote(TRACK_GEM)}"
+    lines = [
+        f"💎 <b>{t.label}</b>",
+        f"Новых {gem_title}-лотов: <b>{n}</b>",
+        f"Самый дешёвый лот предмета (пол): <b>{fmt_price(floor)}</b>",
+        "",
+    ]
+    for _lid, price in sorted(new_lots, key=lambda x: (x[1] is None, x[1])):
+        if price is None:
+            lines.append(f"• {gem_title}: цена не определена")
+        elif floor is not None and price <= floor:
+            lines.append(f"• {gem_title} <b>{fmt_price(price)}</b> — 🔥 на уровне пола или дешевле — возможный флип!")
+        elif floor is not None:
+            diff = price - floor
+            pct = diff / floor * 100 if floor else 0
+            lines.append(f"• {gem_title} <b>{fmt_price(price)}</b> — дороже пола на {fmt_price(diff)} (+{pct:.0f}%)")
+        else:
+            lines.append(f"• {gem_title} <b>{fmt_price(price)}</b>")
+    lines += ["", "⚠️ гем заявлен продавцом, не подтверждён — проверь инспектом в игре",
+              f'<a href="{link}">Открыть {gem_title}-лоты</a>']
     safe_send("\n".join(lines))
 
 
@@ -380,8 +413,8 @@ def _run():
     for t in targets:
         # ---- scan, treating an unreadable page as an error worth reporting ----
         try:
-            listing_map, total = scan_target(t)
-            if total is None and not listing_map:
+            gem_lots, floor, total = scan_target(t)
+            if total is None and floor is None:
                 raise MonitorError(
                     "Steam вернул неожиданный ответ — не удалось прочитать листинги "
                     "(возможна блокировка IP или смена формата страницы)."
@@ -405,25 +438,24 @@ def _run():
 
         ok_target_keys.add(t.key)
 
-        # ---- new-listing logic (every listing counts; gem shown if claimed) ----
-        current = set(listing_map)
+        # ---- only TRACK_GEM lots trigger alerts; show price vs floor ----
+        current = set(gem_lots)
         entry = tstate.get(t.key)
         if entry is None:
             if NOTIFY_ON_FIRST and current:
-                notify(t, [(lid, listing_map[lid]) for lid in current])
+                notify(t, [(lid, gem_lots[lid]) for lid in current], floor)
             tstate[t.key] = {"seen": sorted(current), "seeded": True}
             changed = True
-            gem_ct = sum(1 for g in listing_map.values() if g)
-            print(f"[seed] {t.label}: {len(current)} listings ({gem_ct} claim a gem)")
+            print(f"[seed] {t.label}: {len(current)} {TRACK_GEM} lots / floor {fmt_price(floor)}")
             continue
 
         seen = set(entry.get("seen", []))
         new_ids = current - seen
         if new_ids:
-            print(f"[NEW] {t.label}: {len(new_ids)} new listing(s)")
-            notify(t, [(lid, listing_map.get(lid)) for lid in new_ids])
+            print(f"[NEW] {t.label}: {len(new_ids)} new {TRACK_GEM} lot(s) / floor {fmt_price(floor)}")
+            notify(t, [(lid, gem_lots[lid]) for lid in new_ids], floor)
         else:
-            print(f"[ok] {t.label}: {len(current)} listings (no new)")
+            print(f"[ok] {t.label}: {len(current)} {TRACK_GEM} lots / floor {fmt_price(floor)} (no new)")
 
         merged = list(seen | current)
         if len(merged) > MAX_SEEN_PER_TARGET:
