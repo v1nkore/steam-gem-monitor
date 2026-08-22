@@ -42,17 +42,20 @@ DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 # If 1, also notify about listings that already exist on the very first run.
 NOTIFY_ON_FIRST = os.environ.get("NOTIFY_ON_FIRST", "0") == "1"
 
-# How many pages (of ~10-20 listings) to scan per target before giving up.
-MAX_PAGES = int(os.environ.get("MAX_PAGES", "8"))
+# How many pages (~10-20 listings each) to scan per item. Steam returns listings
+# roughly cheapest-first, and for flipping we only care about CHEAP frostbloom lots
+# (near the floor), so a few pages is enough — and keeps us well under Steam's
+# per-IP rate limit (scanning every page of every item trips it).
+MAX_PAGES = int(os.environ.get("MAX_PAGES", "3"))
 # Seconds to wait between HTTP requests to stay under Steam's rate limits.
-REQUEST_DELAY = float(os.environ.get("REQUEST_DELAY", "3"))
+REQUEST_DELAY = float(os.environ.get("REQUEST_DELAY", "5"))
 # Per-target cap on how many seen ids we remember (keeps state.json small).
 MAX_SEEN_PER_TARGET = 800
 
 # Error alerting: how many consecutive failed runs before we ping Telegram
 # (2 avoids crying wolf over a single transient network blip), and how often to
 # remind while an error persists.
-ERROR_THRESHOLD = int(os.environ.get("ERROR_THRESHOLD", "2"))
+ERROR_THRESHOLD = int(os.environ.get("ERROR_THRESHOLD", "3"))
 ERROR_REMINDER_HOURS = float(os.environ.get("ERROR_REMINDER_HOURS", "12"))
 # Optional "still alive" heartbeat. 0 = off. E.g. 24 = one message per day even
 # when there is nothing new — useful to also catch "the cron stopped running".
@@ -410,7 +413,9 @@ def _run():
     recovered = []     # labels that were failing and now work
     ok_target_keys = set()
 
-    for t in targets:
+    for i, t in enumerate(targets):
+        if i:
+            time.sleep(REQUEST_DELAY)  # pace between items too, not just pages
         # ---- scan, treating an unreadable page as an error worth reporting ----
         try:
             gem_lots, floor, total = scan_target(t)
