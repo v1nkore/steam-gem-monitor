@@ -225,52 +225,31 @@ def fmt_price(cents, sym="$"):
     return f"{sym}{cents / 100:.2f}" if cents is not None else "?"
 
 
-# The render endpoint returns prices in the runner's geo currency (ignoring the
-# currency param). To always show RUB, we convert using Steam's own rate, obtained
-# from the priceoverview endpoint (which DOES honor the currency param).
-def _parse_price(s):
-    """Parse a Steam price string like '$16.82' or '1 397,25 руб.' -> float units."""
-    s = re.sub(r"[^\d.,]", "", s or "").strip(".,")
-    if not s:
-        return None
-    if "," in s and "." in s:
-        s = s.replace(".", "").replace(",", ".") if s.rfind(",") > s.rfind(".") else s.replace(",", "")
-    elif "," in s:
-        s = s.replace(",", ".") if re.search(r",\d{1,2}$", s) else s.replace(",", "")
-    try:
-        return float(s)
-    except ValueError:
-        return None
-
-
-def priceoverview_price(name, currency):
-    # Fail-fast (single try, short timeout): FX is optional; on any error we fall
-    # back to the geo currency rather than stalling on priceoverview's rate limit.
-    try:
-        q = urllib.parse.urlencode({"appid": APPID, "currency": currency, "market_hash_name": name})
-        req = urllib.request.Request(
-            f"https://steamcommunity.com/market/priceoverview/?{q}",
-            headers={"User-Agent": UA},
-        )
-        with urllib.request.urlopen(req, timeout=15) as r:
-            data = json.loads(r.read().decode("utf-8", "ignore"))
-        if not data.get("success"):
-            return None
-        return _parse_price(data.get("lowest_price") or data.get("median_price"))
-    except Exception:
-        return None
+# The render endpoint returns prices in the runner's geo currency (USD on GitHub),
+# ignoring the currency param, and Steam's priceoverview (which honors currency) is
+# blocked for datacenter IPs. So we convert to RUB with a free FX API instead — its
+# rate tracks Steam's within ~0.5%.
+GEO_ISO = {1: "USD", 2: "GBP", 3: "EUR", 4: "CHF", 5: "RUB", 6: "PLN", 7: "BRL",
+           8: "JPY", 9: "NOK", 13: "SGD", 16: "KRW", 17: "TRY", 18: "UAH", 20: "CAD",
+           21: "AUD", 22: "NZD", 23: "CNY", 24: "INR", 28: "ZAR", 29: "HKD", 35: "KZT"}
 
 
 def compute_rub_fx(sample_name, geo_id):
-    """Factor to multiply geo-currency prices by to get RUB, or None on failure."""
+    """Factor to multiply geo-currency prices (cents) by to get RUB, or None."""
     if geo_id == 5:
         return 1.0
-    if not sample_name or not geo_id:
+    iso = GEO_ISO.get(geo_id)
+    if not iso:
         return None
-    geo = priceoverview_price(sample_name, geo_id)
-    time.sleep(2)
-    rub = priceoverview_price(sample_name, 5)
-    return rub / geo if (geo and rub and geo > 0) else None
+    try:
+        req = urllib.request.Request(f"https://open.er-api.com/v6/latest/{iso}",
+                                     headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            data = json.loads(r.read().decode("utf-8", "ignore"))
+        rub = data.get("rates", {}).get("RUB")
+        return float(rub) if rub else None
+    except Exception:
+        return None
 
 
 def get_rub_factor(state, sample_name, geo_id, now):
