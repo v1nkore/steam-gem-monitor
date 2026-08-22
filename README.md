@@ -61,9 +61,11 @@ HTTP-запросом, без логина и браузера), считает 
 
 ## Что отслеживается сейчас
 
-8 предметов, на которых встречается Frostbloom: Northern Blight Style, Light of the
-Forgotten Renegade, Claws of the Grey Ghost, Claws of the Crystal Drift, Frostreach
-Brigands Axes, Powdersled Rookery Cannon, Crown of Curious Coldspell, Lumpo and Rupertus.
+10 предметов: Northern Blight Style (Invoker), Light of the Forgotten Renegade, Claws of
+the Grey Ghost (Lycan), Claws of the Crystal Drift (Ursa), Frostreach Brigands Axes
+(Alchemist), Powdersled Rookery Cannon (Techies), Crown of Curious Coldspell (Puck), Lumpo
+and Rupertus (Alchemist), плюс Drow Ranger: Ravencloak - Weapon и Bow of Zebulon (у них
+frostbloom-лота может не быть прямо сейчас — трекер пингнёт, когда появится).
 
 Сменить отслеживаемый гем можно переменной `TRACK_GEM` (по умолчанию `frostbloom`).
 
