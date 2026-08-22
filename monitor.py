@@ -163,6 +163,7 @@ def http_get(url, retries=3):
 LISTING_SPLIT = re.compile(r'listingid\\+":\\+"')
 LISTING_ID = re.compile(r"^(\d+)")
 TOTAL_COUNT = re.compile(r'total_count\\+":(\d+)')
+CURRENCY_RE = re.compile(r'currency\\+":(\d+)')
 # A gem, when present, is written by the seller inside a Valve attribute string
 # wrapped in ''...'' and mentioning "effect gem", e.g. ''Frostbloom Unusual Effect
 # Gem'' or ''Unusual Effect Gem Frostbloom''. This is the ONLY gem text Steam
@@ -202,8 +203,20 @@ def listing_price(chunk_lower):
     return int(p.group(1)) + (int(f.group(1)) if f else 0)
 
 
-def fmt_price(cents):
-    return f"${cents / 100:.2f}" if cents is not None else "?"
+# Steam ignores the currency param on this endpoint and returns prices in the
+# requester's geo currency; the page reports which via a currency id. Label prices
+# with the right symbol instead of assuming USD. (% differences are currency-invariant.)
+CUR_SYM = {1: "$", 2: "£", 3: "€", 4: "CHF", 5: "₽", 6: "zł", 7: "R$", 8: "¥",
+           9: "kr", 16: "₩", 17: "₺", 18: "₴", 20: "C$", 21: "A$", 22: "NZ$",
+           23: "¥", 24: "₹", 28: "R", 29: "HK$", 30: "NT$", 34: "₪", 35: "₸"}
+
+
+def cur_symbol(cur_id):
+    return CUR_SYM.get(cur_id, f"[{cur_id}]") if cur_id else ""
+
+
+def fmt_price(cents, sym="$"):
+    return f"{sym}{cents / 100:.2f}" if cents is not None else "?"
 
 
 HERO_RE = re.compile(r"used by:\s*([a-z0-9 '.\-]+?)\\")
@@ -250,11 +263,13 @@ def fetch_page(t, start, retries=3):
         html_text = http_get(t.page_url(start))
         page_total, listings = parse_listings(html_text)
         if listings or page_total is not None:
-            return page_total, listings
+            m = CURRENCY_RE.search(html_text)
+            currency = int(m.group(1)) if m else None
+            return page_total, listings, currency
         if attempt < retries - 1:
             time.sleep(delay)
             delay *= 2
-    return None, []
+    return None, [], None
 
 
 def scan_target(t):
@@ -264,18 +279,22 @@ def scan_target(t):
       - gem_lots: {listing_id: buyer_price_cents} for lots claiming TRACK_GEM,
       - floor: cheapest buyer price across ALL lots (the item's default price),
       - total: total listing count reported by Steam,
-      - hero: the hero this item is used by (or None).
+      - hero: the hero this item is used by (or None),
+      - currency: Steam currency id of the returned prices (or None).
     """
     gem_lots = {}
     floor = None
     total = None
     hero = None
+    currency = None
     start = 0
     pages = 0
     while pages < MAX_PAGES:
-        page_total, listings = fetch_page(t, start)
+        page_total, listings, page_cur = fetch_page(t, start)
         if page_total is not None:
             total = page_total
+        if page_cur is not None:
+            currency = page_cur
         if not listings:
             break
         for lid, chunk in listings:
@@ -291,7 +310,7 @@ def scan_target(t):
         if total is not None and start >= total:
             break
         time.sleep(REQUEST_DELAY)
-    return gem_lots, floor, total, hero
+    return gem_lots, floor, total, hero, currency
 
 
 # ---------------------------------------------------------------------------
@@ -368,7 +387,7 @@ def send_recovery(labels):
     safe_send(f"✅ <b>Мониторинг восстановился</b>\nСнова читаю листинги нормально: {uniq}")
 
 
-def send_digest(rows):
+def send_digest(rows, sym="$"):
     """rows: list of (hero, item_label, link, cheapest_gem_price, floor, gem_count)."""
     def esc(s):
         return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -378,35 +397,33 @@ def send_digest(rows):
         return (s[: w - 1] + "…") if len(s) > w else s.ljust(w)
 
     gem_title = TRACK_GEM.title()
-    table = [cell("Герой", 11) + cell("Шмотка", 17) + cell("Гем", 9) + cell("Пол", 9) + "Δ"]
+    # Δ% is currency-invariant (Steam returns geo currency, not always USD).
+    table = [cell("Герой", 13) + cell("Шмотка", 17) + cell("Гем", 10) + cell("Пол", 10) + "Δ%"]
     link_lines = []
     flip = False
     for hero, item, link, gem_price, floor, count in rows:
         short = (item or "").replace("Unusual ", "")
-        gp = fmt_price(gem_price) if gem_price is not None else "—"
-        fl = fmt_price(floor) if floor is not None else "—"
-        if gem_price is not None and floor is not None:
-            d = gem_price - floor
-            if d < 0:
-                dtxt, mark = "-" + fmt_price(-d), "*"
-            elif d == 0:
-                dtxt, mark = fmt_price(0), "*"
-            else:
-                dtxt, mark = "+" + fmt_price(d), " "
-            if gem_price <= floor:
-                flip = True
-            dtxt = mark + dtxt
+        gp = fmt_price(gem_price, sym) if gem_price is not None else "—"
+        fl = fmt_price(floor, sym) if floor is not None else "—"
+        is_flip = gem_price is not None and floor is not None and gem_price <= floor
+        if gem_price is not None and floor:
+            pct = (gem_price - floor) / floor * 100
+            dtxt = ("*" if is_flip else " ") + f"{pct:+.0f}%"
         else:
             dtxt = "—"
-        table.append(cell(hero, 11) + cell(short, 17) + cell(gp, 9) + cell(fl, 9) + dtxt)
-        tag = " 🔥" if (gem_price is not None and floor is not None and gem_price <= floor) else ""
-        link_lines.append(f'• <a href="{link}">{esc(short)}</a> — {gp}{tag}')
+        if is_flip:
+            flip = True
+        table.append(cell(hero, 13) + cell(short, 17) + cell(gp, 10) + cell(fl, 10) + dtxt)
+        pct_txt = ""
+        if gem_price is not None and floor:
+            pct_txt = f" ({(gem_price - floor) / floor * 100:+.0f}% к полу)"
+        link_lines.append(f'• <a href="{link}">{esc(short)}</a> — {gp}{pct_txt}{" 🔥" if is_flip else ""}')
 
     msg = f"💎 <b>{gem_title} — текущая ситуация</b>\n<pre>" + "\n".join(table) + "</pre>"
     if flip:
         msg += "\n<b>*</b> — гем у пола или дешевле: возможный флип"
     msg += "\n\n🔗 <b>Ссылки:</b>\n" + "\n".join(link_lines)
-    msg += "\n\n⚠️ цены/гем со слов продавца — проверь инспектом"
+    msg += "\n\n⚠️ цены/гем со слов продавца, валюта — по гео Steam. Проверь инспектом."
     safe_send(msg)
 
 
@@ -418,7 +435,7 @@ def send_heartbeat(n_targets, n_errors):
     )
 
 
-def notify(t, new_lots, floor):
+def notify(t, new_lots, floor, sym="$"):
     """new_lots: list of (listing_id, price_cents) for lots claiming TRACK_GEM."""
     n = len(new_lots)
     gem_title = TRACK_GEM.title()
@@ -426,20 +443,21 @@ def notify(t, new_lots, floor):
     lines = [
         f"💎 <b>{t.label}</b>",
         f"Новых {gem_title}-лотов: <b>{n}</b>",
-        f"Самый дешёвый лот предмета (пол): <b>{fmt_price(floor)}</b>",
+        f"Самый дешёвый лот предмета (пол): <b>{fmt_price(floor, sym)}</b>",
         "",
     ]
     for _lid, price in sorted(new_lots, key=lambda x: (x[1] is None, x[1])):
         if price is None:
             lines.append(f"• {gem_title}: цена не определена")
         elif floor is not None and price <= floor:
-            lines.append(f"• {gem_title} <b>{fmt_price(price)}</b> — 🔥 на уровне пола или дешевле — возможный флип!")
+            pct = (price - floor) / floor * 100 if floor else 0
+            lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b> — 🔥 у пола ({pct:+.0f}%) — возможный флип!")
         elif floor is not None:
             diff = price - floor
             pct = diff / floor * 100 if floor else 0
-            lines.append(f"• {gem_title} <b>{fmt_price(price)}</b> — дороже пола на {fmt_price(diff)} (+{pct:.0f}%)")
+            lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b> — +{pct:.0f}% к полу (+{fmt_price(diff, sym)})")
         else:
-            lines.append(f"• {gem_title} <b>{fmt_price(price)}</b>")
+            lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b>")
     lines += ["", "⚠️ гем заявлен продавцом, не подтверждён — проверь инспектом в игре",
               f'<a href="{link}">Открыть {gem_title}-лоты</a>']
     safe_send("\n".join(lines))
@@ -480,14 +498,15 @@ def _run():
     alerts = []        # new/renewed errors to announce this run
     recovered = []     # labels that were failing and now work
     ok_target_keys = set()
-    digest_rows = []   # (hero, label, cheapest_gem_price, floor, gem_count)
+    digest_rows = []   # (hero, label, link, cheapest_gem_price, floor, gem_count)
+    run_cur = None     # Steam currency id seen this run (for correct price symbols)
 
     for i, t in enumerate(targets):
         if i:
             time.sleep(REQUEST_DELAY)  # pace between items too, not just pages
         # ---- scan, treating an unreadable page as an error worth reporting ----
         try:
-            gem_lots, floor, total, hero = scan_target(t)
+            gem_lots, floor, total, hero, currency = scan_target(t)
             if total is None and floor is None:
                 raise MonitorError(
                     "Steam вернул неожиданный ответ — не удалось прочитать листинги "
@@ -511,6 +530,8 @@ def _run():
             continue
 
         ok_target_keys.add(t.key)
+        if currency:
+            run_cur = currency
         cheapest_gem = min((v for v in gem_lots.values() if v is not None), default=None)
         gem_link = f"{t.link}?filter={urllib.parse.quote(TRACK_GEM)}"
         digest_rows.append((hero, t.label, gem_link, cheapest_gem, floor, len(gem_lots)))
@@ -530,7 +551,7 @@ def _run():
         new_ids = current - seen
         if new_ids:
             print(f"[NEW] {t.label}: {len(new_ids)} new {TRACK_GEM} lot(s) / floor {fmt_price(floor)}")
-            notify(t, [(lid, gem_lots[lid]) for lid in new_ids], floor)
+            notify(t, [(lid, gem_lots[lid]) for lid in new_ids], floor, cur_symbol(currency))
         else:
             print(f"[ok] {t.label}: {len(current)} {TRACK_GEM} lots / floor {fmt_price(floor)} (no new)")
 
@@ -559,7 +580,7 @@ def _run():
     if DIGEST_HOURS > 0 and digest_rows:
         last_dg = state.get("digest", 0)
         if now - last_dg >= DIGEST_HOURS * 3600:
-            send_digest(digest_rows)
+            send_digest(digest_rows, cur_symbol(run_cur))
             state["digest"] = now
             changed = True
 
