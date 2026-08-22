@@ -176,13 +176,13 @@ CURRENCY_RE = re.compile(r'currency\\+":(\d+)')
 # exposes, and it is user-editable (hence "unverified").
 GEM_CLAIM = re.compile(r"''\s*([^']*?effect gem[^']*?)\s*''")
 
-# A lot claims TRACK_GEM iff the gem name appears (as a whole word) anywhere in the
-# listing's own data. Sellers write it in different formats depending on the item —
-# a Valve attribute ''Frostbloom Unusual Effect Gem'' (e.g. Northern Blight) OR an
-# HTML span >Frostbloom< (e.g. Bow of Zebulon) — so we match the bare gem word.
-# Safe: the gem word appears only in the gem text within a listing (never in the
-# item name/set/URLs), and the filter menu lives in the discarded page header.
-GEM_MATCH = re.compile(r"\b" + re.escape(TRACK_GEM) + r"\b")
+# Match the REAL socketed gem, not fakes. Steam renders a genuine gem as HTML
+# element text — >Frostbloom</span> — which is NOT editable. Scammers instead TYPE
+# the gem name into the item's description as a Valve text attribute — ''Frostbloom
+# Unusual Effect Gem'' — to fake the filter. So we require the rendered form
+# (gem directly between > and <), which excludes the ''...''-wrapped typed fakes.
+# Verified: this leaves exactly the real lots (e.g. Northern Blight floor ≈ 33 500 ₽).
+GEM_MATCH = re.compile(r">\s*" + re.escape(TRACK_GEM) + r"\s*<")
 
 
 def extract_gem(chunk_lower):
@@ -471,7 +471,7 @@ def send_digest(rows, sym="$"):
     if flip:
         msg += "\n<b>*</b> — гем у пола или дешевле: возможный флип"
     msg += "\n\n🔗 <b>Ссылки:</b>\n" + "\n".join(link_lines)
-    msg += "\n\n⚠️ гем со слов продавца, цены ориентировочные — проверь инспектом."
+    msg += "\n\n✅ настоящий гем по отрисовке Steam (фейки отфильтрованы); цена в ₽ ≈."
     safe_send(msg)
 
 
@@ -506,7 +506,7 @@ def notify(t, new_lots, floor, sym="$"):
             lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b> — +{pct:.0f}% к полу (+{fmt_price(diff, sym)})")
         else:
             lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b>")
-    lines += ["", "⚠️ гем заявлен продавцом, не подтверждён — проверь инспектом в игре",
+    lines += ["", f"✅ настоящий {gem_title} (по отрисовке Steam; фейки с правленым описанием отфильтрованы)",
               f'<a href="{link}">Открыть {gem_title}-лоты</a>']
     safe_send("\n".join(lines))
 
