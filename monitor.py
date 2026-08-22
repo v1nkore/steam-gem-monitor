@@ -61,6 +61,11 @@ ERROR_REMINDER_HOURS = float(os.environ.get("ERROR_REMINDER_HOURS", "12"))
 # when there is nothing new — useful to also catch "the cron stopped running".
 HEARTBEAT_HOURS = float(os.environ.get("HEARTBEAT_HOURS", "0"))
 
+# Periodic "current situation" digest: a table of every item with its cheapest
+# gem lot, floor price and difference. Default 1h (~every 6th run at a 10-min cron).
+# 0 = off. The instant new-lot alerts fire regardless.
+DIGEST_HOURS = float(os.environ.get("DIGEST_HOURS", "1"))
+
 # Arbitrage mode: only lots claiming THIS gem trigger notifications, and each
 # alert shows the lot's price vs the item's cheapest lot (the "floor"/default
 # price). The play: a frostbloom lot listed near the floor can be bought and
@@ -193,6 +198,15 @@ def fmt_price(cents):
     return f"${cents / 100:.2f}" if cents is not None else "?"
 
 
+HERO_RE = re.compile(r"used by:\s*([a-z0-9 '.\-]+?)\\")
+
+
+def extract_hero(chunk_lower):
+    """Hero the item is used by, from the 'Used By: X' attribute, or None."""
+    m = HERO_RE.search(chunk_lower)
+    return m.group(1).strip().title() if m else None
+
+
 def parse_listings(html_text):
     """Return (total_count, [(listingid, chunk_lower), ...]) from a render page.
 
@@ -238,14 +252,16 @@ def fetch_page(t, start, retries=3):
 def scan_target(t):
     """Scan all listing pages for an item.
 
-    Returns (gem_lots, floor, total) where:
+    Returns (gem_lots, floor, total, hero) where:
       - gem_lots: {listing_id: buyer_price_cents} for lots claiming TRACK_GEM,
       - floor: cheapest buyer price across ALL lots (the item's default price),
-      - total: total listing count reported by Steam.
+      - total: total listing count reported by Steam,
+      - hero: the hero this item is used by (or None).
     """
     gem_lots = {}
     floor = None
     total = None
+    hero = None
     start = 0
     pages = 0
     while pages < MAX_PAGES:
@@ -255,6 +271,8 @@ def scan_target(t):
         if not listings:
             break
         for lid, chunk in listings:
+            if hero is None:
+                hero = extract_hero(chunk)
             price = listing_price(chunk)
             if price is not None and (floor is None or price < floor):
                 floor = price
@@ -265,7 +283,7 @@ def scan_target(t):
         if total is not None and start >= total:
             break
         time.sleep(REQUEST_DELAY)
-    return gem_lots, floor, total
+    return gem_lots, floor, total, hero
 
 
 # ---------------------------------------------------------------------------
@@ -342,6 +360,40 @@ def send_recovery(labels):
     safe_send(f"✅ <b>Мониторинг восстановился</b>\nСнова читаю листинги нормально: {uniq}")
 
 
+def send_digest(rows):
+    """rows: list of (hero, item_label, cheapest_gem_price, floor, gem_count)."""
+    def cell(s, w):
+        s = s if s else "—"
+        return (s[: w - 1] + "…") if len(s) > w else s.ljust(w)
+
+    gem_title = TRACK_GEM.title()
+    lines = [cell("Герой", 11) + cell("Шмотка", 17) + cell("Гем", 9) + cell("Пол", 9) + "Δ"]
+    flip = False
+    for hero, item, gem_price, floor, count in rows:
+        item = (item or "").replace("Unusual ", "")
+        gp = fmt_price(gem_price) if gem_price is not None else "—"
+        fl = fmt_price(floor) if floor is not None else "—"
+        if gem_price is not None and floor is not None:
+            d = gem_price - floor
+            if d < 0:
+                dtxt, mark = "-" + fmt_price(-d), "*"
+            elif d == 0:
+                dtxt, mark = fmt_price(0), "*"
+            else:
+                dtxt, mark = "+" + fmt_price(d), " "
+            if gem_price <= floor:
+                flip = True
+            dtxt = mark + dtxt
+        else:
+            dtxt = "—"
+        lines.append(cell(hero, 11) + cell(item, 17) + cell(gp, 9) + cell(fl, 9) + dtxt)
+    msg = f"💎 <b>{gem_title} — текущая ситуация</b>\n<pre>" + "\n".join(lines) + "</pre>"
+    if flip:
+        msg += "\n<b>*</b> — гем у пола или дешевле: возможный флип"
+    msg += "\n⚠️ цены/гем со слов продавца — проверь инспектом"
+    safe_send(msg)
+
+
 def send_heartbeat(n_targets, n_errors):
     status = "ошибок нет ✅" if n_errors == 0 else f"активных ошибок: {n_errors} ⚠️"
     safe_send(
@@ -412,13 +464,14 @@ def _run():
     alerts = []        # new/renewed errors to announce this run
     recovered = []     # labels that were failing and now work
     ok_target_keys = set()
+    digest_rows = []   # (hero, label, cheapest_gem_price, floor, gem_count)
 
     for i, t in enumerate(targets):
         if i:
             time.sleep(REQUEST_DELAY)  # pace between items too, not just pages
         # ---- scan, treating an unreadable page as an error worth reporting ----
         try:
-            gem_lots, floor, total = scan_target(t)
+            gem_lots, floor, total, hero = scan_target(t)
             if total is None and floor is None:
                 raise MonitorError(
                     "Steam вернул неожиданный ответ — не удалось прочитать листинги "
@@ -442,6 +495,8 @@ def _run():
             continue
 
         ok_target_keys.add(t.key)
+        cheapest_gem = min((v for v in gem_lots.values() if v is not None), default=None)
+        digest_rows.append((hero, t.label, cheapest_gem, floor, len(gem_lots)))
 
         # ---- only TRACK_GEM lots trigger alerts; show price vs floor ----
         current = set(gem_lots)
@@ -482,6 +537,14 @@ def _run():
         send_error_alert(alerts)
     if recovered:
         send_recovery(recovered)
+
+    # ---- periodic "current situation" digest ----
+    if DIGEST_HOURS > 0 and digest_rows:
+        last_dg = state.get("digest", 0)
+        if now - last_dg >= DIGEST_HOURS * 3600:
+            send_digest(digest_rows)
+            state["digest"] = now
+            changed = True
 
     # ---- optional heartbeat ----
     if HEARTBEAT_HOURS > 0:
