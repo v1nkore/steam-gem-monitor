@@ -348,6 +348,7 @@
         "553526825583878204",
         "553530630448121908",
         "559162033149264257",
+        "559162033169478689",
         "698762301643468284",
         "803465827325751225"
       ],
@@ -377,7 +378,7 @@
   },
   "errors": {
     "Unusual Claws of the Grey Ghost::MonitorError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1787385215.7918713,
       "notified": true,
       "last_notified": 1787386824.1386487,
@@ -386,12 +387,21 @@
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
     "Unusual Claws of the Crystal Drift::MonitorError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1787385215.7918713,
       "notified": true,
       "last_notified": 1787386824.1386487,
       "target": "Unusual Claws of the Crystal Drift",
       "label": "Unusual Claws of the Crystal Drift",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Light of the Forgotten Renegade::MonitorError": {
+      "fails": 1,
+      "since": 1787388909.7293422,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     }
   }
