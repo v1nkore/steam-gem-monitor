@@ -169,6 +169,12 @@ TOTAL_COUNT = re.compile(r'total_count\\+":(\d+)')
 # exposes, and it is user-editable (hence "unverified").
 GEM_CLAIM = re.compile(r"''\s*([^']*?effect gem[^']*?)\s*''")
 
+# A lot claims TRACK_GEM iff the gem name appears inside a Valve ''...'' attribute
+# string (the gem line). This is bound to the gem attribute — the gem word never
+# appears elsewhere (item name, set pieces, URLs) — and catches all seller phrasings:
+# ''Frostbloom'', ''Frostbloom Unusual Effect Gem'', ''Unusual Effect Gem Frostbloom''.
+GEM_MATCH = re.compile(r"''[^']*" + re.escape(TRACK_GEM) + r"[^']*''")
+
 
 def extract_gem(chunk_lower):
     """Return the seller-claimed gem name for a listing, or None."""
@@ -276,7 +282,7 @@ def scan_target(t):
             price = listing_price(chunk)
             if price is not None and (floor is None or price < floor):
                 floor = price
-            if extract_gem(chunk) == TRACK_GEM:
+            if GEM_MATCH.search(chunk):
                 gem_lots[lid] = price
         start += len(listings)
         pages += 1
@@ -361,16 +367,20 @@ def send_recovery(labels):
 
 
 def send_digest(rows):
-    """rows: list of (hero, item_label, cheapest_gem_price, floor, gem_count)."""
+    """rows: list of (hero, item_label, link, cheapest_gem_price, floor, gem_count)."""
+    def esc(s):
+        return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
     def cell(s, w):
         s = s if s else "—"
         return (s[: w - 1] + "…") if len(s) > w else s.ljust(w)
 
     gem_title = TRACK_GEM.title()
-    lines = [cell("Герой", 11) + cell("Шмотка", 17) + cell("Гем", 9) + cell("Пол", 9) + "Δ"]
+    table = [cell("Герой", 11) + cell("Шмотка", 17) + cell("Гем", 9) + cell("Пол", 9) + "Δ"]
+    link_lines = []
     flip = False
-    for hero, item, gem_price, floor, count in rows:
-        item = (item or "").replace("Unusual ", "")
+    for hero, item, link, gem_price, floor, count in rows:
+        short = (item or "").replace("Unusual ", "")
         gp = fmt_price(gem_price) if gem_price is not None else "—"
         fl = fmt_price(floor) if floor is not None else "—"
         if gem_price is not None and floor is not None:
@@ -386,11 +396,15 @@ def send_digest(rows):
             dtxt = mark + dtxt
         else:
             dtxt = "—"
-        lines.append(cell(hero, 11) + cell(item, 17) + cell(gp, 9) + cell(fl, 9) + dtxt)
-    msg = f"💎 <b>{gem_title} — текущая ситуация</b>\n<pre>" + "\n".join(lines) + "</pre>"
+        table.append(cell(hero, 11) + cell(short, 17) + cell(gp, 9) + cell(fl, 9) + dtxt)
+        tag = " 🔥" if (gem_price is not None and floor is not None and gem_price <= floor) else ""
+        link_lines.append(f'• <a href="{link}">{esc(short)}</a> — {gp}{tag}')
+
+    msg = f"💎 <b>{gem_title} — текущая ситуация</b>\n<pre>" + "\n".join(table) + "</pre>"
     if flip:
         msg += "\n<b>*</b> — гем у пола или дешевле: возможный флип"
-    msg += "\n⚠️ цены/гем со слов продавца — проверь инспектом"
+    msg += "\n\n🔗 <b>Ссылки:</b>\n" + "\n".join(link_lines)
+    msg += "\n\n⚠️ цены/гем со слов продавца — проверь инспектом"
     safe_send(msg)
 
 
@@ -496,7 +510,8 @@ def _run():
 
         ok_target_keys.add(t.key)
         cheapest_gem = min((v for v in gem_lots.values() if v is not None), default=None)
-        digest_rows.append((hero, t.label, cheapest_gem, floor, len(gem_lots)))
+        gem_link = f"{t.link}?filter={urllib.parse.quote(TRACK_GEM)}"
+        digest_rows.append((hero, t.label, gem_link, cheapest_gem, floor, len(gem_lots)))
 
         # ---- only TRACK_GEM lots trigger alerts; show price vs floor ----
         current = set(gem_lots)
