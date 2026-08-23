@@ -67,7 +67,8 @@
         "532135362361060210",
         "532139800295269917",
         "542273534528653413",
-        "544525334345457218"
+        "544525334345457218",
+        "544525334389800110"
       ],
       "seeded": true
     },
@@ -77,6 +78,7 @@
         "520881436343079732",
         "520881436343436384",
         "520881436343472240",
+        "520881436343655696",
         "525379962883314243",
         "532138532226178458",
         "551275025753978971",
@@ -131,62 +133,7 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Northern Blight Style::MonitorError": {
-      "fails": 1,
-      "since": 1787496926.571201,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Light of the Forgotten Renegade::MonitorError": {
-      "fails": 1,
-      "since": 1787496926.571201,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Claws of the Grey Ghost::MonitorError": {
-      "fails": 1,
-      "since": 1787496926.571201,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Claws of the Crystal Drift::MonitorError": {
-      "fails": 1,
-      "since": 1787496926.571201,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Frostreach Brigands Axes::MonitorError": {
-      "fails": 1,
-      "since": 1787496926.571201,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Powdersled Rookery Cannon::MonitorError": {
-      "fails": 1,
-      "since": 1787496926.571201,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    }
-  },
+  "errors": {},
   "digest": 1787496926.571201,
   "fx": {
     "1": {
