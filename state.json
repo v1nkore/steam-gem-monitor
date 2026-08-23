@@ -3,7 +3,10 @@
     "Unusual Northern Blight Style": {
       "seen": [
         "518626012319860842",
+        "535516231955965653",
+        "536638962021780078",
         "542273534539619409",
+        "545649965361329796",
         "545651234262258916",
         "547903034086940193",
         "547903034087452869",
@@ -106,18 +109,8 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Northern Blight Style::MonitorError": {
-      "fails": 1,
-      "since": 1787451626.874984,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    }
-  },
-  "digest": 0,
+  "errors": {},
+  "digest": 1787451902.0052555,
   "fx": {
     "1": {
       "factor": 83.467376,
