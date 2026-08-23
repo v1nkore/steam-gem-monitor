@@ -120,8 +120,27 @@
       "seeded": true
     }
   },
-  "errors": {},
-  "digest": 1787479092.9722466,
+  "errors": {
+    "Unusual Northern Blight Style::MonitorError": {
+      "fails": 1,
+      "since": 1787482995.940041,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Light of the Forgotten Renegade::MonitorError": {
+      "fails": 1,
+      "since": 1787482995.940041,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
+  "digest": 1787482995.940041,
   "fx": {
     "1": {
       "factor": 83.467376,
