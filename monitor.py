@@ -42,11 +42,11 @@ DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 # If 1, also notify about listings that already exist on the very first run.
 NOTIFY_ON_FIRST = os.environ.get("NOTIFY_ON_FIRST", "0") == "1"
 
-# How many pages (~10-20 listings each) to scan per item. Steam returns listings
-# roughly cheapest-first, and for flipping we only care about CHEAP frostbloom lots
-# (near the floor), so a few pages is enough — and keeps us well under Steam's
-# per-IP rate limit (scanning every page of every item trips it).
-MAX_PAGES = int(os.environ.get("MAX_PAGES", "3"))
+# How many pages (~20 listings each) to scan per item. Listings are price-ascending,
+# and the REAL gem is the expensive tier (high premium), so it sits on the LAST
+# pages — we must scan the whole item, not just the cheap front. 8 pages ≈ 160 lots
+# covers every tracked item. (A cheap "flip" frostbloom near the floor is caught too.)
+MAX_PAGES = int(os.environ.get("MAX_PAGES", "8"))
 # Seconds to wait between HTTP requests to stay under Steam's rate limits.
 REQUEST_DELAY = float(os.environ.get("REQUEST_DELAY", "5"))
 # Per-target cap on how many seen ids we remember (keeps state.json small).
