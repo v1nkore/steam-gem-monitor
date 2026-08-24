@@ -28,6 +28,7 @@
         "526510935878746580",
         "527635566870815964",
         "528762735670161785",
+        "528762735679634573",
         "534392137373457785",
         "536644035000389400",
         "545646161276405705",
@@ -37,6 +38,8 @@
         "554658077787015064",
         "555784333456087648",
         "555784333456090060",
+        "555784333465534660",
+        "555784333465535308",
         "556909877582625406",
         "556909877598779578",
         "559162033178832173",
@@ -69,6 +72,7 @@
         "532135362361060210",
         "532139800295269917",
         "542273534528653413",
+        "542273534562241593",
         "544525334345457218",
         "544525334389800110"
       ],
@@ -138,7 +142,35 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Crown of Curious Coldspell::MonitorError": {
+      "fails": 1,
+      "since": 1787548817.9337115,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
+      "fails": 1,
+      "since": 1787548817.9337115,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Bow of Zebulon::MonitorError": {
+      "fails": 1,
+      "since": 1787548817.9337115,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
   "digest": 1787545806.8891256,
   "fx": {
     "1": {
