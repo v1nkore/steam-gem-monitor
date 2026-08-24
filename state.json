@@ -144,13 +144,13 @@
     }
   },
   "errors": {
-    "Unusual Powdersled Rookery Cannon::MonitorError": {
+    "Unusual Frostreach Brigands Axes::MonitorError": {
       "fails": 1,
-      "since": 1787555738.0400856,
+      "since": 1787558771.273292,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     }
   },
