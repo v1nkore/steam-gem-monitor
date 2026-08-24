@@ -140,7 +140,7 @@
   },
   "errors": {
     "Unusual Crown of Curious Coldspell::MonitorError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1787539763.2745771,
       "notified": false,
       "last_notified": 0,
@@ -149,7 +149,7 @@
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
     "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1787539763.2745771,
       "notified": false,
       "last_notified": 0,
@@ -157,13 +157,58 @@
       "label": "Unusual Lumpo and Rupertus - Weapon",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
-    "Unusual Bow of Zebulon::MonitorError": {
+    "Unusual Northern Blight Style::MonitorError": {
       "fails": 1,
-      "since": 1787539763.2745771,
+      "since": 1787542827.6099005,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Light of the Forgotten Renegade::MonitorError": {
+      "fails": 1,
+      "since": 1787542827.6099005,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Grey Ghost::MonitorError": {
+      "fails": 1,
+      "since": 1787542827.6099005,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Crystal Drift::MonitorError": {
+      "fails": 1,
+      "since": 1787542827.6099005,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Frostreach Brigands Axes::MonitorError": {
+      "fails": 1,
+      "since": 1787542827.6099005,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Powdersled Rookery Cannon::MonitorError": {
+      "fails": 1,
+      "since": 1787542827.6099005,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     }
   },
