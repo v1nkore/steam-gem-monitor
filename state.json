@@ -6,6 +6,7 @@
         "522007336247554456",
         "535516231955965653",
         "536638962021780078",
+        "536644035052888164",
         "542273534539619409",
         "542273534552715309",
         "545649965361329796",
@@ -176,54 +177,8 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Frostreach Brigands Axes::MonitorError": {
-      "fails": 1,
-      "since": 1787656223.5206146,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Powdersled Rookery Cannon::MonitorError": {
-      "fails": 1,
-      "since": 1787656223.5206146,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Crown of Curious Coldspell::MonitorError": {
-      "fails": 1,
-      "since": 1787656223.5206146,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
-      "fails": 1,
-      "since": 1787656223.5206146,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Bow of Zebulon::MonitorError": {
-      "fails": 1,
-      "since": 1787656223.5206146,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    }
-  },
-  "digest": 1787654686.4845934,
+  "errors": {},
+  "digest": 1787658370.4761016,
   "fx": {
     "1": {
       "factor": 82.802865,
