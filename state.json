@@ -73,6 +73,7 @@
         "554658433549122554",
         "555784333449225328",
         "555784333459635844",
+        "556910233364965890",
         "560287933065004251",
         "560287933084227243",
         "560287933087247823",
@@ -179,8 +180,18 @@
       "seeded": true
     }
   },
-  "errors": {},
-  "digest": 1787679400.4035113,
+  "errors": {
+    "Unusual Northern Blight Style::MonitorError": {
+      "fails": 1,
+      "since": 1787683998.2050364,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
+  "digest": 1787683998.2050364,
   "fx": {
     "1": {
       "factor": 83.443676,
