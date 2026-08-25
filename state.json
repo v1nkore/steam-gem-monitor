@@ -108,6 +108,7 @@
         "528762735682959641",
         "532138532226178458",
         "534392235248292895",
+        "544525334406631586",
         "550154833911975545",
         "550154833918580177",
         "550154833928572085",
@@ -174,16 +175,61 @@
   },
   "errors": {
     "Unusual Northern Blight Style::MonitorError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1787642870.5411942,
       "notified": false,
       "last_notified": 0,
       "target": "Unusual Northern Blight Style",
       "label": "Unusual Northern Blight Style",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Light of the Forgotten Renegade::MonitorError": {
+      "fails": 1,
+      "since": 1787645235.405842,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Grey Ghost::MonitorError": {
+      "fails": 1,
+      "since": 1787645235.405842,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Crystal Drift::MonitorError": {
+      "fails": 1,
+      "since": 1787645235.405842,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
+      "fails": 1,
+      "since": 1787645235.405842,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Bow of Zebulon::MonitorError": {
+      "fails": 1,
+      "since": 1787645235.405842,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     }
   },
-  "digest": 1787639611.4858668,
+  "digest": 1787645235.405842,
   "fx": {
     "1": {
       "factor": 82.802865,
