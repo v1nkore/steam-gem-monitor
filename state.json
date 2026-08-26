@@ -186,44 +186,35 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::MonitorError": {
+    "Unusual Crown of Curious Coldspell::MonitorError": {
       "fails": 1,
-      "since": 1787725243.5385172,
+      "since": 1787729020.2269144,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
-    "Unusual Light of the Forgotten Renegade::MonitorError": {
+    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
       "fails": 1,
-      "since": 1787725243.5385172,
+      "since": 1787729020.2269144,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
-    "Unusual Claws of the Grey Ghost::MonitorError": {
+    "Unusual Bow of Zebulon::MonitorError": {
       "fails": 1,
-      "since": 1787725243.5385172,
+      "since": 1787729020.2269144,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Claws of the Crystal Drift::MonitorError": {
-      "fails": 1,
-      "since": 1787725243.5385172,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     }
   },
-  "digest": 1787723255.6938345,
+  "digest": 1787729020.2269144,
   "fx": {
     "1": {
       "factor": 83.443676,
