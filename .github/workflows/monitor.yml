@@ -1,21 +1,26 @@
 name: steam-gem-monitor
 
+# GitHub всё чаще дропает scheduled-триггеры (за неделю просело со ~50 до ~3 запусков/день).
+# Поэтому основной механизм теперь — один долгоживущий job, который сам крутит проверку
+# каждые 10 минут в течение ~5.5 часов. schedule оставлен как «холодный старт»:
+# concurrency ставит следующий запланированный запуск в очередь, и он стартует ровно
+# в момент, когда текущий цикл заканчивается — получается почти бесшовная цепочка.
 on:
   schedule:
-    # Каждые 10 минут (бережём лимиты Steam; GitHub cron иногда задерживается).
-    - cron: "*/10 * * * *"
-  workflow_dispatch: {}   # ручной запуск из вкладки Actions
+    - cron: "*/10 * * * *"   # только рестарт цикла; GitHub honors это нестабильно — цикл внутри job первичен
+  workflow_dispatch: {}       # ручной запуск / рестарт цепочки из вкладки Actions
 
 permissions:
-  contents: write         # нужно, чтобы коммитить state.json обратно в репозиторий
+  contents: write             # нужно, чтобы коммитить state.json обратно в репозиторий
 
 concurrency:
   group: monitor
-  cancel-in-progress: false
+  cancel-in-progress: false   # запланированный запуск во время цикла встаёт в очередь и подхватывает эстафету
 
 jobs:
   run:
     runs-on: ubuntu-latest
+    timeout-minutes: 350       # под жёстким лимитом GitHub в 360 мин
     steps:
       - uses: actions/checkout@v4
 
@@ -23,20 +28,37 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run monitor
+      - name: Monitor loop (~5.5h, проверка каждые 10 мин)
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python monitor.py
-
-      - name: Persist state
+          LOOP_MINUTES: "330"    # выходим из цикла ~330 мин, оставляя буфер до 350-мин таймаута
+          SLEEP_SECONDS: "600"   # 10 минут между проверками (как раньше)
         run: |
           git config user.name "gem-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add state.json
-          if ! git diff --cached --quiet; then
-            git commit -m "update state [skip ci]"
-            git push
-          else
-            echo "no state change"
-          fi
+          deadline=$(( SECONDS + LOOP_MINUTES * 60 ))
+          i=0
+          while :; do
+            i=$(( i + 1 ))
+            echo "::group::iteration $i (elapsed ${SECONDS}s)"
+            # Один упавший проход не должен убивать весь цикл: monitor.py сам шлёт
+            # фатальную ошибку в Telegram перед ненулевым выходом — просто продолжаем.
+            python monitor.py || echo "monitor.py exited non-zero (уже отрепортено в TG); продолжаем цикл"
+            # Пушим state.json каждую итерацию (как и раньше — раз в 10 мин), чтобы при
+            # рестарте job не потерять память дедупа и не слать дубли.
+            git add state.json
+            if ! git diff --cached --quiet; then
+              git commit -m "update state [skip ci]" && git push || echo "push failed; ретрай на следующей итерации"
+            else
+              echo "no state change"
+            fi
+            echo "::endgroup::"
+            # Останавливаемся, если следующий sleep вышел бы за дедлайн — чтобы очередной
+            # запуск (из очереди/schedule) подхватил эстафету без разрыва.
+            if [ $(( SECONDS + SLEEP_SECONDS )) -ge "$deadline" ]; then
+              echo "loop deadline reached after $i iterations; выходим, эстафету примет следующий запуск"
+              break
+            fi
+            sleep "$SLEEP_SECONDS"
+          done
