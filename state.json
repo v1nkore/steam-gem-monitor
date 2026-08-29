@@ -116,6 +116,7 @@
         "522007336256672896",
         "532135362361060210",
         "532139800295269917",
+        "540022649795282015",
         "542273534528653413",
         "542273534562241593",
         "544525334345457218",
@@ -175,6 +176,7 @@
         "546777767878727102",
         "551280733837503491",
         "552406633732567117",
+        "558037048305869223",
         "559162033184282645",
         "559162666838537550",
         "659355708654726997"
@@ -207,11 +209,13 @@
         "453327344030821026",
         "520881436318451448",
         "523133236132588849",
+        "526511850913422085",
         "527635566872983128",
         "533266335329432795",
         "537770568615462498",
         "545651234252628124",
-        "556910233343226102"
+        "556910233343226102",
+        "560288848118540952"
       ],
       "seeded": true
     },
@@ -220,9 +224,11 @@
         "520882070019391730",
         "520882070025868238",
         "520882070028100994",
+        "520882351380548138",
         "523133869842173472",
         "523133869850261016",
         "523133869851985452",
+        "523134151193154480",
         "534392235203415943",
         "542267826521465498",
         "542273534532318177",
@@ -239,58 +245,22 @@
     }
   },
   "errors": {
-    "Unusual Claws of the Crystal Drift::MonitorError": {
+    "Unusual Northern Blight Style::MonitorError": {
       "fails": 1,
-      "since": 1787988106.0372765,
+      "since": 1787988892.8264885,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
-    "Unusual Frostreach Brigands Axes::MonitorError": {
+    "Unusual Light of the Forgotten Renegade::MonitorError": {
       "fails": 1,
-      "since": 1787988106.0372765,
+      "since": 1787988892.8264885,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Powdersled Rookery Cannon::MonitorError": {
-      "fails": 1,
-      "since": 1787988106.0372765,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Crown of Curious Coldspell::MonitorError": {
-      "fails": 1,
-      "since": 1787988106.0372765,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
-      "fails": 1,
-      "since": 1787988106.0372765,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Bow of Zebulon::MonitorError": {
-      "fails": 1,
-      "since": 1787988106.0372765,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     }
   },
