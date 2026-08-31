@@ -194,6 +194,7 @@
         "544526249437357337",
         "544526249442747041",
         "544526249450055761",
+        "544526249450183705",
         "550154833911975545",
         "550154833918580177",
         "550154833928572085",
@@ -227,6 +228,7 @@
         "543400349533366096",
         "543400349538915820",
         "543400349541365116",
+        "544526249450177657",
         "546777134192055082",
         "546777767878727102",
         "549029849065214220",
@@ -323,26 +325,7 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Northern Blight Style::MonitorError": {
-      "fails": 1,
-      "since": 1788195612.5044258,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Light of the Forgotten Renegade::MonitorError": {
-      "fails": 1,
-      "since": 1788195612.5044258,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    }
-  },
+  "errors": {},
   "digest": 1788193485.2254617,
   "fx": {
     "1": {
