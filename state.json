@@ -209,6 +209,7 @@
         "544526249450055761",
         "544526249450183705",
         "544526249457075689",
+        "547903949171521965",
         "550154833911975545",
         "550154833918580177",
         "550154833928572085",
@@ -244,6 +245,7 @@
         "543400349538915820",
         "543400349541365116",
         "543400349541971572",
+        "543400349549095396",
         "544526249450177657",
         "546777134192055082",
         "546777767878727102",
@@ -351,35 +353,7 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Crown of Curious Coldspell::MonitorError": {
-      "fails": 1,
-      "since": 1788266879.6654868,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
-      "fails": 1,
-      "since": 1788266879.6654868,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Bow of Zebulon::MonitorError": {
-      "fails": 1,
-      "since": 1788266879.6654868,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    }
-  },
+  "errors": {},
   "digest": 1788264060.9496682,
   "fx": {
     "1": {
