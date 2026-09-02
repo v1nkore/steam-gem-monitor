@@ -241,6 +241,7 @@
         "515248312603686250",
         "520879533139874160",
         "520882351416829730",
+        "520882703890061366",
         "523133236177298221",
         "524260051105361799",
         "525385669663838183",
@@ -269,6 +270,7 @@
         "549029849065214220",
         "549029849088007404",
         "551280733837503491",
+        "551282001374230066",
         "552406633732567117",
         "558037048305869223",
         "558037048316417979",
@@ -289,6 +291,7 @@
         "520882351407260606",
         "520882351413030974",
         "527637750858770921",
+        "527638103330137253",
         "528757662720005416",
         "528762735686643197",
         "528762735687231149",
@@ -327,7 +330,8 @@
         "556910233343226102",
         "560288848118540952",
         "560288848140032088",
-        "560288848140047172"
+        "560288848140047172",
+        "560289200627462592"
       ],
       "seeded": true
     },
@@ -351,6 +355,7 @@
         "523134151228585464",
         "527637750858494981",
         "527637750858634301",
+        "527638103330841017",
         "528763650752396426",
         "534392235203415943",
         "542267826521465498",
@@ -368,14 +373,61 @@
         "552407548799028896",
         "552407548801641020",
         "552407548807862324",
+        "552407901280556012",
         "559162033173231221",
         "559162033178649077"
       ],
       "seeded": true
     }
   },
-  "errors": {},
-  "digest": 1788362877.9499443,
+  "errors": {
+    "Unusual Northern Blight Style::MonitorError": {
+      "fails": 1,
+      "since": 1788384235.0104945,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Light of the Forgotten Renegade::MonitorError": {
+      "fails": 1,
+      "since": 1788384235.0104945,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Grey Ghost::MonitorError": {
+      "fails": 1,
+      "since": 1788384235.0104945,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Crystal Drift::MonitorError": {
+      "fails": 1,
+      "since": 1788384235.0104945,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Frostreach Brigands Axes::MonitorError": {
+      "fails": 1,
+      "since": 1788384235.0104945,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
+  "digest": 1788384235.0104945,
   "fx": {
     "1": {
       "factor": 86.793469,
