@@ -402,7 +402,17 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Powdersled Rookery Cannon::MonitorError": {
+      "fails": 1,
+      "since": 1788434491.6668496,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
   "digest": 1788431695.9074354,
   "fx": {
     "1": {
