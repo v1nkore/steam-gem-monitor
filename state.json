@@ -429,7 +429,7 @@
   },
   "errors": {
     "Unusual Northern Blight Style::MonitorError": {
-      "fails": 5,
+      "fails": 6,
       "since": 1788524688.5764997,
       "notified": true,
       "last_notified": 1788526233.9220803,
@@ -437,17 +437,8 @@
       "label": "Unusual Northern Blight Style",
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
-    "Unusual Light of the Forgotten Renegade::MonitorError": {
-      "fails": 5,
-      "since": 1788524688.5764997,
-      "notified": true,
-      "last_notified": 1788526233.9220803,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
     "Unusual Claws of the Grey Ghost::MonitorError": {
-      "fails": 4,
+      "fails": 5,
       "since": 1788525423.3176284,
       "notified": true,
       "last_notified": 1788527046.5448067,
@@ -456,7 +447,7 @@
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
     "Unusual Claws of the Crystal Drift::MonitorError": {
-      "fails": 4,
+      "fails": 5,
       "since": 1788525423.3176284,
       "notified": true,
       "last_notified": 1788527046.5448067,
@@ -465,7 +456,7 @@
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
     "Unusual Frostreach Brigands Axes::MonitorError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1788527793.7425234,
       "notified": false,
       "last_notified": 0,
@@ -474,7 +465,7 @@
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
     "Unusual Powdersled Rookery Cannon::MonitorError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1788527793.7425234,
       "notified": false,
       "last_notified": 0,
@@ -483,7 +474,7 @@
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
     "Unusual Crown of Curious Coldspell::MonitorError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1788527793.7425234,
       "notified": false,
       "last_notified": 0,
@@ -492,7 +483,7 @@
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
     "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1788527793.7425234,
       "notified": false,
       "last_notified": 0,
@@ -501,7 +492,7 @@
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     },
     "Unusual Bow of Zebulon::MonitorError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1788527793.7425234,
       "notified": false,
       "last_notified": 0,
@@ -510,7 +501,7 @@
       "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
     }
   },
-  "digest": 1788523926.043024,
+  "digest": 1788528604.7025466,
   "fx": {
     "1": {
       "factor": 86.677929,
