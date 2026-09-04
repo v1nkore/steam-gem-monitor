@@ -144,6 +144,7 @@
         "529889903153435179",
         "531015803070201525",
         "531015803071627125",
+        "531015803072336901",
         "534392235245524495",
         "534392868918757325",
         "535518768816896519",
@@ -428,53 +429,7 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Light of the Forgotten Renegade::MonitorError": {
-      "fails": 3,
-      "since": 1788532434.4460998,
-      "notified": true,
-      "last_notified": 1788534031.0429986,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Claws of the Grey Ghost::MonitorError": {
-      "fails": 3,
-      "since": 1788532434.4460998,
-      "notified": true,
-      "last_notified": 1788534031.0429986,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
-      "fails": 2,
-      "since": 1788533214.2998848,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Bow of Zebulon::MonitorError": {
-      "fails": 2,
-      "since": 1788533214.2998848,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Northern Blight Style::MonitorError": {
-      "fails": 1,
-      "since": 1788534031.0429986,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    }
-  },
+  "errors": {},
   "digest": 1788532434.4460998,
   "fx": {
     "1": {
