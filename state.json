@@ -517,7 +517,17 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Bow of Zebulon::MonitorError": {
+      "fails": 1,
+      "since": 1788730938.482589,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
   "digest": 1788727425.3554544,
   "fx": {
     "1": {
