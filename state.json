@@ -398,6 +398,7 @@
         "558037048332962319",
         "559162033184282645",
         "559162666838537550",
+        "559163300762307114",
         "659355708654726997"
       ],
       "seeded": true
@@ -520,8 +521,45 @@
       "seeded": true
     }
   },
-  "errors": {},
-  "digest": 1788735360.4883826,
+  "errors": {
+    "Unusual Northern Blight Style::MonitorError": {
+      "fails": 1,
+      "since": 1788739555.2178442,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Light of the Forgotten Renegade::MonitorError": {
+      "fails": 1,
+      "since": 1788739555.2178442,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Grey Ghost::MonitorError": {
+      "fails": 1,
+      "since": 1788739555.2178442,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Claws of the Crystal Drift::MonitorError": {
+      "fails": 1,
+      "since": 1788739555.2178442,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
+  "digest": 1788739555.2178442,
   "fx": {
     "1": {
       "factor": 86.563332,
