@@ -23,6 +23,7 @@
         "542273534539619409",
         "542273534552715309",
         "544526601930501977",
+        "544526601986837657",
         "545649965361329796",
         "545651234262258916",
         "545651234275975240",
@@ -117,6 +118,7 @@
         "546778049245534826",
         "546778049247996650",
         "546778401788050478",
+        "546778401792215534",
         "550154478219830768",
         "550154736074071604",
         "550155748993979312",
@@ -559,8 +561,36 @@
       "seeded": true
     }
   },
-  "errors": {},
-  "digest": 1788810865.6223772,
+  "errors": {
+    "Unusual Claws of the Crystal Drift::MonitorError": {
+      "fails": 1,
+      "since": 1788833048.8202257,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
+      "fails": 1,
+      "since": 1788833048.8202257,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Bow of Zebulon::MonitorError": {
+      "fails": 1,
+      "since": 1788833048.8202257,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
+  "digest": 1788833048.8202257,
   "fx": {
     "1": {
       "factor": 86.081584,
