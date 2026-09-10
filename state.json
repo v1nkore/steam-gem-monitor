@@ -58,7 +58,8 @@
         "614333133393938032",
         "627843931286347287",
         "627843931287752295",
-        "628969831191026344"
+        "628969831191026344",
+        "628969831201003636"
       ],
       "seeded": true
     },
@@ -658,7 +659,26 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
+      "fails": 1,
+      "since": 1789083514.2936919,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Bow of Zebulon::MonitorError": {
+      "fails": 1,
+      "since": 1789083514.2936919,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
   "digest": 1789082788.9061968,
   "fx": {
     "1": {
