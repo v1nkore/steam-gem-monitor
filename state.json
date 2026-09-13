@@ -89,6 +89,7 @@
         "510750340991949019",
         "510750340992620563",
         "510750341001004423",
+        "510750341013782299",
         "518631640345148047",
         "518631640345420819",
         "520881436344282024",
@@ -195,6 +196,7 @@
         "509624339257466242",
         "517505740457982738",
         "517505740458085374",
+        "517505740458106290",
         "519757541234326622",
         "519757541235371702",
         "519757541237297666",
@@ -510,6 +512,7 @@
         "527636835785129667",
         "529887366677026547",
         "529890639396893604",
+        "529890639429186180",
         "531015803070249045",
         "531015803074770681",
         "531015803074861041",
@@ -744,35 +747,7 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Northern Blight Style::MonitorError": {
-      "fails": 1,
-      "since": 1789301275.9716625,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Light of the Forgotten Renegade::MonitorError": {
-      "fails": 1,
-      "since": 1789301275.9716625,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    },
-    "Unusual Claws of the Grey Ghost::MonitorError": {
-      "fails": 1,
-      "since": 1789301275.9716625,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
-    }
-  },
+  "errors": {},
   "digest": 1789298992.729361,
   "fx": {
     "1": {
