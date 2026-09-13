@@ -728,7 +728,17 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Claws of the Grey Ghost::MonitorError": {
+      "fails": 1,
+      "since": 1789261762.3049085,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
   "digest": 1789260353.2597666,
   "fx": {
     "1": {
