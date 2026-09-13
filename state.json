@@ -58,6 +58,7 @@
         "559163300764274946",
         "608703632912808274",
         "608703632912930134",
+        "608703632912979958",
         "614333133393938032",
         "627843931286347287",
         "627843931287752295",
@@ -193,6 +194,7 @@
         "490484040843748893",
         "509624339257466242",
         "517505740457982738",
+        "517505740458085374",
         "519757541234326622",
         "519757541235371702",
         "519757541237297666",
@@ -741,7 +743,53 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Frostreach Brigands Axes::MonitorError": {
+      "fails": 1,
+      "since": 1789300504.9945414,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Powdersled Rookery Cannon::MonitorError": {
+      "fails": 1,
+      "since": 1789300504.9945414,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Crown of Curious Coldspell::MonitorError": {
+      "fails": 1,
+      "since": 1789300504.9945414,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Lumpo and Rupertus - Weapon::MonitorError": {
+      "fails": 1,
+      "since": 1789300504.9945414,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    },
+    "Unusual Bow of Zebulon::MonitorError": {
+      "fails": 1,
+      "since": 1789300504.9945414,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "Steam вернул неожиданный ответ — не удалось прочитать листинги (возможна блокировка IP или смена формата страницы)."
+    }
+  },
   "digest": 1789298992.729361,
   "fx": {
     "1": {
