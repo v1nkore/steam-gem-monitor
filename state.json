@@ -826,7 +826,89 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Northern Blight Style::HTTPError": {
+      "fails": 1,
+      "since": 1789509754.9443269,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Unusual Light of the Forgotten Renegade::HTTPError": {
+      "fails": 1,
+      "since": 1789509754.9443269,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Unusual Claws of the Grey Ghost::HTTPError": {
+      "fails": 1,
+      "since": 1789509754.9443269,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Unusual Claws of the Crystal Drift::HTTPError": {
+      "fails": 1,
+      "since": 1789509754.9443269,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Unusual Frostreach Brigands Axes::HTTPError": {
+      "fails": 1,
+      "since": 1789509754.9443269,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
+      "fails": 1,
+      "since": 1789509754.9443269,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Unusual Crown of Curious Coldspell::HTTPError": {
+      "fails": 1,
+      "since": 1789509754.9443269,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
+      "fails": 1,
+      "since": 1789509754.9443269,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Unusual Bow of Zebulon::HTTPError": {
+      "fails": 1,
+      "since": 1789509754.9443269,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "HTTP Error 500: Internal Server Error"
+    }
+  },
   "digest": 1789507603.4012947,
   "fx": {
     "1": {
