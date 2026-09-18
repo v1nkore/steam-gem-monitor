@@ -772,6 +772,7 @@
         "505121373389807705",
         "505121373391559357",
         "505121373395894081",
+        "505121373398585081",
         "509624441069788853",
         "509624441074744757",
         "509624441085691169",
@@ -870,7 +871,26 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
+      "fails": 1,
+      "since": 1789691778.554448,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Crown of Curious Coldspell::HTTPError": {
+      "fails": 1,
+      "since": 1789691778.554448,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1789689634.6329095,
   "fx": {
     "1": {
