@@ -888,7 +888,35 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Northern Blight Style::HTTPError": {
+      "fails": 1,
+      "since": 1789759695.8097532,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Light of the Forgotten Renegade::HTTPError": {
+      "fails": 1,
+      "since": 1789759695.8097532,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Claws of the Grey Ghost::HTTPError": {
+      "fails": 1,
+      "since": 1789759695.8097532,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1789756833.4603555,
   "fx": {
     "1": {
