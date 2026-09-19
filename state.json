@@ -899,17 +899,7 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 1,
-      "since": 1789827780.7468836,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1789827069.5508242,
   "fx": {
     "1": {
