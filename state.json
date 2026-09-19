@@ -812,6 +812,7 @@
         "509624441085691169",
         "509624441087624693",
         "514127938884272117",
+        "514128572669168524",
         "517505740435535298",
         "517506272360026725",
         "517506272360557941",
@@ -906,7 +907,17 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Claws of the Crystal Drift::HTTPError": {
+      "fails": 1,
+      "since": 1789848741.2767496,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1789848032.2113426,
   "fx": {
     "1": {
