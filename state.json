@@ -775,6 +775,7 @@
       "seen": [
         "453327344030821026",
         "492735840656124841",
+        "493862374362904452",
         "497239542108639889",
         "501743141733242100",
         "501743141772729384",
@@ -922,26 +923,7 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 1,
-      "since": 1789904510.1990838,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 1,
-      "since": 1789904510.1990838,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1789903059.037118,
   "fx": {
     "1": {
