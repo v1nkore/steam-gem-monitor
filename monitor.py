@@ -391,6 +391,13 @@ def scan_target(t):
                     continue
                 time.sleep(REQUEST_DELAY)
                 _pt, listings, _pc = fetch_page(t, start)
+                if not listings:
+                    # Нечитаемый хвост (антибот/429 после ретраев) — это ошибка, а не
+                    # «лотов нет»: иначе посеем/затрём память пустым списком.
+                    raise MonitorError(
+                        f"не удалось прочитать хвост списка (start={start} из {total}) — "
+                        "возможен антибот/рейт-лимит Steam"
+                    )
                 absorb(listings)
         return gem_lots, floor, total, hero, currency
 
