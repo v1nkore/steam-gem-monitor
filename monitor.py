@@ -385,7 +385,11 @@ def scan_target(t):
         absorb(listings)
         page_size = len(listings)
         if total and page_size:
-            starts = sorted({max(page_size, total - page_size * k) for k in range(1, t.tail_pages + 1)})
+            # SSR отдаёт лоты только при start, кратном размеру страницы (20): при
+            # start=2684 приходит пустая страница, при 2680 — 20 лотов. Поэтому идём
+            # от последней выровненной страницы назад.
+            last = ((total - 1) // page_size) * page_size
+            starts = sorted({s for s in (last - page_size * k for k in range(t.tail_pages)) if s >= page_size})
             for start in starts:
                 if start >= total:
                     continue
