@@ -120,6 +120,7 @@
         "505121373418991537",
         "507373173234220396",
         "507373173242869324",
+        "507373173246496324",
         "509614192335989545",
         "509624441085859541",
         "509624441085936293",
@@ -980,17 +981,7 @@
       "seeded": true
     }
   },
-  "errors": {
-    "Autographed Onibi::HTTPError": {
-      "fails": 1,
-      "since": 1790012318.862433,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790010777.6807177,
   "fx": {
     "1": {
