@@ -33,6 +33,7 @@
         "522009871975980193",
         "526512203477301649",
         "526513471611674275",
+        "526513471676240599",
         "527637750837267797",
         "527637750852259889",
         "528763369385180102",
@@ -980,13 +981,13 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
+    "Autographed Onibi::HTTPError": {
       "fails": 1,
-      "since": 1790011528.029479,
+      "since": 1790012318.862433,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
