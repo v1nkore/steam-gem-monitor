@@ -1,5 +1,5 @@
 {
-  "_help": "Арбитраж по гему. Отслеживаются только лоты, заявляющие гем TRACK_GEM (по умолчанию frostbloom). В уведомлении: цена нового frostbloom-лота, самый дешёвый лот предмета (пол) и разница. Каждый target — market-ссылка на предмет. Сменить гем: env TRACK_GEM.",
+  "_help": "Арбитраж по гему. Отслеживаются только лоты, заявляющие гем TRACK_GEM (по умолчанию frostbloom). В уведомлении: цена нового frostbloom-лота, самый дешёвый лот предмета (пол) и разница. Каждый target — market-ссылка на предмет. Сменить гем: env TRACK_GEM. Цель может быть объектом: {\"url\", \"label\", \"match\": \"gem\"|\"styles_unlocked\", \"term\", \"tail_pages\", \"min_styles\"}. styles_unlocked — лоты, где разблокированы все стили (ни одного \"(Locked)\"); tail_pages — читать только первую и последние N страниц списка (по 20 лотов), т.к. такие лоты самые дорогие.",
   "targets": [
     "https://steamcommunity.com/market/listings/570/Unusual%20Northern%20Blight%20Style",
     "https://steamcommunity.com/market/listings/570/Unusual%20Light%20of%20the%20Forgotten%20Renegade",
@@ -9,6 +9,22 @@
     "https://steamcommunity.com/market/listings/570/Unusual%20Powdersled%20Rookery%20Cannon",
     "https://steamcommunity.com/market/listings/570/Unusual%20Crown%20of%20Curious%20Coldspell",
     "https://steamcommunity.com/market/listings/570/Unusual%20Lumpo%20and%20Rupertus%20-%20Weapon",
-    "https://steamcommunity.com/market/listings/570/Unusual%20Bow%20of%20Zebulon"
+    "https://steamcommunity.com/market/listings/570/Unusual%20Bow%20of%20Zebulon",
+    {
+      "url": "https://steamcommunity.com/market/listings/570/Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "match": "styles_unlocked",
+      "term": "22/22 стиля",
+      "tail_pages": 3,
+      "min_styles": 21
+    },
+    {
+      "url": "https://steamcommunity.com/market/listings/570/Autographed%20Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "match": "styles_unlocked",
+      "term": "22/22 стиля",
+      "tail_pages": 2,
+      "min_styles": 21
+    }
   ]
 }

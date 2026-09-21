@@ -95,15 +95,44 @@ APPID = "570"  # Dota 2
 # ---------------------------------------------------------------------------
 # Target parsing
 # ---------------------------------------------------------------------------
+# Режимы отбора лотов (config.json → target.match):
+#   "gem"             — лот с настоящим гемом TRACK_GEM (по умолчанию, как раньше);
+#   "styles_unlocked" — предмет со стилями, у которого разблокированы ВСЕ стили
+#                       (ни одной строки "Upgrade Style N (Locked)"; напр. курьер Onibi 22/22).
+STYLE_ANY = re.compile(r"upgrade style \d+")
+STYLE_LOCKED = re.compile(r"upgrade style \d+ \(locked\)")
+
+
 class Target:
-    def __init__(self, url, label=None, **_ignored):
+    def __init__(self, url, label=None, match="gem", term=None, tail_pages=0, min_styles=0, **_ignored):
         self.url = url
         self.name = self._parse(url)              # market_hash_name (decoded)
         self.label = label or self.name
+        self.match = match
+        # Слово для сообщений: «Frostbloom» для гема, напр. «22/22 стиля» для стилей.
+        self.term = term or (TRACK_GEM.title() if match == "gem" else "все стили")
+        # tail_pages > 0: не листать весь список (у популярных предметов тысячи лотов),
+        # а прочитать первую страницу (пол + total) и последние tail_pages страниц —
+        # список отсортирован по цене, а нужные лоты (напр. 22/22) — самые дорогие.
+        self.tail_pages = int(tail_pages or 0)
+        self.min_styles = int(min_styles or 0)
         # Plain item page (no gem filter) — we surface every listing.
         self.link = f"https://steamcommunity.com/market/listings/{APPID}/{urllib.parse.quote(self.name)}"
         if not self.name:
             raise ValueError(f"Could not parse item name from URL: {url}")
+
+    def matches(self, chunk_lower):
+        """Does this listing chunk satisfy the target's criterion?"""
+        if self.match == "styles_unlocked":
+            n = len(STYLE_ANY.findall(chunk_lower))
+            if n == 0 or n < self.min_styles:
+                return False
+            return not STYLE_LOCKED.search(chunk_lower)
+        return bool(GEM_MATCH.search(chunk_lower))
+
+    @property
+    def filter_link(self):
+        return f"{self.link}?filter={urllib.parse.quote(TRACK_GEM)}" if self.match == "gem" else self.link
 
     @staticmethod
     def _parse(url):
@@ -135,7 +164,9 @@ def load_targets():
         if isinstance(item, str):
             targets.append(Target(item))
         elif isinstance(item, dict):
-            targets.append(Target(item["url"], label=item.get("label")))
+            targets.append(Target(item["url"], label=item.get("label"), match=item.get("match", "gem"),
+                                  term=item.get("term"), tail_pages=item.get("tail_pages", 0),
+                                  min_styles=item.get("min_styles", 0)))
     return targets
 
 
@@ -335,6 +366,34 @@ def scan_target(t):
     total = None
     hero = None
     currency = None
+
+    def absorb(listings):
+        nonlocal hero, floor
+        for lid, chunk in listings:
+            if hero is None:
+                hero = extract_hero(chunk)
+            price = listing_price(chunk)
+            if price is not None and (floor is None or price < floor):
+                floor = price
+            if t.matches(chunk):
+                gem_lots[lid] = price
+
+    if t.tail_pages > 0:
+        # Первая страница: пол (список отсортирован по цене) и total; затем хвост.
+        page_total, listings, page_cur = fetch_page(t, 0)
+        total, currency = page_total, page_cur
+        absorb(listings)
+        page_size = len(listings)
+        if total and page_size:
+            starts = sorted({max(page_size, total - page_size * k) for k in range(1, t.tail_pages + 1)})
+            for start in starts:
+                if start >= total:
+                    continue
+                time.sleep(REQUEST_DELAY)
+                _pt, listings, _pc = fetch_page(t, start)
+                absorb(listings)
+        return gem_lots, floor, total, hero, currency
+
     start = 0
     pages = 0
     while pages < MAX_PAGES:
@@ -345,14 +404,7 @@ def scan_target(t):
             currency = page_cur
         if not listings:
             break
-        for lid, chunk in listings:
-            if hero is None:
-                hero = extract_hero(chunk)
-            price = listing_price(chunk)
-            if price is not None and (floor is None or price < floor):
-                floor = price
-            if GEM_MATCH.search(chunk):
-                gem_lots[lid] = price
+        absorb(listings)
         start += len(listings)
         pages += 1
         if total is not None and start >= total:
@@ -436,16 +488,24 @@ def send_recovery(labels):
 
 
 def send_digest(rows, sym="$"):
-    """rows: list of (hero, item_label, link, cheapest_gem_price, floor, gem_count)."""
+    """rows: list of (hero, item_label, link, cheapest_gem_price, floor, gem_count, term, match_mode)."""
     def esc(s):
         return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
     gem_title = TRACK_GEM.title()
     lines = [f"💎 <b>{gem_title} — текущая ситуация</b>", ""]
     any_flip = False
-    for hero, item, link, gem_price, floor, count in rows:
+    for hero, item, link, gem_price, floor, count, term, mode in rows:
         short = esc((item or "").replace("Unusual ", ""))
+        term = esc(term or "гем")
         hero_txt = f" · {esc(hero)}" if hero else ""
+        if mode == "styles_unlocked":
+            lines.append(f'• <a href="{link}"><b>{short}</b></a>{hero_txt}')
+            if gem_price is not None:
+                lines.append(f'   {term}: от <b>{fmt_price(gem_price, sym)}</b> · лотов {count} · пол предмета {fmt_price(floor, sym)}')
+            else:
+                lines.append(f'   {term}: нет · пол предмета {fmt_price(floor, sym)}')
+            continue
         is_flip = gem_price is not None and floor is not None and gem_price <= floor
         if is_flip:
             any_flip = True
@@ -454,15 +514,15 @@ def send_digest(rows, sym="$"):
         if gem_price is not None:
             if floor:
                 pct = (gem_price - floor) / floor * 100
-                lines.append(f'   гем <b>{fmt_price(gem_price, sym)}</b> · пол {fmt_price(floor, sym)} · {pct:+.0f}%')
+                lines.append(f'   {term} <b>{fmt_price(gem_price, sym)}</b> · пол {fmt_price(floor, sym)} · {pct:+.0f}%')
             else:
-                lines.append(f'   гем <b>{fmt_price(gem_price, sym)}</b>')
+                lines.append(f'   {term} <b>{fmt_price(gem_price, sym)}</b>')
         else:
-            lines.append(f'   {gem_title}: нет · пол {fmt_price(floor, sym)}')
+            lines.append(f'   {term}: нет · пол {fmt_price(floor, sym)}')
     lines.append("")
     if any_flip:
         lines.append("🔥 — гем у пола или дешевле (возможный флип)")
-    lines.append("✅ настоящий гем по отрисовке Steam; цена в ₽ ≈.")
+    lines.append("✅ гем/стили по отрисовке Steam; цена в ₽ ≈.")
     safe_send("\n".join(lines))
 
 
@@ -474,11 +534,39 @@ def send_heartbeat(n_targets, n_errors):
     )
 
 
-def notify(t, new_lots, floor, sym="$"):
+def notify_styles(t, new_lots, floor, ref, sym="$"):
+    """Новые лоты со всеми стилями. ref — самый дешёвый из уже висевших таких лотов
+    (или None): новый лот дешевле него — 🔥."""
+    lines = [
+        f"🎨 <b>{t.label}</b>",
+        f"Новых лотов ({t.term}): <b>{len(new_lots)}</b>",
+        f"Самый дешёвый из остальных ({t.term}): <b>{fmt_price(ref, sym) if ref is not None else 'нет'}</b>"
+        f" · пол предмета {fmt_price(floor, sym)}",
+        "",
+    ]
+    for _lid, price in sorted(new_lots, key=lambda x: (x[1] is None, x[1])):
+        if price is None:
+            lines.append("• цена не определена")
+        elif ref is not None and price < ref:
+            pct = (price - ref) / ref * 100
+            lines.append(f"• <b>{fmt_price(price, sym)}</b> — 🔥 дешевле остальных ({pct:+.0f}%)")
+        elif ref is not None:
+            pct = (price - ref) / ref * 100
+            lines.append(f"• <b>{fmt_price(price, sym)}</b> ({pct:+.0f}% к самому дешёвому)")
+        else:
+            lines.append(f"• <b>{fmt_price(price, sym)}</b>")
+    lines += ["", "✅ стили по отрисовке Steam · лоты в конце списка (сортировка по цене ↓)",
+              f'<a href="{t.link}">Открыть предмет</a>']
+    safe_send("\n".join(lines))
+
+
+def notify(t, new_lots, floor, sym="$", ref=None):
     """new_lots: list of (listing_id, price_cents) for lots claiming TRACK_GEM."""
+    if t.match == "styles_unlocked":
+        return notify_styles(t, new_lots, floor, ref, sym)
     n = len(new_lots)
-    gem_title = TRACK_GEM.title()
-    link = f"{t.link}?filter={urllib.parse.quote(TRACK_GEM)}"
+    gem_title = t.term
+    link = t.filter_link
     lines = [
         f"💎 <b>{t.label}</b>",
         f"Новых {gem_title}-лотов: <b>{n}</b>",
@@ -584,27 +672,28 @@ def _run():
         if sample_name is None:
             sample_name = t.name
         cheapest_gem = min((v for v in gem_lots.values() if v is not None), default=None)
-        gem_link = f"{t.link}?filter={urllib.parse.quote(TRACK_GEM)}"
-        digest_rows.append((hero, t.label, gem_link, cheapest_gem, floor, len(gem_lots)))
+        digest_rows.append((hero, t.label, t.filter_link, cheapest_gem, floor, len(gem_lots), t.term, t.match))
 
         # ---- only TRACK_GEM lots trigger alerts; show price vs floor ----
         current = set(gem_lots)
         entry = tstate.get(t.key)
         if entry is None:
             if NOTIFY_ON_FIRST and current:
-                notify(t, [(lid, gem_lots[lid]) for lid in current], floor)
+                new_events.append((t, [(lid, gem_lots[lid]) for lid in current], floor, None))
             tstate[t.key] = {"seen": sorted(current), "seeded": True}
             changed = True
-            print(f"[seed] {t.label}: {len(current)} {TRACK_GEM} lots / floor {fmt_price(floor)}")
+            print(f"[seed] {t.label}: {len(current)} {t.term} lots / floor {fmt_price(floor)}")
             continue
 
         seen = set(entry.get("seen", []))
         new_ids = current - seen
         if new_ids:
-            print(f"[NEW] {t.label}: {len(new_ids)} new {TRACK_GEM} lot(s) / floor {fmt_price(floor)}")
-            new_events.append((t, [(lid, gem_lots[lid]) for lid in new_ids], floor))
+            print(f"[NEW] {t.label}: {len(new_ids)} new {t.term} lot(s) / floor {fmt_price(floor)}")
+            # для стилей: ориентир — самый дешёвый из уже висевших таких лотов
+            ref = min((gem_lots[lid] for lid in current - new_ids if gem_lots[lid] is not None), default=None)
+            new_events.append((t, [(lid, gem_lots[lid]) for lid in new_ids], floor, ref))
         else:
-            print(f"[ok] {t.label}: {len(current)} {TRACK_GEM} lots / floor {fmt_price(floor)} (no new)")
+            print(f"[ok] {t.label}: {len(current)} {t.term} lots / floor {fmt_price(floor)} (no new)")
 
         merged = list(seen | current)
         if len(merged) > MAX_SEEN_PER_TARGET:
@@ -640,11 +729,11 @@ def _run():
             if fx != 1.0:
                 conv = lambda c: round(c * fx) if c is not None else None
 
-    for tt, lots, floor_geo in new_events:
-        notify(tt, [(lid, conv(p)) for lid, p in lots], conv(floor_geo), sym)
+    for tt, lots, floor_geo, ref_geo in new_events:
+        notify(tt, [(lid, conv(p)) for lid, p in lots], conv(floor_geo), sym, ref=conv(ref_geo))
 
     if digest_due:
-        rows = [(h, l, lk, conv(g), conv(f), c) for (h, l, lk, g, f, c) in digest_rows]
+        rows = [(h, l, lk, conv(g), conv(f), c, tm, md) for (h, l, lk, g, f, c, tm, md) in digest_rows]
         send_digest(rows, sym)
         state["digest"] = now
         changed = True
