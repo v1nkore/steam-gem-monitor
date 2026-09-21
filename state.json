@@ -979,14 +979,14 @@
     }
   },
   "errors": {
-    "Onibi::MonitorError": {
+    "Autographed Onibi::HTTPError": {
       "fails": 1,
-      "since": 1790004516.7711525,
+      "since": 1790005264.8788097,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=2679 из 2738) — возможен антибот/рейт-лимит Steam"
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
   "digest": 1790002833.0707097,
