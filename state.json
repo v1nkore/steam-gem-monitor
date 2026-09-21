@@ -980,14 +980,14 @@
     }
   },
   "errors": {
-    "Onibi::MonitorError": {
+    "Unusual Northern Blight Style::HTTPError": {
       "fails": 1,
-      "since": 1790010777.6807177,
+      "since": 1790011528.029479,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=2679 из 2727) — возможен антибот/рейт-лимит Steam"
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
   "digest": 1790010777.6807177,
