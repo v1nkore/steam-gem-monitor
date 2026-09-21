@@ -858,6 +858,7 @@
         "514128572670512440",
         "514128572675438680",
         "514128572678936620",
+        "514128572688636064",
         "517505740435535298",
         "517506272360026725",
         "517506272360557941",
@@ -954,7 +955,17 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Northern Blight Style::HTTPError": {
+      "fails": 1,
+      "since": 1789999593.4965677,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1789998865.6742117,
   "fx": {
     "1": {
