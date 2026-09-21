@@ -978,7 +978,17 @@
       "seeded": true
     }
   },
-  "errors": {},
+  "errors": {
+    "Autographed Onibi::MonitorError": {
+      "fails": 1,
+      "since": 1790007792.4696453,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "не удалось прочитать хвост списка (start=76 из 101) — возможен антибот/рейт-лимит Steam"
+    }
+  },
   "digest": 1790007047.9835324,
   "fx": {
     "1": {
