@@ -104,8 +104,11 @@ STYLE_LOCKED = re.compile(r"upgrade style \d+ \(locked\)")
 
 
 class Target:
-    def __init__(self, url, label=None, match="gem", term=None, tail_pages=0, min_styles=0, **_ignored):
+    def __init__(self, url, label=None, match="gem", term=None, tail_pages=0, min_styles=0,
+                 alert_below=None, **_ignored):
         self.url = url
+        # Порог в рублях: лот (гем / все стили) дешевле него помечается 🚨.
+        self.alert_below = int(alert_below) if alert_below else None
         self.name = self._parse(url)              # market_hash_name (decoded)
         self.label = label or self.name
         self.match = match
@@ -166,7 +169,7 @@ def load_targets():
         elif isinstance(item, dict):
             targets.append(Target(item["url"], label=item.get("label"), match=item.get("match", "gem"),
                                   term=item.get("term"), tail_pages=item.get("tail_pages", 0),
-                                  min_styles=item.get("min_styles", 0)))
+                                  min_styles=item.get("min_styles", 0), alert_below=item.get("alert_below")))
     return targets
 
 
@@ -254,6 +257,34 @@ def cur_symbol(cur_id):
 
 def fmt_price(cents, sym="$"):
     return f"{sym}{cents / 100:.2f}" if cents is not None else "?"
+
+
+def fmt_date(ts):
+    return time.strftime("%d.%m.%y", time.localtime(ts)) if ts else "?"
+
+
+def low_txt(low, sym):
+    """«мин. за всё время» для сообщений; low = {"price", "ts"} или None."""
+    return f"мин. за всё время {fmt_price(low['price'], sym)} ({fmt_date(low.get('ts'))})" if low else ""
+
+
+def low_after(low, new_lots):
+    """Минимум с учётом только что появившихся лотов (для подвала уведомления)."""
+    prices = [p for _lid, p in new_lots if p is not None]
+    if not prices:
+        return low
+    best = min(prices)
+    return {"price": best, "ts": time.time()} if (low is None or best < low["price"]) else low
+
+
+def price_marks(price, low, alert_below, sym):
+    """Пометки к цене лота: 📉 новый минимум за всё время, 🚨 ниже порога."""
+    marks = []
+    if low and price is not None and price < low["price"]:
+        marks.append(f"📉 новый минимум (был {fmt_price(low['price'], sym)})")
+    if alert_below and price is not None and price < alert_below * 100:
+        marks.append(f"🚨 ниже порога {fmt_price(alert_below * 100, sym)}")
+    return (" — " + " · ".join(marks)) if marks else ""
 
 
 # The render endpoint returns prices in the runner's geo currency (USD on GitHub),
@@ -499,38 +530,44 @@ def send_recovery(labels):
 
 
 def send_digest(rows, sym="$"):
-    """rows: list of (hero, item_label, link, cheapest_gem_price, floor, gem_count, term, match_mode)."""
-    def esc(s):
-        return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    """rows: list of dict(hero, label, link, gem, floor, count, term, mode, low, alert_below)."""
+    def esc(x):
+        return (x or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
     gem_title = TRACK_GEM.title()
     lines = [f"💎 <b>{gem_title} — текущая ситуация</b>", ""]
-    any_flip = False
-    for hero, item, link, gem_price, floor, count, term, mode in rows:
-        short = esc((item or "").replace("Unusual ", ""))
-        term = esc(term or "гем")
-        hero_txt = f" · {esc(hero)}" if hero else ""
-        if mode == "styles_unlocked":
-            lines.append(f'• <a href="{link}"><b>{short}</b></a>{hero_txt}')
+    any_flip = any_alert = False
+    for r in rows:
+        short = esc((r["label"] or "").replace("Unusual ", ""))
+        term = esc(r["term"] or "гем")
+        hero_txt = f" · {esc(r['hero'])}" if r["hero"] else ""
+        gem_price, floor, low = r["gem"], r["floor"], r["low"]
+        is_alert = bool(r["alert_below"]) and gem_price is not None and gem_price < r["alert_below"] * 100
+        any_alert |= is_alert
+        low_part = f" · {low_txt(low, sym)}" if low else ""
+        if r["mode"] == "styles_unlocked":
+            prefix = "🚨" if is_alert else "•"
+            lines.append(f'{prefix} <a href="{r["link"]}"><b>{short}</b></a>{hero_txt}')
             if gem_price is not None:
-                lines.append(f'   {term}: от <b>{fmt_price(gem_price, sym)}</b> · лотов {count} · пол предмета {fmt_price(floor, sym)}')
+                lines.append(f'   {term}: от <b>{fmt_price(gem_price, sym)}</b> · лотов {r["count"]} · пол предмета {fmt_price(floor, sym)}{low_part}')
             else:
-                lines.append(f'   {term}: нет · пол предмета {fmt_price(floor, sym)}')
+                lines.append(f'   {term}: нет · пол предмета {fmt_price(floor, sym)}{low_part}')
             continue
         is_flip = gem_price is not None and floor is not None and gem_price <= floor
-        if is_flip:
-            any_flip = True
-        prefix = "🔥" if is_flip else "•"
-        lines.append(f'{prefix} <a href="{link}"><b>{short}</b></a>{hero_txt}')
+        any_flip |= is_flip
+        prefix = "🚨" if is_alert else ("🔥" if is_flip else "•")
+        lines.append(f'{prefix} <a href="{r["link"]}"><b>{short}</b></a>{hero_txt}')
         if gem_price is not None:
             if floor:
                 pct = (gem_price - floor) / floor * 100
-                lines.append(f'   {term} <b>{fmt_price(gem_price, sym)}</b> · пол {fmt_price(floor, sym)} · {pct:+.0f}%')
+                lines.append(f'   {term} <b>{fmt_price(gem_price, sym)}</b> · пол {fmt_price(floor, sym)} · {pct:+.0f}%{low_part}')
             else:
-                lines.append(f'   {term} <b>{fmt_price(gem_price, sym)}</b>')
+                lines.append(f'   {term} <b>{fmt_price(gem_price, sym)}</b>{low_part}')
         else:
-            lines.append(f'   {term}: нет · пол {fmt_price(floor, sym)}')
+            lines.append(f'   {term}: нет · пол {fmt_price(floor, sym)}{low_part}')
     lines.append("")
+    if any_alert:
+        lines.append("🚨 — дешевле заданного порога")
     if any_flip:
         lines.append("🔥 — гем у пола или дешевле (возможный флип)")
     lines.append("✅ гем/стили по отрисовке Steam; цена в ₽ ≈.")
@@ -545,7 +582,7 @@ def send_heartbeat(n_targets, n_errors):
     )
 
 
-def notify_styles(t, new_lots, floor, ref, sym="$"):
+def notify_styles(t, new_lots, floor, ref, sym="$", low=None, alert_below=None):
     """Новые лоты со всеми стилями. ref — самый дешёвый из уже висевших таких лотов
     (или None): новый лот дешевле него — 🔥."""
     lines = [
@@ -560,21 +597,27 @@ def notify_styles(t, new_lots, floor, ref, sym="$"):
             lines.append("• цена не определена")
         elif ref is not None and price < ref:
             pct = (price - ref) / ref * 100
-            lines.append(f"• <b>{fmt_price(price, sym)}</b> — 🔥 дешевле остальных ({pct:+.0f}%)")
+            lines.append(f"• <b>{fmt_price(price, sym)}</b> — 🔥 дешевле остальных ({pct:+.0f}%){price_marks(price, low, alert_below, sym)}")
         elif ref is not None:
             pct = (price - ref) / ref * 100
-            lines.append(f"• <b>{fmt_price(price, sym)}</b> ({pct:+.0f}% к самому дешёвому)")
+            lines.append(f"• <b>{fmt_price(price, sym)}</b> ({pct:+.0f}% к самому дешёвому){price_marks(price, low, alert_below, sym)}")
         else:
-            lines.append(f"• <b>{fmt_price(price, sym)}</b>")
-    lines += ["", "✅ стили по отрисовке Steam · лоты в конце списка (сортировка по цене ↓)",
+            lines.append(f"• <b>{fmt_price(price, sym)}</b>{price_marks(price, low, alert_below, sym)}")
+    lines.append("")
+    eff = low_after(low, new_lots)
+    if eff:
+        lines.append(low_txt(eff, sym).capitalize())
+    lines += ["✅ стили по отрисовке Steam · лоты в конце списка (сортировка по цене ↓)",
               f'<a href="{t.link}">Открыть предмет</a>']
     safe_send("\n".join(lines))
 
 
-def notify(t, new_lots, floor, sym="$", ref=None):
-    """new_lots: list of (listing_id, price_cents) for lots claiming TRACK_GEM."""
+def notify(t, new_lots, floor, sym="$", ref=None, low=None, alert_below=None):
+    """new_lots: list of (listing_id, price_cents) for lots claiming TRACK_GEM.
+    low — минимум за всё время ({"price","ts"} в текущей валюте) до этого прохода;
+    alert_below — порог в рублях (только когда sym == ₽)."""
     if t.match == "styles_unlocked":
-        return notify_styles(t, new_lots, floor, ref, sym)
+        return notify_styles(t, new_lots, floor, ref, sym, low, alert_below)
     n = len(new_lots)
     gem_title = t.term
     link = t.filter_link
@@ -589,14 +632,18 @@ def notify(t, new_lots, floor, sym="$", ref=None):
             lines.append(f"• {gem_title}: цена не определена")
         elif floor is not None and price <= floor:
             pct = (price - floor) / floor * 100 if floor else 0
-            lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b> — 🔥 у пола ({pct:+.0f}%) — возможный флип!")
+            lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b> — 🔥 у пола ({pct:+.0f}%) — возможный флип!{price_marks(price, low, alert_below, sym)}")
         elif floor is not None:
             diff = price - floor
             pct = diff / floor * 100 if floor else 0
-            lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b> — +{pct:.0f}% к полу (+{fmt_price(diff, sym)})")
+            lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b> — +{pct:.0f}% к полу (+{fmt_price(diff, sym)}){price_marks(price, low, alert_below, sym)}")
         else:
-            lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b>")
-    lines += ["", f"✅ настоящий {gem_title} (по отрисовке Steam; фейки с правленым описанием отфильтрованы)",
+            lines.append(f"• {gem_title} <b>{fmt_price(price, sym)}</b>{price_marks(price, low, alert_below, sym)}")
+    lines.append("")
+    eff = low_after(low, new_lots)
+    if eff:
+        lines.append(low_txt(eff, sym).capitalize())
+    lines += [f"✅ настоящий {gem_title} (по отрисовке Steam; фейки с правленым описанием отфильтрованы)",
               f'<a href="{link}">Открыть {gem_title}-лоты</a>']
     safe_send("\n".join(lines))
 
@@ -636,8 +683,9 @@ def _run():
     alerts = []        # new/renewed errors to announce this run
     recovered = []     # labels that were failing and now work
     ok_target_keys = set()
-    digest_rows = []   # (hero, label, link, cheapest_gem_price, floor, gem_count)
-    new_events = []    # (target, [(lid, price)], floor) to notify after the scan
+    digest_rows = []   # dict(hero, label, link, gem, floor, count, term, mode, key, alert_below)
+    new_events = []    # (target, [(lid, price)], floor, ref) to notify after the scan
+    scanned = []       # (target, gem_lots) — для минимума за всё время
     run_cur = None     # Steam currency id seen this run
     sample_name = None # a successfully scanned item name (for the FX lookup)
 
@@ -683,7 +731,9 @@ def _run():
         if sample_name is None:
             sample_name = t.name
         cheapest_gem = min((v for v in gem_lots.values() if v is not None), default=None)
-        digest_rows.append((hero, t.label, t.filter_link, cheapest_gem, floor, len(gem_lots), t.term, t.match))
+        digest_rows.append(dict(hero=hero, label=t.label, link=t.filter_link, gem=cheapest_gem, floor=floor,
+                                count=len(gem_lots), term=t.term, mode=t.match, key=t.key, alert_below=t.alert_below))
+        scanned.append((t, gem_lots))
 
         # ---- only TRACK_GEM lots trigger alerts; show price vs floor ----
         current = set(gem_lots)
@@ -731,7 +781,7 @@ def _run():
 
     # Convert geo-currency prices to RUB (Steam's cached rate) for anything we send.
     conv, sym = (lambda c: c), cur_symbol(run_cur)
-    if DISPLAY_RUB and (new_events or digest_due):
+    if DISPLAY_RUB and (new_events or digest_due or scanned):
         fx, cached_new = get_rub_factor(state, sample_name, run_cur, now)
         if cached_new:
             changed = True
@@ -740,11 +790,36 @@ def _run():
             if fx != 1.0:
                 conv = lambda c: round(c * fx) if c is not None else None
 
+    # Минимум за всё время и пороги считаются только в рублях (state хранит ₽),
+    # иначе валюта раннера (USD) смешалась бы с рублями.
+    rub_mode = sym == "₽"
+    lows_before = {t.key: (tstate.get(t.key) or {}).get("low") for t, _ in scanned} if rub_mode else {}
+
     for tt, lots, floor_geo, ref_geo in new_events:
-        notify(tt, [(lid, conv(p)) for lid, p in lots], conv(floor_geo), sym, ref=conv(ref_geo))
+        notify(tt, [(lid, conv(p)) for lid, p in lots], conv(floor_geo), sym, ref=conv(ref_geo),
+               low=lows_before.get(tt.key), alert_below=tt.alert_below if rub_mode else None)
+
+    # ---- обновить минимум за всё время отслеживания ----
+    if rub_mode:
+        for t, gem_lots in scanned:
+            priced = [(conv(p), lid) for lid, p in gem_lots.items() if p is not None]
+            if not priced:
+                continue
+            price, lid = min(priced)
+            entry = tstate.get(t.key)
+            low = entry.get("low") if entry else None
+            if entry is not None and (low is None or price < low["price"]):
+                entry["low"] = {"price": price, "lid": lid, "ts": now}
+                changed = True
+                print(f"[low] {t.label}: новый минимум {fmt_price(price, sym)}")
 
     if digest_due:
-        rows = [(h, l, lk, conv(g), conv(f), c, tm, md) for (h, l, lk, g, f, c, tm, md) in digest_rows]
+        rows = []
+        for r in digest_rows:
+            rr = dict(r, gem=conv(r["gem"]), floor=conv(r["floor"]),
+                      low=(tstate.get(r["key"]) or {}).get("low") if rub_mode else None,
+                      alert_below=r["alert_below"] if rub_mode else None)
+            rows.append(rr)
         send_digest(rows, sym)
         state["digest"] = now
         changed = True
