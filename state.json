@@ -1096,8 +1096,18 @@
       }
     }
   },
-  "errors": {},
-  "digest": 1790200454.4704607,
+  "errors": {
+    "Unusual Light of the Forgotten Renegade::HTTPError": {
+      "fails": 1,
+      "since": 1790204214.20938,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
+  "digest": 1790204214.20938,
   "fx": {
     "1": {
       "factor": 84.177209,
