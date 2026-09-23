@@ -174,6 +174,7 @@
         "528765271470468329",
         "528765271490596181",
         "528765907919414906",
+        "528765907920085154",
         "529889903143982875",
         "529891171386205646",
         "529891171396177466",
@@ -266,9 +267,9 @@
       ],
       "seeded": true,
       "low": {
-        "price": 1728242,
-        "lid": "542276706799006169",
-        "ts": 1790165108.7594604
+        "price": 1690952,
+        "lid": "528765907920085154",
+        "ts": 1790198172.852745
       }
     },
     "Unusual Claws of the Grey Ghost": {
@@ -1086,32 +1087,13 @@
       ],
       "seeded": true,
       "low": {
-        "price": 2086257,
+        "price": 2081029,
         "lid": "497240074106026505",
-        "ts": 1790113664.050289
+        "ts": 1790198172.852745
       }
     }
   },
-  "errors": {
-    "Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1790196523.1859415,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Autographed Onibi::HTTPError": {
-      "fails": 1,
-      "since": 1790197307.567637,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790196523.1859415,
   "fx": {
     "1": {
