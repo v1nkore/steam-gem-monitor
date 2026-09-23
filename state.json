@@ -241,6 +241,7 @@
         "556911148412976250",
         "556911148440848854",
         "556911500919819178",
+        "556913405578710849",
         "559162033178832173",
         "559162033195634057",
         "560287577333198892",
@@ -262,9 +263,9 @@
       ],
       "seeded": true,
       "low": {
-        "price": 1898582,
-        "lid": "494988274272450288",
-        "ts": 1790074305.818961
+        "price": 1737862,
+        "lid": "556913405578710849",
+        "ts": 1790130350.5232408
       }
     },
     "Unusual Claws of the Grey Ghost": {
@@ -1069,17 +1070,7 @@
       }
     }
   },
-  "errors": {
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 1,
-      "since": 1790129550.9045808,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790128805.8431096,
   "fx": {
     "1": {
