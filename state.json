@@ -102,9 +102,9 @@
       ],
       "seeded": true,
       "low": {
-        "price": 3854601,
+        "price": 3839575,
         "lid": "526514108099534244",
-        "ts": 1790158272.8278203
+        "ts": 1790197307.567637
       }
     },
     "Unusual Light of the Forgotten Renegade": {
@@ -452,9 +452,9 @@
       ],
       "seeded": true,
       "low": {
-        "price": 1009790,
-        "lid": "555787505677464028",
-        "ts": 1790164313.6894684
+        "price": 1001961,
+        "lid": "558039305495273255",
+        "ts": 1790197307.567637
       }
     },
     "Unusual Frostreach Brigands Axes": {
@@ -849,6 +849,7 @@
         "532143607634786549",
         "533269507534583038",
         "533269507542480502",
+        "533269507547748022",
         "542274168251288083",
         "542274449614298275",
         "542274449638521631",
@@ -920,9 +921,9 @@
       ],
       "seeded": true,
       "low": {
-        "price": 520536,
-        "lid": "526514108099304204",
-        "ts": 1790156773.632275
+        "price": 517606,
+        "lid": "534395407448155741",
+        "ts": 1790197307.567637
       }
     },
     "Unusual Bow of Zebulon": {
@@ -1093,12 +1094,21 @@
   },
   "errors": {
     "Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1790196523.1859415,
       "notified": false,
       "last_notified": 0,
       "target": "Onibi",
       "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1790197307.567637,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
