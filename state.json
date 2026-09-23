@@ -1069,26 +1069,7 @@
       }
     }
   },
-  "errors": {
-    "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 1,
-      "since": 1790125705.0798168,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 1,
-      "since": 1790125705.0798168,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790124963.0995264,
   "fx": {
     "1": {
