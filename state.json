@@ -447,6 +447,7 @@
         "545652149365441251",
         "545652501840130455",
         "545652501871934331",
+        "546780402810481623",
         "549030201597264132",
         "549030201597578520",
         "549030201608143620",
@@ -459,9 +460,9 @@
       ],
       "seeded": true,
       "low": {
-        "price": 1001709,
-        "lid": "555787601950945564",
-        "ts": 1790231796.4488046
+        "price": 936611,
+        "lid": "546780402810481623",
+        "ts": 1790271685.5691686
       }
     },
     "Unusual Frostreach Brigands Axes": {
@@ -1110,7 +1111,35 @@
       }
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Northern Blight Style::HTTPError": {
+      "fails": 1,
+      "since": 1790271685.5691686,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1790271685.5691686,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1790271685.5691686,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1790270934.0834465,
   "fx": {
     "1": {
