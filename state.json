@@ -179,6 +179,7 @@
         "528765907920085154",
         "528765907920453218",
         "528766004190973646",
+        "528766004191798982",
         "529889903143982875",
         "529891171386205646",
         "529891171396177466",
@@ -1112,26 +1113,7 @@
       }
     }
   },
-  "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 1,
-      "since": 1790276562.506842,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 1,
-      "since": 1790276562.506842,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790274895.4936614,
   "fx": {
     "1": {
