@@ -1107,26 +1107,7 @@
       }
     }
   },
-  "errors": {
-    "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 1,
-      "since": 1790245536.3345525,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Onibi::MonitorError": {
-      "fails": 1,
-      "since": 1790245536.3345525,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=2375 из 2433) — возможен антибот/рейт-лимит Steam"
-    }
-  },
+  "errors": {},
   "digest": 1790243071.4764202,
   "fx": {
     "1": {
