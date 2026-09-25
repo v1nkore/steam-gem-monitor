@@ -1139,17 +1139,26 @@
     }
   },
   "errors": {
-    "Onibi::MonitorError": {
-      "fails": 3,
-      "since": 1790362680.9217362,
-      "notified": true,
-      "last_notified": 1790364249.042149,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=2242 из 2311) — возможен антибот/рейт-лимит Steam"
+    "Unusual Northern Blight Style::HTTPError": {
+      "fails": 1,
+      "since": 1790365004.2652113,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Light of the Forgotten Renegade::HTTPError": {
+      "fails": 1,
+      "since": 1790365004.2652113,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1790361114.0718987,
+  "digest": 1790365004.2652113,
   "fx": {
     "1": {
       "factor": 84.485696,
