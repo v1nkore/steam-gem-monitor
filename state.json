@@ -1049,6 +1049,7 @@
         "532143607639640033",
         "532143703941623345",
         "532143703942219865",
+        "532143703946563625",
         "534392235203415943",
         "542267826521465498",
         "542273534532318177",
@@ -1127,22 +1128,22 @@
     }
   },
   "errors": {
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
+    "Onibi::HTTPError": {
       "fails": 1,
-      "since": 1790322571.5194492,
+      "since": 1790323461.8188097,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Claws of the Grey Ghost::HTTPError": {
+    "Autographed Onibi::HTTPError": {
       "fails": 1,
-      "since": 1790322571.5194492,
+      "since": 1790323461.8188097,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
