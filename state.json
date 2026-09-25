@@ -1133,7 +1133,17 @@
       }
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
+      "fails": 1,
+      "since": 1790352759.4238622,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1790349604.708084,
   "fx": {
     "1": {
