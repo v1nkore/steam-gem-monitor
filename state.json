@@ -461,6 +461,7 @@
         "545652501871934331",
         "546780402810481623",
         "546780402813127227",
+        "546780402828698487",
         "549030201597264132",
         "549030201597578520",
         "549030201608143620",
@@ -1143,17 +1144,7 @@
       }
     }
   },
-  "errors": {
-    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 1,
-      "since": 1790388493.3102262,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790388493.3102262,
   "fx": {
     "1": {
