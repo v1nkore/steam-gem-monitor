@@ -1146,17 +1146,17 @@
     }
   },
   "errors": {
-    "Onibi::MonitorError": {
+    "Unusual Frostreach Brigands Axes::HTTPError": {
       "fails": 1,
-      "since": 1790395417.5392115,
+      "since": 1790396195.4684405,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=2300 из 2301) — возможен антибот/рейт-лимит Steam"
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1790392423.9020627,
+  "digest": 1790396195.4684405,
   "fx": {
     "1": {
       "factor": 84.485696,
