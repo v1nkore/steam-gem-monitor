@@ -1168,14 +1168,23 @@
     }
   },
   "errors": {
-    "Autographed Onibi::MonitorError": {
+    "Unusual Northern Blight Style::HTTPError": {
       "fails": 1,
-      "since": 1790518382.0927799,
+      "since": 1790519139.945282,
       "notified": false,
       "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=76 из 101) — возможен антибот/рейт-лимит Steam"
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Light of the Forgotten Renegade::HTTPError": {
+      "fails": 1,
+      "since": 1790519139.945282,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
   "digest": 1790516890.963746,
