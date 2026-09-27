@@ -1169,8 +1169,18 @@
       }
     }
   },
-  "errors": {},
-  "digest": 1790544436.8322685,
+  "errors": {
+    "Unusual Northern Blight Style::HTTPError": {
+      "fails": 1,
+      "since": 1790548173.912647,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
+  "digest": 1790548173.912647,
   "fx": {
     "1": {
       "factor": 84.268246,
