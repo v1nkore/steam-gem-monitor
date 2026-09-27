@@ -1168,14 +1168,14 @@
     }
   },
   "errors": {
-    "Onibi::MonitorError": {
+    "Autographed Onibi::MonitorError": {
       "fails": 1,
-      "since": 1790517635.136149,
+      "since": 1790518382.0927799,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=2261 из 2327) — возможен антибот/рейт-лимит Steam"
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "не удалось прочитать хвост списка (start=76 из 101) — возможен антибот/рейт-лимит Steam"
     }
   },
   "digest": 1790516890.963746,
