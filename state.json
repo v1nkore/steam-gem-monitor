@@ -1194,27 +1194,8 @@
       }
     }
   },
-  "errors": {
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 3,
-      "since": 1790632591.7712693,
-      "notified": true,
-      "last_notified": 1790634341.558319,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 2,
-      "since": 1790633446.049375,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
-  "digest": 1790630988.3875685,
+  "errors": {},
+  "digest": 1790635234.9673922,
   "fx": {
     "1": {
       "factor": 84.192029,
