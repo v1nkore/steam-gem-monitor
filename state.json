@@ -164,6 +164,7 @@
         "520884704840730993",
         "520884704858214465",
         "520884704859724053",
+        "520884704878957629",
         "522001628205511652",
         "522007336248416764",
         "523134503749001292",
@@ -1185,32 +1186,13 @@
       ],
       "seeded": true,
       "low": {
-        "price": 1861233,
+        "price": 1859549,
         "lid": "545654502936536417",
-        "ts": 1790583646.0029461
+        "ts": 1790611667.4224033
       }
     }
   },
-  "errors": {
-    "Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1790603224.328113,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Autographed Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1790603224.328113,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790610801.809248,
   "fx": {
     "1": {
