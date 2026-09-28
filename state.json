@@ -1172,17 +1172,7 @@
       }
     }
   },
-  "errors": {
-    "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 1,
-      "since": 1790561251.0715685,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790559753.6327405,
   "fx": {
     "1": {
