@@ -1199,13 +1199,13 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
+    "Unusual Bow of Zebulon::HTTPError": {
       "fails": 1,
-      "since": 1790648769.9656744,
+      "since": 1790649606.6079817,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
