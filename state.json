@@ -1198,33 +1198,33 @@
       ],
       "seeded": true,
       "low": {
-        "price": 1855761,
+        "price": 1836879,
         "lid": "545654502936536417",
-        "ts": 1790629241.0170386
+        "ts": 1790715672.470974
       }
     }
   },
   "errors": {
     "Unusual Northern Blight Style::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1790713904.162081,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1790715672.470974,
       "target": "Unusual Northern Blight Style",
       "label": "Unusual Northern Blight Style",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1790713904.162081,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1790715672.470974,
       "target": "Unusual Light of the Forgotten Renegade",
       "label": "Unusual Light of the Forgotten Renegade",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1790714766.5871751,
       "notified": false,
       "last_notified": 0,
