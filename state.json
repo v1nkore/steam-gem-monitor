@@ -1200,27 +1200,8 @@
       }
     }
   },
-  "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 1,
-      "since": 1790688699.2467248,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Autographed Onibi::HTTPError": {
-      "fails": 1,
-      "since": 1790688699.2467248,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
-  "digest": 1790685597.3482025,
+  "errors": {},
+  "digest": 1790689546.4525177,
   "fx": {
     "1": {
       "factor": 84.192029,
