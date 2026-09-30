@@ -1211,37 +1211,18 @@
       ],
       "seeded": true,
       "low": {
-        "price": 1836879,
+        "price": 1830106,
         "lid": "545654502936536417",
-        "ts": 1790715672.470974
+        "ts": 1790796046.507701
       }
     }
   },
-  "errors": {
-    "Onibi::MonitorError": {
-      "fails": 1,
-      "since": 1790795247.8652039,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=2109 из 2174) — возможен антибот/рейт-лимит Steam"
-    },
-    "Autographed Onibi::HTTPError": {
-      "fails": 1,
-      "since": 1790795247.8652039,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790795247.8652039,
   "fx": {
     "1": {
-      "factor": 84.368849,
-      "ts": 1790709269.6952775
+      "factor": 84.057795,
+      "ts": 1790796046.507701
     },
     "20": {
       "factor": 60.156193,
