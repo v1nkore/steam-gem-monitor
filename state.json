@@ -1212,15 +1212,15 @@
       ],
       "seeded": true,
       "low": {
-        "price": 1830106,
+        "price": 1829182,
         "lid": "545654502936536417",
-        "ts": 1790796046.507701
+        "ts": 1790802228.9109023
       }
     }
   },
   "errors": {
     "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1790801394.9446123,
       "notified": false,
       "last_notified": 0,
@@ -1228,14 +1228,23 @@
       "label": "Unusual Powdersled Rookery Cannon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Onibi::MonitorError": {
+    "Unusual Frostreach Brigands Axes::HTTPError": {
       "fails": 1,
-      "since": 1790801394.9446123,
+      "since": 1790802228.9109023,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=2109 из 2169) — возможен антибот/рейт-лимит Steam"
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Crown of Curious Coldspell::HTTPError": {
+      "fails": 1,
+      "since": 1790802228.9109023,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
   "digest": 1790799158.3406272,
