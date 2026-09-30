@@ -401,6 +401,7 @@
         "552406633709296393",
         "553533801216170725",
         "553535802201618049",
+        "553536338019692809",
         "554658433524607058",
         "554658433534875590",
         "554658433549122554",
@@ -1205,36 +1206,8 @@
       }
     }
   },
-  "errors": {
-    "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 1,
-      "since": 1790728665.1528912,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 1,
-      "since": 1790728665.1528912,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 1,
-      "since": 1790728665.1528912,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
-  "digest": 1790728665.1528912,
+  "errors": {},
+  "digest": 1790748462.063463,
   "fx": {
     "1": {
       "factor": 84.368849,
