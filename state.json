@@ -1219,35 +1219,35 @@
     }
   },
   "errors": {
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 2,
-      "since": 1790801394.9446123,
+    "Unusual Light of the Forgotten Renegade::HTTPError": {
+      "fails": 1,
+      "since": 1790803139.5989742,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Frostreach Brigands Axes::HTTPError": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
       "fails": 1,
-      "since": 1790802228.9109023,
+      "since": 1790803139.5989742,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Crown of Curious Coldspell::HTTPError": {
+    "Unusual Claws of the Crystal Drift::HTTPError": {
       "fails": 1,
-      "since": 1790802228.9109023,
+      "since": 1790803139.5989742,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1790799158.3406272,
+  "digest": 1790803139.5989742,
   "fx": {
     "1": {
       "factor": 84.057795,
