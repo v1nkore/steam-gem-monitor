@@ -1233,7 +1233,17 @@
       }
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Frostreach Brigands Axes::HTTPError": {
+      "fails": 1,
+      "since": 1790874311.1597316,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1790871954.1615772,
   "fx": {
     "1": {
