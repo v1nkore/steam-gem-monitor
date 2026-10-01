@@ -1231,7 +1231,26 @@
       }
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Crown of Curious Coldspell::HTTPError": {
+      "fails": 1,
+      "since": 1790872709.080987,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
+      "fails": 1,
+      "since": 1790872709.080987,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1790871954.1615772,
   "fx": {
     "1": {
