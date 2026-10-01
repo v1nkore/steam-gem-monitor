@@ -1222,26 +1222,7 @@
       }
     }
   },
-  "errors": {
-    "Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1790832147.6352725,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Autographed Onibi::HTTPError": {
-      "fails": 1,
-      "since": 1790832986.7550464,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1790830501.5092669,
   "fx": {
     "1": {
