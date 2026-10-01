@@ -1223,32 +1223,23 @@
     }
   },
   "errors": {
-    "Unusual Claws of the Crystal Drift::HTTPError": {
+    "Unusual Bow of Zebulon::HTTPError": {
       "fails": 1,
-      "since": 1790831277.3983145,
+      "since": 1790832147.6352725,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Frostreach Brigands Axes::HTTPError": {
+    "Onibi::HTTPError": {
       "fails": 1,
-      "since": 1790831277.3983145,
+      "since": 1790832147.6352725,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Autographed Onibi::MonitorError": {
-      "fails": 1,
-      "since": 1790831277.3983145,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=57 из 94) — возможен антибот/рейт-лимит Steam"
     }
   },
   "digest": 1790830501.5092669,
