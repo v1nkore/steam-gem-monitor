@@ -1223,7 +1223,17 @@
       }
     }
   },
-  "errors": {},
+  "errors": {
+    "Onibi::MonitorError": {
+      "fails": 1,
+      "since": 1790843145.6733818,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "reason": "не удалось прочитать хвост списка (start=2147 из 2221) — возможен антибот/рейт-лимит Steam"
+    }
+  },
   "digest": 1790842403.450131,
   "fx": {
     "1": {
