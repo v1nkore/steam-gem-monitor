@@ -1255,14 +1255,41 @@
     }
   },
   "errors": {
-    "Autographed Onibi::MonitorError": {
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
       "fails": 1,
-      "since": 1790964497.2649522,
+      "since": 1790965288.9166822,
       "notified": false,
       "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "не удалось прочитать хвост списка (start=72 из 96) — возможен антибот/рейт-лимит Steam"
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Crown of Curious Coldspell::HTTPError": {
+      "fails": 1,
+      "since": 1790965288.9166822,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
+      "fails": 1,
+      "since": 1790965288.9166822,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Bow of Zebulon::HTTPError": {
+      "fails": 1,
+      "since": 1790965288.9166822,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
   "digest": 1790962212.2916882,
