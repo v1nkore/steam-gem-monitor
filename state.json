@@ -1255,18 +1255,8 @@
       }
     }
   },
-  "errors": {
-    "Onibi::HTTPError": {
-      "fails": 1,
-      "since": 1790989214.2721334,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
-  "digest": 1790986264.3718934,
+  "errors": {},
+  "digest": 1790990007.492915,
   "fx": {
     "1": {
       "factor": 83.436112,
