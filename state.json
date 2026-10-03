@@ -260,6 +260,7 @@
         "544526601993754661",
         "545646161276405705",
         "545654502941347097",
+        "545655316120836893",
         "546777134199080986",
         "546777767871449450",
         "546778049236318358",
@@ -1270,6 +1271,24 @@
       "target": "Onibi",
       "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "не удалось прочитать хвост списка (start=2318 из 2384) — возможен антибот/рейт-лимит Steam"
+    },
+    "Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791031535.712498,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791031535.712498,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
   "digest": 1791029304.9539795,
