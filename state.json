@@ -643,6 +643,7 @@
         "528766540072961474",
         "528766540090986638",
         "532138532226178458",
+        "532144517156436485",
         "533267250380825668",
         "533267250383223844",
         "534392235248292895",
@@ -1268,26 +1269,7 @@
       }
     }
   },
-  "errors": {
-    "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 1,
-      "since": 1791063988.0221934,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Onibi::HTTPError": {
-      "fails": 1,
-      "since": 1791063988.0221934,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1791063988.0221934,
   "fx": {
     "1": {
