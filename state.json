@@ -359,6 +359,7 @@
         "520882703902160426",
         "520885240719386769",
         "522009872026555189",
+        "522011418002912292",
         "523133236173448453",
         "523135239962943453",
         "524260403632323687",
@@ -949,6 +950,7 @@
         "523136953331927303",
         "524263217828001290",
         "524263217834318570",
+        "524263217837303762",
         "526512940660105517",
         "526512940662913985",
         "526512940666898429",
@@ -981,6 +983,7 @@
         "533269603869902134",
         "533269603880311966",
         "533270417033764222",
+        "533270417045799958",
         "537773739343087040",
         "537773739356187908",
         "537774016637837420",
@@ -1272,44 +1275,17 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 1,
-      "since": 1791082930.1087353,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 1,
-      "since": 1791082930.1087353,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791082930.1087353,
       "notified": false,
       "last_notified": 0,
       "target": "Onibi",
       "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Autographed Onibi::HTTPError": {
-      "fails": 1,
-      "since": 1791082930.1087353,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791082930.1087353,
+  "digest": 1791103001.1152158,
   "fx": {
     "1": {
       "factor": 83.491819,
