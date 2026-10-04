@@ -1270,40 +1270,12 @@
       }
     }
   },
-  "errors": {
-    "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 1,
-      "since": 1791072281.500579,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 1,
-      "since": 1791072281.500579,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 1,
-      "since": 1791072281.500579,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    }
-  },
+  "errors": {},
   "digest": 1791071540.0047095,
   "fx": {
     "1": {
-      "factor": 83.436112,
-      "ts": 1790986264.3718934
+      "factor": 83.491819,
+      "ts": 1791073204.401699
     },
     "20": {
       "factor": 60.156193,
