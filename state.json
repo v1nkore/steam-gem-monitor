@@ -1301,22 +1301,22 @@
     }
   },
   "errors": {
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
+    "Unusual Crown of Curious Coldspell::HTTPError": {
       "fails": 1,
-      "since": 1791216535.6742198,
+      "since": 1791217401.9275718,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Claws of the Grey Ghost::HTTPError": {
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
       "fails": 1,
-      "since": 1791216535.6742198,
+      "since": 1791217401.9275718,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
