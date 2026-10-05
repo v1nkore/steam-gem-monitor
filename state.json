@@ -1295,8 +1295,18 @@
       }
     }
   },
-  "errors": {},
-  "digest": 1791184905.1157107,
+  "errors": {
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791188608.701158,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
+  "digest": 1791188608.701158,
   "fx": {
     "1": {
       "factor": 83.817169,
