@@ -1313,13 +1313,13 @@
     }
   },
   "errors": {
-    "Unusual Claws of the Crystal Drift::HTTPError": {
+    "Onibi::HTTPError": {
       "fails": 1,
-      "since": 1791278132.569053,
+      "since": 1791278934.9920862,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
