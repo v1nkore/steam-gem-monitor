@@ -273,6 +273,7 @@
         "545655316121829989",
         "545655316125456593",
         "545655316151928401",
+        "545655316163488181",
         "546777134199080986",
         "546777767871449450",
         "546778049236318358",
@@ -1308,7 +1309,17 @@
       }
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
+      "fails": 1,
+      "since": 1791250330.647195,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1791247358.0800889,
   "fx": {
     "1": {
