@@ -1304,6 +1304,7 @@
         "550158915654218927",
         "550158915664206839",
         "553535802211541521",
+        "554662876700738962",
         "559166476340273036",
         "572674836845702751"
       ],
@@ -1330,26 +1331,8 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 3,
-      "since": 1791383495.6557765,
-      "notified": true,
-      "last_notified": 1791385382.8696673,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Onibi::HTTPError": {
-      "fails": 3,
-      "since": 1791383495.6557765,
-      "notified": true,
-      "last_notified": 1791385382.8696673,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791385382.8696673,
       "notified": false,
       "last_notified": 0,
@@ -1357,17 +1340,26 @@
       "label": "Unusual Lumpo and Rupertus - Weapon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Bow of Zebulon::HTTPError": {
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
       "fails": 1,
-      "since": 1791385382.8696673,
+      "since": 1791386345.7306988,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Crown of Curious Coldspell::HTTPError": {
+      "fails": 1,
+      "since": 1791386345.7306988,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791382563.0474732,
+  "digest": 1791386345.7306988,
   "fx": {
     "1": {
       "factor": 84.948588,
