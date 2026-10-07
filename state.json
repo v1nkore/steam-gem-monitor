@@ -1327,17 +1327,17 @@
     }
   },
   "errors": {
-    "Onibi::HTTPError": {
+    "Unusual Claws of the Crystal Drift::HTTPError": {
       "fails": 1,
-      "since": 1791342393.1471207,
+      "since": 1791343195.2053533,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "HTTP Error 500: Internal Server Error"
     }
   },
-  "digest": 1791339254.3292544,
+  "digest": 1791343195.2053533,
   "fx": {
     "1": {
       "factor": 84.948588,
