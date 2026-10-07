@@ -1326,17 +1326,7 @@
       }
     }
   },
-  "errors": {
-    "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 1,
-      "since": 1791343195.2053533,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
-      "reason": "HTTP Error 500: Internal Server Error"
-    }
-  },
+  "errors": {},
   "digest": 1791343195.2053533,
   "fx": {
     "1": {
