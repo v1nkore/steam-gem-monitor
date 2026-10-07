@@ -1330,17 +1330,35 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 3,
-      "since": 1791379908.4837916,
-      "notified": true,
-      "last_notified": 1791381754.1187327,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
+    "Unusual Claws of the Grey Ghost::HTTPError": {
+      "fails": 1,
+      "since": 1791382563.0474732,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Claws of the Crystal Drift::HTTPError": {
+      "fails": 1,
+      "since": 1791382563.0474732,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791382563.0474732,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791378854.5887823,
+  "digest": 1791382563.0474732,
   "fx": {
     "1": {
       "factor": 84.948588,
