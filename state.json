@@ -1328,17 +1328,17 @@
     }
   },
   "errors": {
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
       "fails": 1,
-      "since": 1791346317.918499,
+      "since": 1791347106.4468303,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
       "reason": "HTTP Error 500: Internal Server Error"
     }
   },
-  "digest": 1791343195.2053533,
+  "digest": 1791347106.4468303,
   "fx": {
     "1": {
       "factor": 84.948588,
