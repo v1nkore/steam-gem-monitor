@@ -1332,7 +1332,17 @@
       }
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Northern Blight Style::HTTPError": {
+      "fails": 1,
+      "since": 1791395408.1106722,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 500: Internal Server Error"
+    }
+  },
   "digest": 1791393809.6228616,
   "fx": {
     "1": {
