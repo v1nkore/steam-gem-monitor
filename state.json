@@ -1331,32 +1331,41 @@
     }
   },
   "errors": {
-    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 2,
-      "since": 1791385382.8696673,
+    "Unusual Claws of the Grey Ghost::HTTPError": {
+      "fails": 1,
+      "since": 1791387288.8043442,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
+    "Unusual Claws of the Crystal Drift::HTTPError": {
       "fails": 1,
-      "since": 1791386345.7306988,
+      "since": 1791387288.8043442,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Crown of Curious Coldspell::HTTPError": {
+    "Unusual Frostreach Brigands Axes::HTTPError": {
       "fails": 1,
-      "since": 1791386345.7306988,
+      "since": 1791387288.8043442,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
       "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Bow of Zebulon::HTTPError": {
+      "fails": 1,
+      "since": 1791387288.8043442,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "HTTP Error 500: Internal Server Error"
     }
   },
   "digest": 1791386345.7306988,
