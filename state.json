@@ -1338,22 +1338,13 @@
     }
   },
   "errors": {
-    "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 3,
-      "since": 1791460557.7088125,
-      "notified": true,
-      "last_notified": 1791462397.1530423,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Claws of the Crystal Drift::HTTPError": {
+    "Unusual Bow of Zebulon::HTTPError": {
       "fails": 1,
-      "since": 1791462397.1530423,
+      "since": 1791463288.4793878,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
