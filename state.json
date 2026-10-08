@@ -1339,7 +1339,7 @@
   },
   "errors": {
     "Onibi::HTTPError": {
-      "fails": 7,
+      "fails": 8,
       "since": 1791465061.8958986,
       "notified": true,
       "last_notified": 1791466968.215953,
@@ -1348,16 +1348,16 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1791469756.5894434,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1791471634.4369514,
       "target": "Unusual Bow of Zebulon",
       "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Autographed Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791470729.17549,
       "notified": false,
       "last_notified": 0,
