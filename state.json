@@ -1295,6 +1295,7 @@
         "523130793049295354",
         "523137679342990331",
         "525386303549623751",
+        "526515378961590000",
         "528755759118824291",
         "529892717410150671",
         "529893078680316531",
@@ -1303,6 +1304,7 @@
         "543403877575194488",
         "543403877585945060",
         "543403877587378328",
+        "543403877589446924",
         "544520261279452667",
         "550158915654218927",
         "550158915664206839",
@@ -1313,9 +1315,9 @@
       ],
       "seeded": true,
       "low": {
-        "price": 1568325,
-        "lid": "515254472622916798",
-        "ts": 1790079522.4010355
+        "price": 1290794,
+        "lid": "526515378961590000",
+        "ts": 1791417826.6734183
       }
     },
     "Autographed Onibi": {
@@ -1334,26 +1336,26 @@
     }
   },
   "errors": {
-    "Autographed Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1791396996.6420398,
+    "Unusual Frostreach Brigands Axes::HTTPError": {
+      "fails": 1,
+      "since": 1791417826.6734183,
       "notified": false,
       "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Onibi::HTTPError": {
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
       "fails": 1,
-      "since": 1791397818.701456,
+      "since": 1791417826.6734183,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791397818.701456,
+  "digest": 1791417826.6734183,
   "fx": {
     "1": {
       "factor": 84.948588,
