@@ -1337,7 +1337,7 @@
   },
   "errors": {
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 3,
+      "fails": 4,
       "since": 1791424133.9288812,
       "notified": true,
       "last_notified": 1791426230.9267163,
@@ -1346,21 +1346,12 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1791425265.8412282,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1791427152.08534,
       "target": "Unusual Powdersled Rookery Cannon",
       "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 1,
-      "since": 1791426230.9267163,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
