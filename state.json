@@ -1341,7 +1341,7 @@
   },
   "errors": {
     "Unusual Northern Blight Style::HTTPError": {
-      "fails": 6,
+      "fails": 7,
       "since": 1791475427.2855136,
       "notified": true,
       "last_notified": 1791477269.1878357,
@@ -1350,21 +1350,12 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 3,
+      "fails": 4,
       "since": 1791497090.578939,
       "notified": true,
       "last_notified": 1791498951.834122,
       "target": "Unusual Light of the Forgotten Renegade",
       "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Autographed Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1791497992.5430987,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
