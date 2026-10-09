@@ -1340,44 +1340,44 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
       "fails": 1,
-      "since": 1791507477.5488558,
+      "since": 1791508469.5824385,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Crown of Curious Coldspell::HTTPError": {
+    "Unusual Claws of the Crystal Drift::HTTPError": {
       "fails": 1,
-      "since": 1791507477.5488558,
+      "since": 1791508469.5824385,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
+    "Unusual Frostreach Brigands Axes::HTTPError": {
       "fails": 1,
-      "since": 1791507477.5488558,
+      "since": 1791508469.5824385,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Bow of Zebulon::HTTPError": {
+    "Autographed Onibi::HTTPError": {
       "fails": 1,
-      "since": 1791507477.5488558,
+      "since": 1791508469.5824385,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791504683.9237742,
+  "digest": 1791508469.5824385,
   "fx": {
     "1": {
       "factor": 85.44691,
