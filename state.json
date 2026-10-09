@@ -1341,35 +1341,8 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 4,
-      "since": 1791540893.6818144,
-      "notified": true,
-      "last_notified": 1791542671.251762,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 1,
-      "since": 1791543539.5504947,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 1,
-      "since": 1791543539.5504947,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "HTTP Error 500: Internal Server Error"
-    },
     "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791543539.5504947,
       "notified": false,
       "last_notified": 0,
@@ -1378,7 +1351,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791543539.5504947,
       "notified": false,
       "last_notified": 0,
@@ -1387,7 +1360,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791543539.5504947,
       "notified": false,
       "last_notified": 0,
@@ -1396,7 +1369,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791540893.6818144,
+  "digest": 1791544585.475792,
   "fx": {
     "1": {
       "factor": 85.432836,
