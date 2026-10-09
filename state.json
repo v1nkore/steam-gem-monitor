@@ -1341,7 +1341,7 @@
   },
   "errors": {
     "Onibi::HTTPError": {
-      "fails": 6,
+      "fails": 7,
       "since": 1791500712.8996649,
       "notified": true,
       "last_notified": 1791502697.5908654,
@@ -1350,30 +1350,12 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Autographed Onibi::HTTPError": {
-      "fails": 6,
+      "fails": 7,
       "since": 1791500712.8996649,
       "notified": true,
       "last_notified": 1791502697.5908654,
       "target": "Autographed Onibi",
       "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 3,
-      "since": 1791503559.164394,
-      "notified": true,
-      "last_notified": 1791505623.094521,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 1,
-      "since": 1791505623.094521,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
