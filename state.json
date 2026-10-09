@@ -1294,6 +1294,7 @@
         "522009872025441061",
         "523130793049295354",
         "523137679342990331",
+        "523137767857434167",
         "525386303549623751",
         "525389479155359631",
         "525389479158256911",
@@ -1340,26 +1341,8 @@
     }
   },
   "errors": {
-    "Autographed Onibi::HTTPError": {
-      "fails": 4,
-      "since": 1791513602.8290904,
-      "notified": true,
-      "last_notified": 1791515625.4097779,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 1,
-      "since": 1791516660.9020073,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791516660.9020073,
       "notified": false,
       "last_notified": 0,
@@ -1368,7 +1351,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791516660.9020073,
       "notified": false,
       "last_notified": 0,
@@ -1376,17 +1359,17 @@
       "label": "Unusual Claws of the Grey Ghost",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Onibi::HTTPError": {
+    "Unusual Claws of the Crystal Drift::HTTPError": {
       "fails": 1,
-      "since": 1791516660.9020073,
+      "since": 1791537114.3361003,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791516660.9020073,
+  "digest": 1791537114.3361003,
   "fx": {
     "1": {
       "factor": 85.432836,
