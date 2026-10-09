@@ -1343,7 +1343,7 @@
   },
   "errors": {
     "Autographed Onibi::HTTPError": {
-      "fails": 5,
+      "fails": 6,
       "since": 1791582815.329772,
       "notified": true,
       "last_notified": 1791584543.4411051,
@@ -1352,7 +1352,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Northern Blight Style::HTTPError": {
-      "fails": 3,
+      "fails": 4,
       "since": 1791584543.4411051,
       "notified": true,
       "last_notified": 1791586350.4268048,
