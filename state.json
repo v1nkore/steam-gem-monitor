@@ -1316,6 +1316,7 @@
         "553535802211541521",
         "554662876700738962",
         "559166476340273036",
+        "559166476382101868",
         "572674836845702751"
       ],
       "seeded": true,
@@ -1341,44 +1342,35 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 2,
-      "since": 1791555434.6536999,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1791555434.6536999,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Autographed Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1791555434.6536999,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Bow of Zebulon::HTTPError": {
+    "Unusual Frostreach Brigands Axes::HTTPError": {
       "fails": 1,
-      "since": 1791556478.3675041,
+      "since": 1791576522.5199757,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
+      "fails": 1,
+      "since": 1791576522.5199757,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Crown of Curious Coldspell::HTTPError": {
+      "fails": 1,
+      "since": 1791576522.5199757,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791556478.3675041,
+  "digest": 1791576522.5199757,
   "fx": {
     "1": {
       "factor": 85.432836,
