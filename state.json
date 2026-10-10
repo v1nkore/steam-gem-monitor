@@ -1343,35 +1343,17 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 2,
-      "since": 1791623951.9899845,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 1,
-      "since": 1791624812.1079097,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791624812.1079097,
       "notified": false,
       "last_notified": 0,
       "target": "Unusual Powdersled Rookery Cannon",
       "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "HTTP Error 500: Internal Server Error"
+      "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791624812.1079097,
       "notified": false,
       "last_notified": 0,
@@ -1380,21 +1362,12 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791624812.1079097,
       "notified": false,
       "last_notified": 0,
       "target": "Unusual Lumpo and Rupertus - Weapon",
       "label": "Unusual Lumpo and Rupertus - Weapon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 1,
-      "since": 1791624812.1079097,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
