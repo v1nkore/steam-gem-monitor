@@ -1343,26 +1343,8 @@
     }
   },
   "errors": {
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 3,
-      "since": 1791595490.986748,
-      "notified": true,
-      "last_notified": 1791616598.751945,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 3,
-      "since": 1791595490.986748,
-      "notified": true,
-      "last_notified": 1791616598.751945,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Northern Blight Style::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791616598.751945,
       "notified": false,
       "last_notified": 0,
@@ -1371,7 +1353,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791616598.751945,
       "notified": false,
       "last_notified": 0,
@@ -1380,7 +1362,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Autographed Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791616598.751945,
       "notified": false,
       "last_notified": 0,
