@@ -1344,30 +1344,12 @@
   },
   "errors": {
     "Unusual Northern Blight Style::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1791616598.751945,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1791618555.4533427,
       "target": "Unusual Northern Blight Style",
       "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1791616598.751945,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Autographed Onibi::HTTPError": {
-      "fails": 2,
-      "since": 1791616598.751945,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
