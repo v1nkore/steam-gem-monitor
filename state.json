@@ -1342,44 +1342,8 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 7,
-      "since": 1791584543.4411051,
-      "notified": true,
-      "last_notified": 1791586350.4268048,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 2,
-      "since": 1791588934.5576615,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 1,
-      "since": 1791589822.91999,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 1,
-      "since": 1791589822.91999,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791589822.91999,
       "notified": false,
       "last_notified": 0,
@@ -1388,7 +1352,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Autographed Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791589822.91999,
       "notified": false,
       "last_notified": 0,
