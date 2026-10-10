@@ -1345,7 +1345,7 @@
   },
   "errors": {
     "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791667137.6920428,
       "notified": false,
       "last_notified": 0,
@@ -1354,7 +1354,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791667137.6920428,
       "notified": false,
       "last_notified": 0,
