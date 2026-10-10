@@ -1318,6 +1318,7 @@
         "554662876700738962",
         "559166476340273036",
         "559166476382101868",
+        "559166742570324920",
         "572674836845702751"
       ],
       "seeded": true,
@@ -1343,22 +1344,31 @@
     }
   },
   "errors": {
-    "Onibi::HTTPError": {
+    "Unusual Crown of Curious Coldspell::HTTPError": {
       "fails": 1,
-      "since": 1791655316.218357,
+      "since": 1791656175.9607186,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Autographed Onibi::HTTPError": {
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
       "fails": 1,
-      "since": 1791655316.218357,
+      "since": 1791656175.9607186,
       "notified": false,
       "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Bow of Zebulon::HTTPError": {
+      "fails": 1,
+      "since": 1791656175.9607186,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
