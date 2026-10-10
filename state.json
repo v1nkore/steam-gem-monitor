@@ -1345,7 +1345,7 @@
   },
   "errors": {
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791658017.5851183,
       "notified": false,
       "last_notified": 0,
@@ -1353,26 +1353,35 @@
       "label": "Unusual Frostreach Brigands Axes",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
       "fails": 1,
-      "since": 1791658017.5851183,
+      "since": 1791658972.2583601,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Crown of Curious Coldspell::HTTPError": {
+    "Unusual Claws of the Crystal Drift::HTTPError": {
       "fails": 1,
-      "since": 1791658017.5851183,
+      "since": 1791658972.2583601,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791658972.2583601,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791655316.218357,
+  "digest": 1791658972.2583601,
   "fx": {
     "1": {
       "factor": 84.989692,
