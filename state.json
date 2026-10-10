@@ -1344,7 +1344,7 @@
   },
   "errors": {
     "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791621381.9636357,
       "notified": false,
       "last_notified": 0,
@@ -1353,7 +1353,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791621381.9636357,
       "notified": false,
       "last_notified": 0,
