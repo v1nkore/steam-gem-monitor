@@ -1344,13 +1344,13 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
       "fails": 1,
-      "since": 1791664591.064729,
+      "since": 1791665404.7361302,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
