@@ -1345,22 +1345,22 @@
     }
   },
   "errors": {
-    "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 3,
-      "since": 1791748943.785893,
-      "notified": true,
-      "last_notified": 1791750773.601147,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 2,
-      "since": 1791749869.7063036,
+    "Unusual Crown of Curious Coldspell::HTTPError": {
+      "fails": 1,
+      "since": 1791751680.7201073,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
+      "fails": 1,
+      "since": 1791751680.7201073,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
