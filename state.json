@@ -1346,7 +1346,7 @@
   },
   "errors": {
     "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791738706.2141466,
       "notified": false,
       "last_notified": 0,
@@ -1355,7 +1355,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791738706.2141466,
       "notified": false,
       "last_notified": 0,
@@ -1363,22 +1363,31 @@
       "label": "Unusual Frostreach Brigands Axes",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 1,
-      "since": 1791738706.2141466,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791738706.2141466,
       "notified": false,
       "last_notified": 0,
       "target": "Onibi",
       "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Unusual Claws of the Grey Ghost::HTTPError": {
+      "fails": 1,
+      "since": 1791739628.374704,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Bow of Zebulon::HTTPError": {
+      "fails": 1,
+      "since": 1791739628.374704,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 500: Internal Server Error"
     }
   },
