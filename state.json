@@ -1345,26 +1345,17 @@
     }
   },
   "errors": {
-    "Unusual Crown of Curious Coldspell::HTTPError": {
+    "Onibi::HTTPError": {
       "fails": 1,
-      "since": 1791751680.7201073,
+      "since": 1791752562.9270253,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 1,
-      "since": 1791751680.7201073,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791748943.785893,
+  "digest": 1791752562.9270253,
   "fx": {
     "1": {
       "factor": 84.994885,
