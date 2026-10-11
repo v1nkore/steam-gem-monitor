@@ -1345,44 +1345,35 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 4,
-      "since": 1791710845.9492033,
-      "notified": true,
-      "last_notified": 1791712730.5060003,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
       "fails": 1,
-      "since": 1791713544.713826,
+      "since": 1791733871.063813,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Onibi::HTTPError": {
+    "Unusual Crown of Curious Coldspell::HTTPError": {
       "fails": 1,
-      "since": 1791713544.713826,
+      "since": 1791733871.063813,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Autographed Onibi::HTTPError": {
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
       "fails": 1,
-      "since": 1791713544.713826,
+      "since": 1791733871.063813,
       "notified": false,
       "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791713544.713826,
+  "digest": 1791733871.063813,
   "fx": {
     "1": {
       "factor": 84.994885,
