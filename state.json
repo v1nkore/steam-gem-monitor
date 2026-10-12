@@ -1346,16 +1346,16 @@
   },
   "errors": {
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1791778399.9564476,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1791780274.6982582,
       "target": "Unusual Frostreach Brigands Axes",
       "label": "Unusual Frostreach Brigands Axes",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791779352.5875256,
       "notified": false,
       "last_notified": 0,
@@ -1364,7 +1364,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791779352.5875256,
       "notified": false,
       "last_notified": 0,
