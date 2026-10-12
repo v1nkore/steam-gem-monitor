@@ -1346,7 +1346,7 @@
   },
   "errors": {
     "Onibi::HTTPError": {
-      "fails": 3,
+      "fails": 4,
       "since": 1791791477.3685684,
       "notified": true,
       "last_notified": 1791827238.7480218,
@@ -1354,13 +1354,22 @@
       "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 500: Internal Server Error"
     },
-    "Unusual Frostreach Brigands Axes::HTTPError": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
       "fails": 1,
-      "since": 1791827238.7480218,
+      "since": 1791828092.8106432,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Claws of the Crystal Drift::HTTPError": {
+      "fails": 1,
+      "since": 1791828092.8106432,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
