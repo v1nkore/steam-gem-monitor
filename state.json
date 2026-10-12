@@ -1345,32 +1345,41 @@
     }
   },
   "errors": {
-    "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 3,
-      "since": 1791787712.3538618,
-      "notified": true,
-      "last_notified": 1791789574.9999924,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 3,
-      "since": 1791787712.3538618,
-      "notified": true,
-      "last_notified": 1791789574.9999924,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Bow of Zebulon::HTTPError": {
+    "Unusual Light of the Forgotten Renegade::HTTPError": {
       "fails": 1,
-      "since": 1791789574.9999924,
+      "since": 1791790485.3730419,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "HTTP Error 500: Internal Server Error"
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Claws of the Grey Ghost::HTTPError": {
+      "fails": 1,
+      "since": 1791790485.3730419,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Claws of the Crystal Drift::HTTPError": {
+      "fails": 1,
+      "since": 1791790485.3730419,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791790485.3730419,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
   "digest": 1791788669.13959,
