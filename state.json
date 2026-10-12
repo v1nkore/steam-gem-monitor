@@ -1345,31 +1345,22 @@
     }
   },
   "errors": {
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
+    "Onibi::HTTPError": {
       "fails": 1,
-      "since": 1791784956.8304634,
+      "since": 1791785956.0747879,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Crown of Curious Coldspell::HTTPError": {
+    "Autographed Onibi::HTTPError": {
       "fails": 1,
-      "since": 1791784956.8304634,
+      "since": 1791785956.0747879,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Crown of Curious Coldspell",
-      "label": "Unusual Crown of Curious Coldspell",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 1,
-      "since": 1791784956.8304634,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
