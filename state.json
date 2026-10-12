@@ -1346,29 +1346,38 @@
   },
   "errors": {
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1791787712.3538618,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1791789574.9999924,
       "target": "Unusual Frostreach Brigands Axes",
       "label": "Unusual Frostreach Brigands Axes",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1791787712.3538618,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1791789574.9999924,
       "target": "Unusual Powdersled Rookery Cannon",
       "label": "Unusual Powdersled Rookery Cannon",
       "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Bow of Zebulon::HTTPError": {
+      "fails": 1,
+      "since": 1791789574.9999924,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "HTTP Error 500: Internal Server Error"
     }
   },
   "digest": 1791788669.13959,
   "fx": {
     "1": {
-      "factor": 84.994885,
-      "ts": 1791702399.3424954
+      "factor": 85.028588,
+      "ts": 1791789574.9999924
     },
     "20": {
       "factor": 60.156193,
