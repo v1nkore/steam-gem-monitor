@@ -1347,7 +1347,7 @@
   },
   "errors": {
     "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 3,
+      "fails": 4,
       "since": 1791831708.1277425,
       "notified": true,
       "last_notified": 1791833478.6437893,
@@ -1355,17 +1355,8 @@
       "label": "Unusual Crown of Curious Coldspell",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 1,
-      "since": 1791833478.6437893,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791833478.6437893,
       "notified": false,
       "last_notified": 0,
