@@ -1345,44 +1345,62 @@
     }
   },
   "errors": {
-    "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 2,
-      "since": 1791775441.1635408,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791776345.4029822,
       "notified": false,
       "last_notified": 0,
       "target": "Unusual Claws of the Grey Ghost",
       "label": "Unusual Claws of the Grey Ghost",
-      "reason": "HTTP Error 429: Too Many Requests"
+      "reason": "HTTP Error 500: Internal Server Error"
     },
-    "Unusual Claws of the Crystal Drift::HTTPError": {
+    "Unusual Northern Blight Style::HTTPError": {
       "fails": 1,
-      "since": 1791776345.4029822,
+      "since": 1791777333.634212,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Claws of the Crystal Drift",
-      "label": "Unusual Claws of the Crystal Drift",
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Autographed Onibi::HTTPError": {
+    "Unusual Light of the Forgotten Renegade::HTTPError": {
       "fails": 1,
-      "since": 1791776345.4029822,
+      "since": 1791777333.634212,
       "notified": false,
       "last_notified": 0,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
+      "fails": 1,
+      "since": 1791777333.634212,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Bow of Zebulon::HTTPError": {
+      "fails": 1,
+      "since": 1791777333.634212,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791777333.634212,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791773458.907431,
+  "digest": 1791777333.634212,
   "fx": {
     "1": {
       "factor": 84.994885,
