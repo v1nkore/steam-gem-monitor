@@ -1346,23 +1346,32 @@
     }
   },
   "errors": {
-    "Autographed Onibi::HTTPError": {
-      "fails": 5,
-      "since": 1791842181.1904242,
-      "notified": true,
-      "last_notified": 1791843888.3655603,
-      "target": "Autographed Onibi",
-      "label": "Autographed Onibi (22/22 стиля)",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Northern Blight Style::HTTPError": {
-      "fails": 3,
+      "fails": 4,
       "since": 1791843888.3655603,
       "notified": true,
       "last_notified": 1791845702.044097,
       "target": "Unusual Northern Blight Style",
       "label": "Unusual Northern Blight Style",
       "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Light of the Forgotten Renegade::HTTPError": {
+      "fails": 1,
+      "since": 1791846570.5024662,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791846570.5024662,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "reason": "HTTP Error 500: Internal Server Error"
     }
   },
   "digest": 1791844763.3017457,
