@@ -1346,35 +1346,26 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 4,
-      "since": 1791843888.3655603,
-      "notified": true,
-      "last_notified": 1791845702.044097,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
-    "Unusual Light of the Forgotten Renegade::HTTPError": {
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
       "fails": 1,
-      "since": 1791846570.5024662,
+      "since": 1791848866.2268605,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Light of the Forgotten Renegade",
-      "label": "Unusual Light of the Forgotten Renegade",
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Onibi::HTTPError": {
+    "Unusual Crown of Curious Coldspell::HTTPError": {
       "fails": 1,
-      "since": 1791846570.5024662,
+      "since": 1791848866.2268605,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 500: Internal Server Error"
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791844763.3017457,
+  "digest": 1791848866.2268605,
   "fx": {
     "1": {
       "factor": 85.028588,
