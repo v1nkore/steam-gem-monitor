@@ -1347,22 +1347,22 @@
     }
   },
   "errors": {
-    "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 2,
-      "since": 1791918662.9093885,
+    "Unusual Bow of Zebulon::HTTPError": {
+      "fails": 1,
+      "since": 1791920436.2642236,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Frostreach Brigands Axes",
-      "label": "Unusual Frostreach Brigands Axes",
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 2,
-      "since": 1791918662.9093885,
+    "Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791920436.2642236,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
