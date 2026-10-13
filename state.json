@@ -1348,7 +1348,7 @@
   },
   "errors": {
     "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791899099.178879,
       "notified": false,
       "last_notified": 0,
@@ -1357,7 +1357,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791899099.178879,
       "notified": false,
       "last_notified": 0,
@@ -1365,14 +1365,23 @@
       "label": "Unusual Frostreach Brigands Axes",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Onibi::HTTPError": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
       "fails": 1,
-      "since": 1791899099.178879,
+      "since": 1791900013.3729608,
       "notified": false,
       "last_notified": 0,
-      "target": "Onibi",
-      "label": "Onibi (курьер TI2016, 22/22 стиля)",
-      "reason": "HTTP Error 500: Internal Server Error"
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791900013.3729608,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
   "digest": 1791898152.5765269,
