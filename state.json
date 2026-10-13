@@ -1348,16 +1348,16 @@
   },
   "errors": {
     "Autographed Onibi::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1791868120.1123753,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1791891413.483618,
       "target": "Autographed Onibi",
       "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Northern Blight Style::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791890521.3931966,
       "notified": false,
       "last_notified": 0,
