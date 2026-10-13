@@ -1348,7 +1348,7 @@
   },
   "errors": {
     "Autographed Onibi::HTTPError": {
-      "fails": 6,
+      "fails": 7,
       "since": 1791900013.3729608,
       "notified": true,
       "last_notified": 1791901923.260559,
@@ -1357,7 +1357,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Onibi::HTTPError": {
-      "fails": 4,
+      "fails": 5,
       "since": 1791901923.260559,
       "notified": true,
       "last_notified": 1791903851.0844018,
@@ -1366,7 +1366,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791901923.260559,
+  "digest": 1791905615.8457594,
   "fx": {
     "1": {
       "factor": 84.043643,
