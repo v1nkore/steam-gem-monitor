@@ -1348,7 +1348,7 @@
   },
   "errors": {
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791918662.9093885,
       "notified": false,
       "last_notified": 0,
@@ -1357,7 +1357,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791918662.9093885,
       "notified": false,
       "last_notified": 0,
@@ -1366,7 +1366,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791915890.2680607,
+  "digest": 1791919528.8517776,
   "fx": {
     "1": {
       "factor": 84.043643,
