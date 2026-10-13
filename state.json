@@ -1347,17 +1347,8 @@
     }
   },
   "errors": {
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 2,
-      "since": 1791907422.7190344,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791908420.8258672,
       "notified": false,
       "last_notified": 0,
@@ -1366,16 +1357,34 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791908420.8258672,
       "notified": false,
       "last_notified": 0,
       "target": "Unusual Frostreach Brigands Axes",
       "label": "Unusual Frostreach Brigands Axes",
       "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791909350.9270191,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
+      "reason": "HTTP Error 500: Internal Server Error"
+    },
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791909350.9270191,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
     }
   },
-  "digest": 1791905615.8457594,
+  "digest": 1791909350.9270191,
   "fx": {
     "1": {
       "factor": 84.043643,
