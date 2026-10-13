@@ -1346,7 +1346,53 @@
       }
     }
   },
-  "errors": {},
+  "errors": {
+    "Unusual Claws of the Grey Ghost::HTTPError": {
+      "fails": 1,
+      "since": 1791916690.9417124,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Grey Ghost",
+      "label": "Unusual Claws of the Grey Ghost",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Frostreach Brigands Axes::HTTPError": {
+      "fails": 1,
+      "since": 1791916690.9417124,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
+      "fails": 1,
+      "since": 1791916690.9417124,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Crown of Curious Coldspell::HTTPError": {
+      "fails": 1,
+      "since": 1791916690.9417124,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Crown of Curious Coldspell",
+      "label": "Unusual Crown of Curious Coldspell",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
+      "fails": 1,
+      "since": 1791916690.9417124,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    }
+  },
   "digest": 1791915890.2680607,
   "fx": {
     "1": {
