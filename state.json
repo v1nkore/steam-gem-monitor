@@ -1347,17 +1347,8 @@
     }
   },
   "errors": {
-    "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 2,
-      "since": 1791861236.341755,
-      "notified": false,
-      "last_notified": 0,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1791862296.899467,
       "notified": false,
       "last_notified": 0,
@@ -1365,13 +1356,22 @@
       "label": "Unusual Crown of Curious Coldspell",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
+    "Unusual Frostreach Brigands Axes::HTTPError": {
       "fails": 1,
-      "since": 1791862296.899467,
+      "since": 1791863265.721075,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Powdersled Rookery Cannon::HTTPError": {
+      "fails": 1,
+      "since": 1791863265.721075,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Powdersled Rookery Cannon",
+      "label": "Unusual Powdersled Rookery Cannon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
