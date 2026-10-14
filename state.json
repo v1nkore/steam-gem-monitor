@@ -1352,61 +1352,61 @@
   },
   "errors": {
     "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1792011518.0860155,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1792013909.8127255,
       "target": "Unusual Powdersled Rookery Cannon",
       "label": "Unusual Powdersled Rookery Cannon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1792011518.0860155,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1792013909.8127255,
       "target": "Unusual Crown of Curious Coldspell",
       "label": "Unusual Crown of Curious Coldspell",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1792011518.0860155,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1792013909.8127255,
       "target": "Unusual Lumpo and Rupertus - Weapon",
       "label": "Unusual Lumpo and Rupertus - Weapon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1792011518.0860155,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1792013909.8127255,
       "target": "Unusual Bow of Zebulon",
       "label": "Unusual Bow of Zebulon",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Onibi::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1792011518.0860155,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1792013909.8127255,
       "target": "Onibi",
       "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Autographed Onibi::HTTPError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1792011518.0860155,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1792013909.8127255,
       "target": "Autographed Onibi",
       "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Northern Blight Style::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1792012591.5571246,
       "notified": false,
       "last_notified": 0,
@@ -1415,7 +1415,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1792012591.5571246,
       "notified": false,
       "last_notified": 0,
@@ -1424,7 +1424,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1792012591.5571246,
       "notified": false,
       "last_notified": 0,
@@ -1433,7 +1433,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1792012591.5571246,
       "notified": false,
       "last_notified": 0,
@@ -1442,7 +1442,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1792012591.5571246,
       "notified": false,
       "last_notified": 0,
