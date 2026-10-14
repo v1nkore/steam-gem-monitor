@@ -1352,7 +1352,7 @@
   },
   "errors": {
     "Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1792008228.9030502,
       "notified": false,
       "last_notified": 0,
