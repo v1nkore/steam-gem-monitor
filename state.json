@@ -1347,17 +1347,8 @@
     }
   },
   "errors": {
-    "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 16,
-      "since": 1791923760.7979703,
-      "notified": true,
-      "last_notified": 1791925939.4745162,
-      "target": "Unusual Bow of Zebulon",
-      "label": "Unusual Bow of Zebulon",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Onibi::HTTPError": {
-      "fails": 16,
+      "fails": 17,
       "since": 1791923760.7979703,
       "notified": true,
       "last_notified": 1791925939.4745162,
@@ -1365,13 +1356,13 @@
       "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 15,
-      "since": 1791924620.946967,
-      "notified": true,
-      "last_notified": 1791927257.7742145,
-      "target": "Unusual Lumpo and Rupertus - Weapon",
-      "label": "Unusual Lumpo and Rupertus - Weapon",
+    "Autographed Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1791963804.4684987,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Autographed Onibi",
+      "label": "Autographed Onibi (22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
