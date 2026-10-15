@@ -1352,7 +1352,7 @@
   },
   "errors": {
     "Unusual Powdersled Rookery Cannon::HTTPError": {
-      "fails": 5,
+      "fails": 6,
       "since": 1792011518.0860155,
       "notified": true,
       "last_notified": 1792013909.8127255,
@@ -1361,7 +1361,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 5,
+      "fails": 6,
       "since": 1792011518.0860155,
       "notified": true,
       "last_notified": 1792013909.8127255,
@@ -1370,7 +1370,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
-      "fails": 5,
+      "fails": 6,
       "since": 1792011518.0860155,
       "notified": true,
       "last_notified": 1792013909.8127255,
@@ -1379,7 +1379,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Bow of Zebulon::HTTPError": {
-      "fails": 5,
+      "fails": 6,
       "since": 1792011518.0860155,
       "notified": true,
       "last_notified": 1792013909.8127255,
@@ -1388,7 +1388,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Onibi::HTTPError": {
-      "fails": 5,
+      "fails": 6,
       "since": 1792011518.0860155,
       "notified": true,
       "last_notified": 1792013909.8127255,
@@ -1397,7 +1397,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Autographed Onibi::HTTPError": {
-      "fails": 5,
+      "fails": 6,
       "since": 1792011518.0860155,
       "notified": true,
       "last_notified": 1792013909.8127255,
@@ -1406,7 +1406,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Northern Blight Style::HTTPError": {
-      "fails": 4,
+      "fails": 5,
       "since": 1792012591.5571246,
       "notified": true,
       "last_notified": 1792015221.8009145,
@@ -1415,7 +1415,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 4,
+      "fails": 5,
       "since": 1792012591.5571246,
       "notified": true,
       "last_notified": 1792015221.8009145,
@@ -1424,7 +1424,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 4,
+      "fails": 5,
       "since": 1792012591.5571246,
       "notified": true,
       "last_notified": 1792015221.8009145,
@@ -1433,7 +1433,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Claws of the Crystal Drift::HTTPError": {
-      "fails": 4,
+      "fails": 5,
       "since": 1792012591.5571246,
       "notified": true,
       "last_notified": 1792015221.8009145,
@@ -1442,7 +1442,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Frostreach Brigands Axes::HTTPError": {
-      "fails": 4,
+      "fails": 5,
       "since": 1792012591.5571246,
       "notified": true,
       "last_notified": 1792015221.8009145,
