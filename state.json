@@ -1353,7 +1353,7 @@
   },
   "errors": {
     "Unusual Crown of Curious Coldspell::HTTPError": {
-      "fails": 18,
+      "fails": 19,
       "since": 1792051507.748563,
       "notified": true,
       "last_notified": 1792053380.227529,
@@ -1361,13 +1361,13 @@
       "label": "Unusual Crown of Curious Coldspell",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Powdersled Rookery Cannon::HTTPError": {
+    "Unusual Lumpo and Rupertus - Weapon::HTTPError": {
       "fails": 1,
-      "since": 1792092856.1685781,
+      "since": 1792093764.4143457,
       "notified": false,
       "last_notified": 0,
-      "target": "Unusual Powdersled Rookery Cannon",
-      "label": "Unusual Powdersled Rookery Cannon",
+      "target": "Unusual Lumpo and Rupertus - Weapon",
+      "label": "Unusual Lumpo and Rupertus - Weapon",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
