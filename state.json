@@ -1352,7 +1352,7 @@
   },
   "errors": {
     "Unusual Light of the Forgotten Renegade::HTTPError": {
-      "fails": 14,
+      "fails": 15,
       "since": 1792012591.5571246,
       "notified": true,
       "last_notified": 1792015221.8009145,
@@ -1360,22 +1360,40 @@
       "label": "Unusual Light of the Forgotten Renegade",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Claws of the Grey Ghost::HTTPError": {
-      "fails": 14,
-      "since": 1792012591.5571246,
-      "notified": true,
-      "last_notified": 1792015221.8009145,
-      "target": "Unusual Claws of the Grey Ghost",
-      "label": "Unusual Claws of the Grey Ghost",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Autographed Onibi::HTTPError": {
-      "fails": 1,
+      "fails": 2,
       "since": 1792049534.2979157,
       "notified": false,
       "last_notified": 0,
       "target": "Autographed Onibi",
       "label": "Autographed Onibi (22/22 стиля)",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Northern Blight Style::HTTPError": {
+      "fails": 1,
+      "since": 1792050484.2360985,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Unusual Bow of Zebulon::HTTPError": {
+      "fails": 1,
+      "since": 1792050484.2360985,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Bow of Zebulon",
+      "label": "Unusual Bow of Zebulon",
+      "reason": "HTTP Error 429: Too Many Requests"
+    },
+    "Onibi::HTTPError": {
+      "fails": 1,
+      "since": 1792050484.2360985,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Onibi",
+      "label": "Onibi (курьер TI2016, 22/22 стиля)",
       "reason": "HTTP Error 429: Too Many Requests"
     }
   },
