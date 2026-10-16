@@ -1371,10 +1371,10 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Northern Blight Style::RateLimitError": {
-      "fails": 2,
+      "fails": 3,
       "since": 1792143960.6489062,
-      "notified": false,
-      "last_notified": 0,
+      "notified": true,
+      "last_notified": 1792176512.447031,
       "target": "Unusual Northern Blight Style",
       "label": "Unusual Northern Blight Style",
       "reason": "Steam HTTP 429: пауза минимум на час"
@@ -1383,14 +1383,14 @@
   "digest": 1792135214.639685,
   "fx": {
     "1": {
-      "factor": 83.931439,
-      "ts": 1792083855.3201897
+      "factor": 83.873791,
+      "ts": 1792176512.447031
     },
     "20": {
       "factor": 60.156193,
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792162244.5942423,
-  "steam_retry_after": 1792165844.8338604
+  "last_scan": 1792176512.447031,
+  "steam_retry_after": 1792180112.6778123
 }
