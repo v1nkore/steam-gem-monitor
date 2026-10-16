@@ -19,6 +19,9 @@ Design notes
 """
 
 import json
+import html
+import urllib.error
+from email.utils import parsedate_to_datetime
 import os
 import re
 import sys
@@ -48,7 +51,7 @@ NOTIFY_ON_FIRST = os.environ.get("NOTIFY_ON_FIRST", "0") == "1"
 # covers every tracked item. (A cheap "flip" frostbloom near the floor is caught too.)
 MAX_PAGES = int(os.environ.get("MAX_PAGES", "8"))
 # Seconds to wait between HTTP requests to stay under Steam's rate limits.
-REQUEST_DELAY = float(os.environ.get("REQUEST_DELAY", "5"))
+REQUEST_DELAY = float(os.environ.get("REQUEST_DELAY", "15"))
 # Per-target cap on how many seen ids we remember (keeps state.json small).
 MAX_SEEN_PER_TARGET = 800
 
@@ -79,6 +82,13 @@ FX_TTL_HOURS = float(os.environ.get("FX_TTL_HOURS", "24"))
 # NOTE: Steam does NOT expose the real socketed gem — the gem name comes from the
 # seller's (editable) description, so it is shown as an UNVERIFIED claim.
 TRACK_GEM = os.environ.get("TRACK_GEM", "frostbloom").strip().lower()
+
+
+class RateLimitError(Exception):
+    """Stop Steam requests until the next hourly pass."""
+    def __init__(self, retry_after=3600):
+        super().__init__("Steam HTTP 429: пауза минимум на час")
+        self.retry_after = max(3600, retry_after)
 
 
 class MonitorError(Exception):
@@ -131,7 +141,9 @@ class Target:
             if n == 0 or n < self.min_styles:
                 return False
             return not STYLE_LOCKED.search(chunk_lower)
-        return bool(GEM_MATCH.search(chunk_lower))
+        # Steam hydration escapes markup even when the gem text is plain text.
+        chunk_lower = re.sub(r"\\+u003([ce])", lambda m: "<" if m[1] == "c" else ">", chunk_lower)
+        return bool(GEM_MATCH.search(html.unescape(chunk_lower)))
 
     @property
     def filter_link(self):
@@ -186,8 +198,15 @@ def http_get(url, retries=3):
         except urllib.error.HTTPError as e:
             last_err = e
             if e.code == 429:  # rate limited — back off
-                time.sleep(10 * (attempt + 1))
-                continue
+                value = e.headers.get("Retry-After", "3600")
+                try:
+                    delay = float(value)
+                except ValueError:
+                    try:
+                        delay = parsedate_to_datetime(value).timestamp() - time.time()
+                    except (ValueError, TypeError, OverflowError):
+                        delay = 3600
+                raise RateLimitError(delay) from e
             if 500 <= e.code < 600:
                 time.sleep(3 * (attempt + 1))
                 continue
@@ -445,6 +464,8 @@ def scan_target(t):
         if page_cur is not None:
             currency = page_cur
         if not listings:
+            if page_total != 0:
+                raise MonitorError(f"не удалось прочитать страницу start={start}; прежние данные сохранены")
             break
         absorb(listings)
         start += len(listings)
@@ -689,6 +710,13 @@ def _run():
     run_cur = None     # Steam currency id seen this run
     sample_name = None # a successfully scanned item name (for the FX lookup)
 
+    next_scan = max(state.get("steam_retry_after", 0), state.get("last_scan", 0) + 3600)
+    if now < next_scan:
+        print("[cooldown] next hourly Steam scan is not due yet")
+        return 0
+    state["last_scan"] = now
+    changed = True
+
     # Prime the RUB rate BEFORE the scan — priceoverview gets rate-limited once the
     # 30-request render scan runs, so refresh the (daily-cached) rate up front.
     # GitHub runners return USD (currency id 1).
@@ -723,6 +751,10 @@ def _run():
                 ent["notified"] = True
                 ent["last_notified"] = now
             print(f"[error] {t.label}: {e} (fails={ent['fails']})")
+            if isinstance(e, RateLimitError):
+                state["steam_retry_after"] = time.time() + e.retry_after
+                print("[cooldown] stopping this pass after HTTP 429; remaining targets unchanged")
+                break
             continue
 
         ok_target_keys.add(t.key)
