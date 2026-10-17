@@ -1371,7 +1371,7 @@
       "reason": "HTTP Error 429: Too Many Requests"
     },
     "Unusual Northern Blight Style::RateLimitError": {
-      "fails": 10,
+      "fails": 11,
       "since": 1792143960.6489062,
       "notified": true,
       "last_notified": 1792233682.171429,
@@ -1391,6 +1391,6 @@
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792264990.6858137,
-  "steam_retry_after": 1792268590.8811216
+  "last_scan": 1792275415.0000722,
+  "steam_retry_after": 1792279015.1857913
 }
