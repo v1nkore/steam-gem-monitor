@@ -1373,6 +1373,15 @@
       "target": "Unusual Light of the Forgotten Renegade",
       "label": "Unusual Light of the Forgotten Renegade",
       "reason": "Steam HTTP 429: пауза минимум на час"
+    },
+    "Unusual Northern Blight Style::RateLimitError": {
+      "fails": 1,
+      "since": 1792365015.705817,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "Steam HTTP 429: пауза минимум на час"
     }
   },
   "digest": 1792356016.3269305,
@@ -1386,6 +1395,6 @@
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792356016.3269305,
-  "steam_retry_after": 1792359708.3395808
+  "last_scan": 1792365015.705817,
+  "steam_retry_after": 1792368615.9400594
 }
