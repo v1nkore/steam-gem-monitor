@@ -2,6 +2,8 @@
   "targets": {
     "Unusual Northern Blight Style": {
       "seen": [
+        "1915001903165364322",
+        "2755057021501020252",
         "491610574506528854",
         "491610574511554778",
         "491610574513972034",
@@ -73,6 +75,7 @@
         "543400702073807932",
         "544526601930501977",
         "544526601986837657",
+        "544530043536995894",
         "545649965361329796",
         "545651234262258916",
         "545651234275975240",
@@ -106,6 +109,7 @@
         "559165750358100728",
         "559165837570665692",
         "559166114936622164",
+        "559166742571869932",
         "560291201601118698",
         "560291201618308878",
         "608703632912808274",
@@ -1352,15 +1356,6 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::HTTPError": {
-      "fails": 16,
-      "since": 1792116772.5498989,
-      "notified": true,
-      "last_notified": 1792119406.3792436,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
-      "reason": "HTTP Error 429: Too Many Requests"
-    },
     "Unusual Light of the Forgotten Renegade::HTTPError": {
       "fails": 1,
       "since": 1792136054.567534,
@@ -1370,27 +1365,27 @@
       "label": "Unusual Light of the Forgotten Renegade",
       "reason": "HTTP Error 429: Too Many Requests"
     },
-    "Unusual Northern Blight Style::RateLimitError": {
-      "fails": 16,
-      "since": 1792143960.6489062,
-      "notified": true,
-      "last_notified": 1792332028.171496,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
+    "Unusual Light of the Forgotten Renegade::RateLimitError": {
+      "fails": 1,
+      "since": 1792356016.3269305,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Light of the Forgotten Renegade",
+      "label": "Unusual Light of the Forgotten Renegade",
       "reason": "Steam HTTP 429: пауза минимум на час"
     }
   },
-  "digest": 1792135214.639685,
+  "digest": 1792356016.3269305,
   "fx": {
     "1": {
-      "factor": 83.769598,
-      "ts": 1792264990.6858137
+      "factor": 83.71924,
+      "ts": 1792356016.3269305
     },
     "20": {
       "factor": 60.156193,
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792344119.0282564,
-  "steam_retry_after": 1792347719.265767
+  "last_scan": 1792356016.3269305,
+  "steam_retry_after": 1792359708.3395808
 }
