@@ -1406,6 +1406,15 @@
       "target": "Unusual Frostreach Brigands Axes",
       "label": "Unusual Frostreach Brigands Axes",
       "reason": "Steam HTTP 429: пауза минимум на час"
+    },
+    "Unusual Northern Blight Style::RateLimitError": {
+      "fails": 1,
+      "since": 1792676796.0853465,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "Steam HTTP 429: пауза минимум на час"
     }
   },
   "digest": 1792654382.8053625,
@@ -1419,6 +1428,6 @@
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792654382.8053625,
-  "steam_retry_after": 1792658167.0039077
+  "last_scan": 1792676796.0853465,
+  "steam_retry_after": 1792680396.4194896
 }
