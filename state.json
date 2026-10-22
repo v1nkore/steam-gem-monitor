@@ -2,6 +2,8 @@
   "targets": {
     "Unusual Northern Blight Style": {
       "seen": [
+        "1345052392121357376",
+        "1674280103552791736",
         "1915001903165364322",
         "2755057021501020252",
         "491610574506528854",
@@ -138,6 +140,7 @@
     },
     "Unusual Light of the Forgotten Renegade": {
       "seen": [
+        "131572813915392437",
         "2291313473388409841",
         "2304348925979140661",
         "240532261658828704",
@@ -349,6 +352,7 @@
     },
     "Unusual Claws of the Grey Ghost": {
       "seen": [
+        "3100645288932383065",
         "490484040841132953",
         "490484040843748893",
         "491610574530319958",
@@ -1394,27 +1398,27 @@
     }
   },
   "errors": {
-    "Unusual Northern Blight Style::RateLimitError": {
-      "fails": 4,
-      "since": 1792590385.0510967,
-      "notified": true,
-      "last_notified": 1792621184.9345598,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
+    "Unusual Frostreach Brigands Axes::RateLimitError": {
+      "fails": 1,
+      "since": 1792654382.8053625,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Frostreach Brigands Axes",
+      "label": "Unusual Frostreach Brigands Axes",
       "reason": "Steam HTTP 429: пауза минимум на час"
     }
   },
-  "digest": 1792568226.2054589,
+  "digest": 1792654382.8053625,
   "fx": {
     "1": {
-      "factor": 82.571905,
-      "ts": 1792546434.895267
+      "factor": 82.003854,
+      "ts": 1792654382.8053625
     },
     "20": {
       "factor": 60.156193,
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792632602.770883,
-  "steam_retry_after": 1792636203.233556
+  "last_scan": 1792654382.8053625,
+  "steam_retry_after": 1792658167.0039077
 }
