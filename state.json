@@ -1395,7 +1395,7 @@
   },
   "errors": {
     "Unusual Northern Blight Style::RateLimitError": {
-      "fails": 3,
+      "fails": 4,
       "since": 1792590385.0510967,
       "notified": true,
       "last_notified": 1792621184.9345598,
@@ -1415,6 +1415,6 @@
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792621184.9345598,
-  "steam_retry_after": 1792624785.2545016
+  "last_scan": 1792632602.770883,
+  "steam_retry_after": 1792636203.233556
 }
