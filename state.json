@@ -1420,19 +1420,28 @@
       "target": "Unusual Claws of the Crystal Drift",
       "label": "Unusual Claws of the Crystal Drift",
       "reason": "Steam HTTP 429: пауза минимум на час"
+    },
+    "Unusual Northern Blight Style::RateLimitError": {
+      "fails": 1,
+      "since": 1792761866.344171,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Northern Blight Style",
+      "label": "Unusual Northern Blight Style",
+      "reason": "Steam HTTP 429: пауза минимум на час"
     }
   },
   "digest": 1792740587.1413028,
   "fx": {
     "1": {
-      "factor": 82.003854,
-      "ts": 1792654382.8053625
+      "factor": 81.520547,
+      "ts": 1792761866.344171
     },
     "20": {
       "factor": 60.156193,
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792740587.1413028,
-  "steam_retry_after": 1792744341.46834
+  "last_scan": 1792761866.344171,
+  "steam_retry_after": 1792765466.6207328
 }
