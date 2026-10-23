@@ -341,7 +341,9 @@
         "614333133436880236",
         "622214431751138374",
         "633473430868393029",
-        "7413264375325786397"
+        "7413264375325786397",
+        "8619767285843582081",
+        "8995269861887147407"
       ],
       "seeded": true,
       "low": {
@@ -352,7 +354,9 @@
     },
     "Unusual Claws of the Grey Ghost": {
       "seen": [
+        "1958477424128708485",
         "3100645288932383065",
+        "437592914303316210",
         "490484040841132953",
         "490484040843748893",
         "491610574530319958",
@@ -478,7 +482,8 @@
         "560287933101676371",
         "560291737484823762",
         "570423036042647065",
-        "622214431756669378"
+        "622214431756669378",
+        "7709261053893419692"
       ],
       "seeded": true,
       "low": {
@@ -1407,17 +1412,17 @@
       "label": "Unusual Frostreach Brigands Axes",
       "reason": "Steam HTTP 429: пауза минимум на час"
     },
-    "Unusual Northern Blight Style::RateLimitError": {
-      "fails": 4,
-      "since": 1792676796.0853465,
-      "notified": true,
-      "last_notified": 1792707541.4990742,
-      "target": "Unusual Northern Blight Style",
-      "label": "Unusual Northern Blight Style",
+    "Unusual Claws of the Crystal Drift::RateLimitError": {
+      "fails": 1,
+      "since": 1792740587.1413028,
+      "notified": false,
+      "last_notified": 0,
+      "target": "Unusual Claws of the Crystal Drift",
+      "label": "Unusual Claws of the Crystal Drift",
       "reason": "Steam HTTP 429: пауза минимум на час"
     }
   },
-  "digest": 1792654382.8053625,
+  "digest": 1792740587.1413028,
   "fx": {
     "1": {
       "factor": 82.003854,
@@ -1428,6 +1433,6 @@
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792718974.0115018,
-  "steam_retry_after": 1792722574.2041242
+  "last_scan": 1792740587.1413028,
+  "steam_retry_after": 1792744341.46834
 }
