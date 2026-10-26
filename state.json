@@ -1422,7 +1422,7 @@
       "reason": "Steam HTTP 429: пауза минимум на час"
     },
     "Unusual Northern Blight Style::RateLimitError": {
-      "fails": 17,
+      "fails": 18,
       "since": 1792761866.344171,
       "notified": true,
       "last_notified": 1792974100.2621145,
@@ -1442,6 +1442,6 @@
       "ts": 1790003772.0823908
     }
   },
-  "last_scan": 1792974100.2621145,
-  "steam_retry_after": 1792977700.4117913
+  "last_scan": 1792995044.3806543,
+  "steam_retry_after": 1792998644.6055346
 }
