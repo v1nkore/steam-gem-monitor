@@ -23,6 +23,16 @@ class MonitorTests(unittest.TestCase):
             self.assertEqual(request.call_count, 1)
             sleep.assert_not_called()
 
+    def test_http_get_uses_browser_navigation_headers(self):
+        response = io.BytesIO(b"ok")
+        response.__enter__ = lambda value: value
+        response.__exit__ = lambda *_args: None
+        with patch.object(m.urllib.request, "urlopen", return_value=response) as urlopen:
+            self.assertEqual(m.http_get("https://steamcommunity.com"), "ok")
+        request = urlopen.call_args.args[0]
+        self.assertIn("text/html", request.get_header("Accept"))
+        self.assertEqual(request.get_header("Accept-language"), "en-US,en;q=0.9")
+
     def test_hourly_gate_avoids_requests(self):
         with patch.object(m, "load_state", return_value={"last_scan": 9900}), patch.object(m.time, "time", return_value=10000), patch.object(m, "scan_target") as scan:
             m._run()
